@@ -1,5 +1,4 @@
-import { db } from "../../../../persistence/persistence.js";
-import { loadQuery } from "../../../../persistence/load-query.js";
+import { db, loadQuery } from "../../../../persistence/persistence.js";
 
 const deleteCategoryQuery = loadQuery({
   base: import.meta.url,
