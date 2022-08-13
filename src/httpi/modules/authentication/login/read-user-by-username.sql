@@ -1,0 +1,6 @@
+SELECT
+  *
+FROM
+  PUBLIC.USER
+WHERE
+  USERNAME = ${ username };
