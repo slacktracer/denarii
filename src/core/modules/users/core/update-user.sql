@@ -1,0 +1,10 @@
+UPDATE
+  PUBLIC.USER
+SET
+  ${ sets:raw }
+WHERE
+  USER_ID = ${ userID }
+RETURNING
+  EMAIL,
+  USER_ID,
+  USERNAME

@@ -1,0 +1,5 @@
+DELETE FROM
+  PUBLIC.CATEGORY
+WHERE
+  CATEGORY_ID = ${ categoryID }
+  AND USER_ID = ${ userID }

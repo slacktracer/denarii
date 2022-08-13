@@ -1,0 +1,14 @@
+INSERT INTO
+  ACCOUNT (ACCOUNT_ID, INITIAL_AMOUNT, NAME, USER_ID)
+VALUES
+  (
+    GEN_RANDOM_UUID (),
+    ${ initialAmount },
+    ${ name },
+    ${ userID }
+  )
+RETURNING
+  ACCOUNT_ID,
+  INITIAL_AMOUNT,
+  NAME,
+  USER_ID

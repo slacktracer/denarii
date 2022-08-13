@@ -1,0 +1,6 @@
+SELECT
+  *
+FROM
+  PUBLIC.USER
+WHERE
+  USER_ID = ${ userID }
