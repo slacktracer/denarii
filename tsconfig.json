@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "outDir": "./build",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "target": "ESNext"
+  }
+}

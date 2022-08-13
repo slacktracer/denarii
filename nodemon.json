@@ -1,0 +1,5 @@
+{
+  "exec": "npm run build && npm run x",
+  "ext": "js,json,ts",
+  "ignore": ["build/*"]
+}
