@@ -1,11 +1,16 @@
 import { calculateBalances } from "../../../core/modules/balances/core/calculate-balances.js";
 
 export const createCommands = ({ program }) => {
-  const balancesCommand = program.command("balances").action(async () => {
-    const balances = await calculateBalances();
+  const balancesCommand = program
+    .command("balances")
+    .requiredOption("--userID <id>")
+    .action(async (options) => {
+      const { userID } = options;
 
-    console.table(balances);
-  });
+      const balances = await calculateBalances({ userID });
+
+      console.table(balances);
+    });
 
   return balancesCommand;
 };
