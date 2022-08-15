@@ -1,5 +1,10 @@
-import { createTransfer } from "../../../core/modules/transfers/core/create-transfer/create-transfer.js";
-import { readTransfers } from "../../../core/modules/transfers/core/read-transfers/read-transfers.js";
+import {
+  createTransfer,
+  deleteTransfer,
+  readTransfer,
+  readTransfers,
+  updateTransfer,
+} from "../../../core/modules/transfers/transfers.js";
 
 export const createCommands = ({ program }) => {
   const transfersCommand = program.command("transfers");
@@ -7,19 +12,70 @@ export const createCommands = ({ program }) => {
   transfersCommand
     .command("create")
     .requiredOption("-d, --data <data>")
+    .requiredOption("--userID <id>")
     .action(async (options) => {
+      const { userID } = options;
+
       const data = JSON.parse(options.data);
 
-      const transfer = JSON.stringify(await createTransfer({ data }), null, 2);
+      const transfer = JSON.stringify(
+        await createTransfer({ data, userID }),
+        null,
+        2,
+      );
 
       console.log(transfer);
     });
 
-  transfersCommand.command("read").action(async () => {
-    const transfers = await readTransfers();
+  transfersCommand
+    .command("delete")
+    .requiredOption("--transferID <id>")
+    .requiredOption("--userID <id>")
+    .action(async (options) => {
+      const { transferID, userID } = options;
 
-    console.table(transfers);
-  });
+      await deleteTransfer({ transferID, userID });
+
+      console.log(`Transfer ${transferID} deleted.`);
+    });
+
+  transfersCommand
+    .command("read")
+    .option("--transferID <id>")
+    .requiredOption("--userID <id>")
+    .action(async (options) => {
+      const { transferID, userID } = options;
+
+      if (transferID) {
+        const transfer = await readTransfer({ transferID, userID });
+
+        console.log(transfer);
+
+        return;
+      }
+
+      const transfers = await readTransfers({ userID });
+
+      console.table(transfers);
+    });
+
+  transfersCommand
+    .command("update")
+    .requiredOption("-d, --data <data>")
+    .requiredOption("--userID <id>")
+    .action(async (options) => {
+      const { transferID, userID } = options;
+
+      const data = JSON.parse(options.data);
+
+      const transfer = JSON.stringify(
+        await updateTransfer({ transferID, data, userID }),
+        null,
+        2,
+      );
+
+      console.log(transfer);
+    });
 
   return transfersCommand;
 };

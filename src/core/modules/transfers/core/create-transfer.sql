@@ -4,19 +4,22 @@ INSERT INTO
     AT,
     FROM_ACCOUNT_ID,
     TO_ACCOUNT_ID,
-    TRANSFER_ID
+    TRANSFER_ID,
+    USER_ID
   )
 VALUES
   (
     ${ amount },
-    NOW(),
+    ${ at },
     ${ fromAccountID },
     ${ toAccountID },
-    GEN_RANDOM_UUID ()
+    GEN_RANDOM_UUID (),
+    ${ userID }
   )
 RETURNING
   AMOUNT,
   AT,
   FROM_ACCOUNT_ID,
   TO_ACCOUNT_ID,
-  TRANSFER_ID;
+  TRANSFER_ID,
+  USER_ID;
