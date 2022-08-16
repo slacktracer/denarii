@@ -1,4 +1,4 @@
 {
-  "exec": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config || exit 1",
+  "exec": "npm ci && NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config || exit 1",
   "ext": "js,json"
 }

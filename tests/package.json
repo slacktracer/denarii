@@ -23,7 +23,7 @@
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
     "start": "nodemon",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config --watch"
+    "test": "npm ci && NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config --watch"
   },
   "type": "module",
   "version": "1.0.0"
