@@ -1,0 +1,5 @@
+.env
+.eslintcache
+node_modules
+src/**/*.js
+src/**/*.js.map

@@ -1,0 +1,30 @@
+{
+  "author": "slacktracer",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.3",
+    "lint-staged": "^13.0.3",
+    "nodemon": "^2.0.19",
+    "pg-mem": "^2.6.3",
+    "pg-promise": "^10.11.1",
+    "prettier": "^2.7.1",
+    "redis": "^4.2.0",
+    "squel": "^5.13.0",
+    "uuid": "^8.3.2"
+  },
+  "license": "MIT",
+  "name": "denarii-test-suites",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint --cache --fix .",
+    "lint-staged": "lint-staged",
+    "start": "nodemon",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config --watch"
+  },
+  "type": "module",
+  "version": "1.0.0"
+}

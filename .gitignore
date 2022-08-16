@@ -1,5 +1,2 @@
-.env
-.eslintcache
 .idea
-build
 node_modules
