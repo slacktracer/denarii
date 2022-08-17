@@ -5,6 +5,7 @@
   },
   "name": "denarii",
   "scripts": {
+    "d": "npm run d --workspace main",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
     "start": "npm start --workspace main",

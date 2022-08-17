@@ -35,6 +35,8 @@
     "build": "npm ci && tsc",
     "check-types": "tsc --noEmit --project ./tsconfig.json",
     "cli": "node --require dotenv/config src/cli/cli.js",
+    "decompile": "find ./src -name \"*.js\" -type f -delete && find ./src -name \"*.js.map\" -type f -delete",
+    "d": "npm run decompile",
     "format": "prettier --write .",
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
