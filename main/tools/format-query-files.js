@@ -31,7 +31,7 @@ const placePlaceHoldersReplaceFunction = (
 };
 
 const placePlaceholders = ({ query }) => {
-  const queryVariableRegex = /\$\{ (.+?) \}/g;
+  const queryVariableRegex = /\$\{ ?(.+?) ?\}/g;
 
   return query.replace(queryVariableRegex, placePlaceHoldersReplaceFunction);
 };
