@@ -1,11 +1,12 @@
 import expressSession from "express-session";
 
-import { createRouter as createAccountsRouter } from "./modules/accounts/create-router.js";
+import { createExpressApplication } from "./create-express-application.js";
 import { createRouter as createAuthenticationRouter } from "./modules/authentication/create-router.js";
 import { isSessionSet } from "./modules/authentication/middleware/is-session-set.js";
-import { createExpressApplication } from "./create-express-application.js";
-import { sessionStore } from "./session-store.js";
+import { createRouter as createAccountsRouter } from "./modules/accounts/create-router.js";
 import { createRouter as createGroupsRouter } from "./modules/groups/create-router.js";
+import { createRouter as createUsersRouter } from "./modules/users/create-router.js";
+import { sessionStore } from "./session-store.js";
 
 const expressApplication = await createExpressApplication();
 
@@ -22,7 +23,9 @@ expressApplication.use(
 const accountsRouter = createAccountsRouter();
 const authenticationRouter = createAuthenticationRouter();
 const groupsRouter = createGroupsRouter();
+const usersRouter = createUsersRouter();
 
 expressApplication.use("/accounts", isSessionSet, accountsRouter);
 expressApplication.use("/authentication", authenticationRouter);
 expressApplication.use("/groups", isSessionSet, groupsRouter);
+expressApplication.use("/users", usersRouter);
