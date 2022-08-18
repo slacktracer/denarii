@@ -34,7 +34,7 @@
   "main": "build/main.js",
   "name": "denarii",
   "scripts": {
-    "build": "npm ci && tsc",
+    "build": "tsc",
     "check-types": "tsc --noEmit --project ./tsconfig.json",
     "cli": "node --require dotenv/config src/cli/cli.js",
     "decompile": "tsc --build --clean",

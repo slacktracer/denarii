@@ -14,6 +14,7 @@
     "prettier": "^2.7.1",
     "redis": "^4.2.0",
     "squel": "^5.13.0",
+    "supertest": "^6.2.4",
     "uuid": "^8.3.2"
   },
   "license": "MIT",
@@ -23,7 +24,7 @@
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
     "start": "nodemon",
-    "test": "npm ci && NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config --watch"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config --watch"
   },
   "type": "module",
   "version": "1.0.0"
