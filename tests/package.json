@@ -1,6 +1,7 @@
 {
   "author": "slacktracer",
   "dependencies": {
+    "@jest/globals": "^28.1.3",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
     "eslint": "^8.21.0",
@@ -13,6 +14,7 @@
     "pg-promise": "^10.11.1",
     "prettier": "^2.7.1",
     "redis": "^4.2.0",
+    "redis-memory-server": "^0.5.0",
     "squel": "^5.13.0",
     "supertest": "^6.2.4",
     "uuid": "^8.3.2"
