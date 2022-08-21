@@ -8,7 +8,7 @@ import { createRouter as createGroupsRouter } from "./modules/groups/create-rout
 import { createRouter as createUsersRouter } from "./modules/users/create-router.js";
 import { sessionStore } from "./session-store.js";
 
-const expressApplication = await createExpressApplication();
+export const expressApplication = await createExpressApplication();
 
 expressApplication.use(
   expressSession({

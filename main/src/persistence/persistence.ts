@@ -13,10 +13,4 @@ db.$config.options.receive = transformColumnNames;
 
 export { loadQuery } from "./load-query.js";
 
-export const redisClient = createClient({
-  url: process.env.REDIS_CONNECTION_STRING,
-});
-
-await redisClient.connect().catch(console.error);
-
-export { redisClient as kv };
+export { createClient as createRedisClient };

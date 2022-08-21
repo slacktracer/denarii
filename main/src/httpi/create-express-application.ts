@@ -19,9 +19,11 @@ export const createExpressApplication = async () => {
   expressApplication.use(express.json());
 
   try {
-    await new Promise((resolve) => {
-      expressApplication.listen(port, resolve);
-    });
+    if (process.env.NODE_ENV !== "test") {
+      await new Promise((resolve) => {
+        expressApplication.listen(port, resolve);
+      });
+    }
 
     expressApplication.get(healthCheckEndpoint, (request, response) =>
       response.json({ healthy: true }),

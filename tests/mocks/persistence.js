@@ -1,5 +1,7 @@
 import { DataType, newDb } from "pg-mem";
 import pgp from "pg-promise";
+import { createClient } from "redis";
+import { RedisMemoryServer } from "redis-memory-server";
 import { URL } from "url";
 import { v4 as uuid } from "uuid";
 
@@ -28,11 +30,11 @@ const { makeLoadQuery } = await import(
 
 export const loadQuery = makeLoadQuery({ QueryFile, URL });
 
-export const redisClient = {
-  connect: () => Promise.resolve(),
-  quit: () => undefined,
-};
+export const redisServer = new RedisMemoryServer();
 
-await redisClient.connect().catch(console.error);
+const host = await redisServer.getHost();
+const port = await redisServer.getPort();
 
-export { redisClient as kv };
+process.env.REDIS_CONNECTION_STRING = `redis://${host}:${port}`;
+
+export { createClient as createRedisClient };
