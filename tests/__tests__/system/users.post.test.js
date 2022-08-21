@@ -34,9 +34,7 @@ const { legacyRedisClient } = await import(
 let backup;
 
 afterAll(async () => {
-  await endConnections({ db });
-  await legacyRedisClient.disconnect();
-  await redisServer.stop();
+  await endConnections({ db, legacyRedisClient, redisServer });
 });
 
 beforeAll(async () => {
