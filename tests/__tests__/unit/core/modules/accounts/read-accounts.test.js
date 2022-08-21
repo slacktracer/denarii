@@ -5,7 +5,7 @@ import { endConnections } from "../../../../../functions/end-connections.js";
 import * as mockPersistence from "../../../../../mocks/persistence.js";
 
 jest.unstable_mockModule(
-  `../../../../../main/src/persistence/persistence.js`,
+  `../../../../../../main/src/persistence/persistence.js`,
   () => mockPersistence,
 );
 
