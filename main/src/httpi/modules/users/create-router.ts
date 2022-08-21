@@ -10,9 +10,9 @@ export const createRouter = () => {
 
     const data = { email, password, username };
 
-    const usersRouter = await createUser({ data });
+    const createdUser = await createUser({ data });
 
-    response.json(usersRouter);
+    response.json(createdUser);
   });
 
   return usersRouter;

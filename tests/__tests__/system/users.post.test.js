@@ -47,13 +47,24 @@ beforeEach(async () => {
   backup.restore();
 });
 
-describe("GET /healthz", () => {
-  test("health is ok", async () => {
+describe("POST /users", () => {
+  test("it returns new user", async () => {
     const { expressApplication } = await import("denarii/src/httpi/httpi.js");
 
-    const response = await request(expressApplication).get("/healthz");
+    const email = "jack@example.com";
+    const password = "1234";
+    const username = "jack";
+
+    const expectedCreateUser = expect.objectContaining({
+      email,
+      username,
+    });
+
+    const response = await request(expressApplication)
+      .post("/users")
+      .send({ email, password, username });
 
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({ healthy: true });
+    expect(response.body).toEqual(expectedCreateUser);
   });
 });
