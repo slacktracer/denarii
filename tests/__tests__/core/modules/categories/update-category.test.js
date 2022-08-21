@@ -14,12 +14,10 @@ const { prepareTestDatabase } = await import(
   "../../../../functions/prepare-test-database.js"
 );
 
-const { db, kv } = await import(
-  `../../../../../main/src/persistence/persistence.js`
-);
+const { db, kv } = await import(`denarii/src/persistence/persistence.js`);
 
 const { readCategories, updateCategory } = await import(
-  `../../../../../main/src/core/modules/categories/categories.js`
+  `denarii/src/core/modules/categories/categories.js`
 );
 
 let backup;

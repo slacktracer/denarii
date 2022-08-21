@@ -14,13 +14,9 @@ const { prepareTestDatabase } = await import(
   "../../../../functions/prepare-test-database.js"
 );
 
-const { db, kv } = await import(
-  `../../../../../main/src/persistence/persistence.js`
-);
+const { db, kv } = await import(`denarii/src/persistence/persistence.js`);
 
-const { readUser } = await import(
-  `../../../../../main/src/core/modules/users/users.js`
-);
+const { readUser } = await import(`denarii/src/core/modules/users/users.js`);
 
 let backup;
 
