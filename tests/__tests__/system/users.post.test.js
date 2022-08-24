@@ -8,10 +8,8 @@ import {
   test,
 } from "@jest/globals";
 
-import request from "supertest";
-
 import { endConnections } from "../../functions/end-connections.js";
-
+import { getServer } from "../../functions/get-server.js";
 import * as mockPersistence from "../../mocks/persistence.js";
 
 jest.unstable_mockModule(
@@ -47,7 +45,7 @@ beforeEach(async () => {
 
 describe("POST /users", () => {
   test("it returns new user", async () => {
-    const { expressApplication } = await import("denarii/src/httpi/httpi.js");
+    const server = await getServer();
 
     const email = "jack@example.com";
     const password = "1234";
@@ -58,7 +56,7 @@ describe("POST /users", () => {
       username,
     });
 
-    const response = await request(expressApplication)
+    const response = await server
       .post("/users")
       .send({ email, password, username });
 

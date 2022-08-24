@@ -8,10 +8,8 @@ import {
   test,
 } from "@jest/globals";
 
-import request from "supertest";
-
 import { endConnections } from "../../functions/end-connections.js";
-
+import { getServer } from "../../functions/get-server.js";
 import * as mockPersistence from "../../mocks/persistence.js";
 
 jest.unstable_mockModule(
@@ -47,9 +45,9 @@ beforeEach(async () => {
 
 describe("GET /healthz", () => {
   test("health is ok", async () => {
-    const { expressApplication } = await import("denarii/src/httpi/httpi.js");
+    const server = await getServer();
 
-    const response = await request(expressApplication).get("/healthz");
+    const response = await server.get("/healthz");
 
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({ healthy: true });
