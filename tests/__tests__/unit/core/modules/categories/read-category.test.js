@@ -45,6 +45,7 @@ describe("read category", () => {
     // given
     const expectedCategory = expect.objectContaining({
       ...category01,
+      createdAt: new Date(category01.createdAt),
     });
 
     // when

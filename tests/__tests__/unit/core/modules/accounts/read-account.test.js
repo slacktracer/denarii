@@ -41,6 +41,7 @@ describe("read account", () => {
     // given
     const expectedAccount = expect.objectContaining({
       ...account01,
+      createdAt: new Date(account01.createdAt),
     });
 
     // when

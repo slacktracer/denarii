@@ -46,6 +46,7 @@ describe("read transfer", () => {
     const expectedTransfer = expect.objectContaining({
       ...transfer01,
       at: new Date(transfer01.at),
+      createdAt: new Date(transfer01.createdAt),
     });
 
     // when

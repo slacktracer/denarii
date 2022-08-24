@@ -46,6 +46,7 @@ describe("read operation", () => {
     const expectedOperation = expect.objectContaining({
       ...operation01,
       at: new Date(operation01.at),
+      createdAt: new Date(operation01.createdAt),
     });
 
     // when

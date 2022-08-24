@@ -39,6 +39,7 @@ describe("read group", () => {
     // given
     const expectedGroup = expect.objectContaining({
       ...group01,
+      createdAt: new Date(group01.createdAt),
     });
 
     // when
