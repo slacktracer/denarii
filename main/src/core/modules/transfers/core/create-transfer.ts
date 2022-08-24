@@ -11,6 +11,7 @@ export const createTransfer = async ({ data, userID }) => {
   const createdTransfer = db.one(createTransferQuery, {
     amount,
     at,
+    createdAt: new Date(),
     fromAccountID,
     toAccountID,
     userID,

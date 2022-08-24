@@ -23,6 +23,7 @@ export const createOperation = async ({ data, userID }) => {
     amountPerUnit,
     categoryID,
     comments,
+    createdAt: new Date(),
     groupID,
     type,
     unitCount,

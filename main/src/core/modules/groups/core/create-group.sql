@@ -1,7 +1,8 @@
 INSERT INTO
-  PUBLIC.GROUP (GROUP_ID, NAME, USER_ID)
+  PUBLIC.GROUP (CREATED_AT, GROUP_ID, NAME, USER_ID)
 VALUES
   (
+    ${ createdAt },
     GEN_RANDOM_UUID (),
     ${ name },
     ${ userID }

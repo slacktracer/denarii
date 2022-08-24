@@ -8,7 +8,11 @@ const createGroupQuery = loadQuery({
 export const createGroup = async ({ data, userID }) => {
   const { name } = data;
 
-  const createdGroup = db.one(createGroupQuery, { name, userID });
+  const createdGroup = db.one(createGroupQuery, {
+    createdAt: new Date(),
+    name,
+    userID,
+  });
 
   return createdGroup;
 };

@@ -13,6 +13,7 @@ export const createUser = async ({ data }) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const createdUser = db.one(createUserQuery, {
+    createdAt: new Date(),
     email,
     password: hashedPassword,
     username,

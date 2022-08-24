@@ -14,6 +14,7 @@ export const createAccount = async ({
   const { initialAmount, name } = data;
 
   const createdAccount = db.one(createAccountQuery, {
+    createdAt: new Date(),
     initialAmount,
     name,
     userID,

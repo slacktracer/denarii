@@ -6,6 +6,7 @@ INSERT INTO
     AT,
     CATEGORY_ID,
     COMMENTS,
+    CREATED_AT,
     GROUP_ID,
     OPERATION_ID,
     TYPE
@@ -21,6 +22,7 @@ VALUES
     NOW(),
     ${ categoryID },
     ${ comments },
+    ${ createdAt },
     ${ groupID },
     GEN_RANDOM_UUID (),
     ${ type },

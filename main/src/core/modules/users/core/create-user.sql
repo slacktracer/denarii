@@ -1,7 +1,8 @@
 INSERT INTO
-  PUBLIC.USER (EMAIL, USER_ID, USERNAME, PASSWORD)
+  PUBLIC.USER (CREATED_AT, EMAIL, USER_ID, USERNAME, PASSWORD)
 VALUES
   (
+    ${ createdAt },
     ${ email },
     GEN_RANDOM_UUID (),
     ${ username },

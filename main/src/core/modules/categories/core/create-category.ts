@@ -9,6 +9,7 @@ export const createCategory = async ({ data, userID }) => {
   const { groupID, name } = data;
 
   const createdCategory = db.one(createCategoryQuery, {
+    createdAt: new Date(),
     groupID,
     name,
     userID,
