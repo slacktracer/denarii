@@ -11,6 +11,8 @@ export const db = pgp(options);
 
 db.$config.options.receive = transformColumnNames;
 
+export { customPGPHelpersSets } from "./custom-pgp-helpers-sets.js";
+
 export { loadQuery } from "./load-query.js";
 
 export { createClient as createRedisClient };

@@ -22,6 +22,8 @@ export const db = pgm.adapters.createPgPromise();
 
 db.$config.options.receive = transformColumnNames;
 
+export { customPGPHelpersSets } from "../../main/src/persistence/custom-pgp-helpers-sets.js";
+
 const { QueryFile } = pgp;
 
 const { makeLoadQuery } = await import(
