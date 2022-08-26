@@ -1,4 +1,8 @@
-import { db, loadQuery } from "../../../../persistence/persistence.js";
+import {
+  customPGPHelpersSets,
+  db,
+  loadQuery,
+} from "../../../../persistence/persistence.js";
 
 const updateAccountQuery = loadQuery({
   base: import.meta.url,
@@ -8,7 +12,7 @@ const updateAccountQuery = loadQuery({
 export const updateAccount = async ({ accountID, data, userID }) => {
   const { ...update } = data;
 
-  const sets = db.$config.pgp.helpers.sets(update);
+  const sets = customPGPHelpersSets(update);
 
   const updatedAccount = await db.one(updateAccountQuery, {
     accountID,
