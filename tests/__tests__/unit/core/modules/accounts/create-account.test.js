@@ -50,7 +50,8 @@ describe("create account", () => {
       userID: userID01,
     });
 
-    const expectedAccountCount = accounts.length + 1;
+    const expectedAccountCount =
+      accounts.filter((account) => account.userID === userID01).length + 1;
 
     // when
     const createdAccount = await createAccount({

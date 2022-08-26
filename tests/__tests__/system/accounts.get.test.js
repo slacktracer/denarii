@@ -8,7 +8,13 @@ import {
   test,
 } from "@jest/globals";
 
-import { accounts } from "../../data/data.js";
+import {
+  account01,
+  accountID01,
+  accountID06,
+  accounts,
+  userID01,
+} from "../../data/data.js";
 import { endConnections } from "../../functions/end-connections.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
@@ -50,11 +56,13 @@ describe("GET /accounts", () => {
     // given
     const server = await getServer();
 
-    const expectedAccounts = accounts.map((account) => {
-      account.updatedAt = null;
+    const expectedAccounts = accounts
+      .filter((account) => account.userID === userID01)
+      .map((account) => {
+        account.updatedAt = null;
 
-      return account;
-    });
+        return account;
+      });
 
     const sessionIDCookie = await getSessionIDCookie({
       password: "1234",
@@ -70,5 +78,53 @@ describe("GET /accounts", () => {
     // then
     expect(response.status).toEqual(200);
     expect(response.body).toEqual(expectedAccounts);
+  });
+
+  describe("an account ID was given", () => {
+    test("it returns just the account with the given ID", async () => {
+      // given
+      const server = await getServer();
+
+      const expectedAccount = expect.objectContaining(account01);
+
+      const sessionIDCookie = await getSessionIDCookie({
+        password: "1234",
+        server,
+        username: "mr.user",
+      });
+
+      // when
+      const response = await server
+        .get(`/accounts/${accountID01}`)
+        .set("cookie", sessionIDCookie);
+
+      // then
+      expect(response.status).toEqual(200);
+      expect(response.body).toEqual(expectedAccount);
+    });
+
+    describe("the given account does not belong to the session user", () => {
+      test("it returns null", async () => {
+        // given
+        const server = await getServer();
+
+        const expectedAccount = null;
+
+        const sessionIDCookie = await getSessionIDCookie({
+          password: "1234",
+          server,
+          username: "mr.user",
+        });
+
+        // when
+        const response = await server
+          .get(`/accounts/${accountID06}`)
+          .set("cookie", sessionIDCookie);
+
+        // then
+        expect(response.status).toEqual(200);
+        expect(response.body).toEqual(expectedAccount);
+      });
+    });
   });
 });

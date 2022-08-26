@@ -1,13 +1,14 @@
 import squel from "squel";
 import { v4 as uuid } from "uuid";
 
-import { convertObjectKeysFromCamelCaseToSnakeCase } from "../functions/convert-object-keys-from-camel-case-to-snake-case.js";
+import { convertObjectKeysFromCamelCaseToSnakeCase } from "denarii/src/persistence/convert-object-keys-from-camel-case-to-snake-case.js";
 
 export const accountID01 = uuid();
 export const accountID02 = uuid();
 export const accountID03 = uuid();
 export const accountID04 = uuid();
 export const accountID05 = uuid();
+export const accountID06 = uuid();
 export const categoryID01 = uuid();
 export const categoryID02 = uuid();
 export const categoryID03 = uuid();
@@ -68,7 +69,22 @@ export const account05 = {
   userID: userID01,
 };
 
-export const accounts = [account01, account02, account03, account04, account05];
+export const account06 = {
+  accountID: accountID06,
+  createdAt: new Date().toISOString(),
+  initialAmount: 0,
+  name: "Account 6!",
+  userID: userID02,
+};
+
+export const accounts = [
+  account01,
+  account02,
+  account03,
+  account04,
+  account05,
+  account06,
+];
 
 export const category01 = {
   categoryID: categoryID01,
