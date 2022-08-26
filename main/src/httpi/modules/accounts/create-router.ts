@@ -40,7 +40,7 @@ export const createRouter = () => {
     response.json(createdAccount);
   });
 
-  accountsRouter.post("/:accountID", async (request, response) => {
+  accountsRouter.patch("/:accountID", async (request, response) => {
     const { userID } = request.session.user;
 
     const { accountID } = request.params;
