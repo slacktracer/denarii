@@ -19,11 +19,8 @@ export const createRouter = () => {
     try {
       const result = await deleteAccount({ accountID, userID });
 
-      console.log(result);
-
       response.json(result);
     } catch (error) {
-      console.log(error);
       response.status(500).end();
     }
   });
