@@ -5,5 +5,11 @@ const deleteAccountQuery = loadQuery({
   url: "./delete-account.sql",
 });
 
-export const deleteAccount = ({ accountID, userID }) =>
-  db.none(deleteAccountQuery, { accountID, userID });
+export const deleteAccount = async ({ accountID, userID }) => {
+  const result = await db.result(deleteAccountQuery, {
+    accountID,
+    userID,
+  });
+
+  return { deletedRowsCount: result.rowCount };
+};

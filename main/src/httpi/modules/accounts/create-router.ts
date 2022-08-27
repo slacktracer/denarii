@@ -2,6 +2,7 @@ import express from "express";
 
 import {
   createAccount,
+  deleteAccount,
   readAccount,
   readAccounts,
   updateAccount,
@@ -10,12 +11,29 @@ import {
 export const createRouter = () => {
   const accountsRouter = express.Router();
 
+  accountsRouter.delete("/:accountID", async (request, response) => {
+    const { userID } = request.session.user;
+
+    const { accountID } = request.params;
+
+    try {
+      const result = await deleteAccount({ accountID, userID });
+
+      console.log(result);
+
+      response.json(result);
+    } catch (error) {
+      console.log(error);
+      response.status(500).end();
+    }
+  });
+
   accountsRouter.get("/", async (request, response) => {
     const { userID } = request.session.user;
 
-    const accountsRouter = await readAccounts({ userID });
+    const accounts = await readAccounts({ userID });
 
-    response.json(accountsRouter);
+    response.json(accounts);
   });
 
   accountsRouter.get("/:accountID", async (request, response) => {
