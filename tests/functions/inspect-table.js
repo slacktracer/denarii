@@ -1,4 +1,4 @@
-import { convertObjectKeysFromCamelCaseToSnakeCase } from "denarii/src/persistence/convert-object-keys-from-camel-case-to-snake-case.js";
+import { convertObjectKeysFromCamelCaseToSnakeCase } from "denarii/src/persistence/functions/convert-object-keys-from-camel-case-to-snake-case.js";
 
 import { pgm } from "../mocks/persistence.js";
 

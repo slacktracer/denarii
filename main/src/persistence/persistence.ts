@@ -1,7 +1,7 @@
 import initPGPromise from "pg-promise";
 import { createClient } from "redis";
 
-import { transformColumnNames } from "./transform-column-names.js";
+import { transformColumnNames } from "./functions/transform-column-names.js";
 
 const pgp = initPGPromise();
 
@@ -11,8 +11,8 @@ export const db = pgp(options);
 
 db.$config.options.receive = transformColumnNames;
 
-export { customPGPHelpersSets } from "./custom-pgp-helpers-sets.js";
+export { customPGPHelpersSets } from "./functions/custom-pgp-helpers-sets.js";
 
-export { loadQuery } from "./load-query.js";
+export { loadQuery } from "./functions/load-query.js";
 
 export { createClient as createRedisClient };

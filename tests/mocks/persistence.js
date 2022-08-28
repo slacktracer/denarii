@@ -6,7 +6,7 @@ import { URL } from "url";
 import { v4 as uuid } from "uuid";
 
 const { transformColumnNames } = await import(
-  `../../main/src/persistence/transform-column-names.js`
+  `denarii/src/persistence/functions/transform-column-names.js`
 );
 
 export const pgm = await newDb();
@@ -22,12 +22,12 @@ export const db = pgm.adapters.createPgPromise();
 
 db.$config.options.receive = transformColumnNames;
 
-export { customPGPHelpersSets } from "../../main/src/persistence/custom-pgp-helpers-sets.js";
+export { customPGPHelpersSets } from "denarii/src/persistence/functions/custom-pgp-helpers-sets.js";
 
 const { QueryFile } = pgp;
 
 const { makeLoadQuery } = await import(
-  `../../main/src/persistence/load-query.js`
+  `denarii/src/persistence/functions/load-query.js`
 );
 
 export const loadQuery = makeLoadQuery({ QueryFile, URL });

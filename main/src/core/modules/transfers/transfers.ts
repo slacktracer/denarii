@@ -1,4 +1,4 @@
-import { setCustomColumnNamesTransformations } from "../../../persistence/set-custom-column-names-transformations.js";
+import { setCustomColumnNamesTransformations } from "../../../persistence/functions/set-custom-column-names-transformations.js";
 
 setCustomColumnNamesTransformations(["from_account_id", "fromAccountID"]);
 setCustomColumnNamesTransformations(["to_account_id", "toAccountID"]);
