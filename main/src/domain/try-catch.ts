@@ -2,8 +2,12 @@ export const tryCatch = async (asyncFunction, ...parameters) => {
   try {
     const result = await asyncFunction(...parameters);
 
-    return [result, null];
+    return result;
   } catch (error) {
-    return [null, error];
+    if (error instanceof Error) {
+      return error;
+    }
+
+    return new Error(error);
   }
 };

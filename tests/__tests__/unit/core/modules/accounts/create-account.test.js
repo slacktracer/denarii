@@ -18,8 +18,12 @@ const { db, redisServer } = await import(
   `denarii/src/persistence/persistence.js`
 );
 
-const { createAccount, readAccounts } = await import(
-  `denarii/src/persistence/modules/accounts/accounts.js`
+const { createAccount } = await import(
+  `denarii/src/persistence/modules/accounts/create-account.js`
+);
+
+const { readAccounts } = await import(
+  `denarii/src/persistence/modules/accounts/read-accounts.js`
 );
 
 let backup;

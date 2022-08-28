@@ -1,10 +1,8 @@
-import {
-  createAccount,
-  deleteAccount,
-  readAccount,
-  readAccounts,
-  updateAccount,
-} from "../../../persistence/modules/accounts/accounts.js";
+import { createAccount } from "../../../persistence/modules/accounts/create-account.js";
+import { deleteAccount } from "../../../persistence/modules/accounts/delete-account.js";
+import { readAccount } from "../../../persistence/modules/accounts/read-account.js";
+import { readAccounts } from "../../../persistence/modules/accounts/read-accounts.js";
+import { updateAccount } from "../../../persistence/modules/accounts/update-account.js";
 
 export const createCommands = ({ program }) => {
   const accountsCommand = program.command("accounts");

@@ -1,6 +1,6 @@
-import type { createAccountParameter } from "../../../../types.js";
+import type { createAccountParameter } from "../../../types.js";
 
-import { db, loadQuery } from "../../../persistence.js";
+import { db, loadQuery } from "../../persistence.js";
 
 const createAccountQuery = loadQuery({
   base: import.meta.url,

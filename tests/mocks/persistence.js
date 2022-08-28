@@ -5,6 +5,8 @@ import { RedisMemoryServer } from "redis-memory-server";
 import { URL } from "url";
 import { v4 as uuid } from "uuid";
 
+import { setCustomColumnNamesTransformations } from "denarii/src/persistence/functions/set-custom-column-names-transformations.js";
+
 const { transformColumnNames } = await import(
   `denarii/src/persistence/functions/transform-column-names.js`
 );
@@ -40,3 +42,12 @@ const port = await redisServer.getPort();
 process.env.REDIS_CONNECTION_STRING = `redis://${host}:${port}`;
 
 export { createClient as createRedisClient };
+
+setCustomColumnNamesTransformations(["account_id", "accountID"]);
+setCustomColumnNamesTransformations(["category_id", "categoryID"]);
+setCustomColumnNamesTransformations(["from_account_id", "fromAccountID"]);
+setCustomColumnNamesTransformations(["group_id", "groupID"]);
+setCustomColumnNamesTransformations(["operation_id", "operationID"]);
+setCustomColumnNamesTransformations(["to_account_id", "toAccountID"]);
+setCustomColumnNamesTransformations(["transfer_id", "transferID"]);
+setCustomColumnNamesTransformations(["user_id", "userID"]);

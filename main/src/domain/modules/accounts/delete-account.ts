@@ -1,6 +1,10 @@
-import * as accounts from "../../../persistence/modules/accounts/accounts.js";
 import { CustomError } from "../../custom-error.js";
 import { NO_SUCH_ACCOUNT } from "../../errors.js";
+
+const accounts = {
+  ...(await import("../../../persistence/modules/accounts/delete-account.js")),
+  ...(await import("../../../persistence/modules/accounts/read-account.js")),
+};
 
 export const deleteAccount = async ({ accountID, userID }) => {
   const account = await accounts.readAccount({ accountID, userID });

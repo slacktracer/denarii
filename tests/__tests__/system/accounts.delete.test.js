@@ -138,7 +138,7 @@ describe("/DELETE accounts", () => {
         const rows = inspectTable({ table: "account" });
 
         // then
-        expect(response.status).toEqual(400);
+        expect(response.status).toEqual(404);
         expect(rows.length).toEqual(user01AccountCount);
       });
     });

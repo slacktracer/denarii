@@ -1,97 +1,23 @@
 import express from "express";
 
-import {
-  createAccount,
-  readAccount,
-  readAccounts,
-  updateAccount,
-} from "../../../persistence/modules/accounts/accounts.js";
-import { deleteAccount } from "../../../domain/modules/accounts/delete-account.js";
-import { CustomError } from "../../../domain/custom-error.js";
-import { NO_SUCH_ACCOUNT } from "../../../domain/errors.js";
-import { tryCatch } from "../../../domain/try-catch.js";
+import { deleteAccountByID } from "./route-handlers/delete-account-by-id.js";
+import { getAccountByID } from "./route-handlers/get-account-by-id.js";
+import { getAccounts } from "./route-handlers/get-accounts.js";
+import { patchAccount } from "./route-handlers/patch-account.js";
+import { postAccount } from "./route-handlers/post-account.js";
 
 export const createRouter = () => {
   const accountsRouter = express.Router();
 
-  accountsRouter.delete("/:accountID", async (request, response) => {
-    const { userID } = request.session.user;
+  accountsRouter.delete("/:accountID", deleteAccountByID);
 
-    const noUserID = userID ?? true;
+  accountsRouter.get("/", getAccounts);
 
-    if (noUserID === true) {
-      response.status(401).end();
-    }
+  accountsRouter.get("/:accountID", getAccountByID);
 
-    const { accountID } = request.params;
+  accountsRouter.post("/", postAccount);
 
-    const [result, error] = await tryCatch(deleteAccount, {
-      accountID,
-      userID,
-    });
-
-    if (result) {
-      response.json(result);
-    }
-
-    if (error !== null) {
-      if (error instanceof CustomError) {
-        if (error.data.id === NO_SUCH_ACCOUNT) {
-          response.status(400).end();
-
-          return;
-        }
-      }
-
-      console.error(error);
-
-      response.status(500).end();
-    }
-  });
-
-  accountsRouter.get("/", async (request, response) => {
-    const { userID } = request.session.user;
-
-    const accounts = await readAccounts({ userID });
-
-    response.json(accounts);
-  });
-
-  accountsRouter.get("/:accountID", async (request, response) => {
-    const { userID } = request.session.user;
-
-    const { accountID } = request.params;
-
-    const account = await readAccount({ accountID, userID });
-
-    response.json(account);
-  });
-
-  accountsRouter.post("/", async (request, response) => {
-    const { userID } = request.session.user;
-
-    const { initialAmount, name } = request.body;
-
-    const data = { initialAmount, name };
-
-    const createdAccount = await createAccount({ data, userID });
-
-    response.json(createdAccount);
-  });
-
-  accountsRouter.patch("/:accountID", async (request, response) => {
-    const { userID } = request.session.user;
-
-    const { accountID } = request.params;
-
-    const { initialAmount, name } = request.body;
-
-    const data = { initialAmount, name };
-
-    const updatedAccount = await updateAccount({ accountID, data, userID });
-
-    response.json(updatedAccount);
-  });
+  accountsRouter.patch("/:accountID", patchAccount);
 
   return accountsRouter;
 };
