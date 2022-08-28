@@ -19,7 +19,7 @@ const { db, redisServer } = await import(
 );
 
 const { readGroups, updateGroup } = await import(
-  `denarii/src/core/modules/groups/groups.js`
+  `denarii/src/persistence/modules/groups/groups.js`
 );
 
 let backup;

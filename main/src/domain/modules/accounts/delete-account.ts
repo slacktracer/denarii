@@ -1,4 +1,4 @@
-import * as accounts from "../../../core/modules/accounts/accounts.js";
+import * as accounts from "../../../persistence/modules/accounts/accounts.js";
 import { CustomError } from "../../custom-error.js";
 import { NO_SUCH_ACCOUNT } from "../../errors.js";
 

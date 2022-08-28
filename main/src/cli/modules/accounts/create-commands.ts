@@ -4,7 +4,7 @@ import {
   readAccount,
   readAccounts,
   updateAccount,
-} from "../../../core/modules/accounts/accounts.js";
+} from "../../../persistence/modules/accounts/accounts.js";
 
 export const createCommands = ({ program }) => {
   const accountsCommand = program.command("accounts");

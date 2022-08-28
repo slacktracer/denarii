@@ -4,7 +4,7 @@ import {
   readTransfer,
   readTransfers,
   updateTransfer,
-} from "../../../core/modules/transfers/transfers.js";
+} from "../../../persistence/modules/transfers/transfers.js";
 
 export const createCommands = ({ program }) => {
   const transfersCommand = program.command("transfers");

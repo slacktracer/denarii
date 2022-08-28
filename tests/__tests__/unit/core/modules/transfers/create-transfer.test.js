@@ -23,7 +23,7 @@ const { db, redisServer } = await import(
 );
 
 const { createTransfer } = await import(
-  `denarii/src/core/modules/transfers/transfers.js`
+  `denarii/src/persistence/modules/transfers/transfers.js`
 );
 
 let backup;

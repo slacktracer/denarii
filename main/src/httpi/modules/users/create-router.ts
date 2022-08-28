@@ -1,6 +1,6 @@
 import express from "express";
 
-import { createUser } from "../../../core/modules/users/core/create-user.js";
+import { createUser } from "../../../persistence/modules/users/core/create-user.js";
 
 export const createRouter = () => {
   const usersRouter = express.Router();

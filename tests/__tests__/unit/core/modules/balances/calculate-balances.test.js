@@ -26,7 +26,7 @@ const { db, redisServer } = await import(
 );
 
 const { calculateBalances } = await import(
-  `denarii/src/core/modules/balances/balances.js`
+  `denarii/src/persistence/modules/balances/balances.js`
 );
 
 let backup;

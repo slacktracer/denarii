@@ -5,7 +5,7 @@ import {
   readAccount,
   readAccounts,
   updateAccount,
-} from "../../../core/modules/accounts/accounts.js";
+} from "../../../persistence/modules/accounts/accounts.js";
 import { deleteAccount } from "../../../domain/modules/accounts/delete-account.js";
 import { CustomError } from "../../../domain/custom-error.js";
 import { NO_SUCH_ACCOUNT } from "../../../domain/errors.js";

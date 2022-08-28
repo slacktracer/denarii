@@ -1,6 +1,6 @@
 import express from "express";
 
-import { readGroups } from "../../../core/modules/groups/groups.js";
+import { readGroups } from "../../../persistence/modules/groups/groups.js";
 
 export const createRouter = () => {
   const groupsRouter = express.Router();

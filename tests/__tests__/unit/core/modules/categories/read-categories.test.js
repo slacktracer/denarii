@@ -19,7 +19,7 @@ const { db, redisServer } = await import(
 );
 
 const { readCategories } = await import(
-  `denarii/src/core/modules/categories/categories.js`
+  `denarii/src/persistence/modules/categories/categories.js`
 );
 
 let backup;

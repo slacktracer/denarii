@@ -4,7 +4,7 @@ import {
   readGroup,
   readGroups,
   updateGroup,
-} from "../../../core/modules/groups/groups.js";
+} from "../../../persistence/modules/groups/groups.js";
 
 export const createCommands = ({ program }) => {
   const groupsCommand = program.command("groups");

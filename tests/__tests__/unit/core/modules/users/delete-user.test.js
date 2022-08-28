@@ -19,7 +19,7 @@ const { db, redisServer } = await import(
 );
 
 const { deleteUser, readUsers } = await import(
-  `denarii/src/core/modules/users/users.js`
+  `denarii/src/persistence/modules/users/users.js`
 );
 
 let backup;

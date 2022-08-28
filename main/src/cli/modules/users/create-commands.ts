@@ -4,7 +4,7 @@ import {
   readUser,
   readUsers,
   updateUser,
-} from "../../../core/modules/users/users.js";
+} from "../../../persistence/modules/users/users.js";
 
 export const createCommands = ({ program }) => {
   const usersCommand = program.command("users");

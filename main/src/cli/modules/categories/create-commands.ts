@@ -4,7 +4,7 @@ import {
   readCategories,
   readCategory,
   updateCategory,
-} from "../../../core/modules/categories/categories.js";
+} from "../../../persistence/modules/categories/categories.js";
 
 export const createCommands = ({ program }) => {
   const categoriesCommand = program.command("categories");

@@ -4,7 +4,7 @@ import {
   readOperation,
   readOperations,
   updateOperation,
-} from "../../../core/modules/operations/operations.js";
+} from "../../../persistence/modules/operations/operations.js";
 
 export const createCommands = ({ program }) => {
   const operationsCommand = program.command("operations");
