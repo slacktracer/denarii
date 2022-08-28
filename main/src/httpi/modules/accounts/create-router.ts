@@ -2,11 +2,14 @@ import express from "express";
 
 import {
   createAccount,
-  deleteAccount,
   readAccount,
   readAccounts,
   updateAccount,
 } from "../../../core/modules/accounts/accounts.js";
+import { deleteAccount } from "../../../domain/modules/accounts/delete-account.js";
+import { CustomError } from "../../../domain/custom-error.js";
+import { NO_SUCH_ACCOUNT } from "../../../domain/errors.js";
+import { tryCatch } from "../../../domain/try-catch.js";
 
 export const createRouter = () => {
   const accountsRouter = express.Router();
@@ -14,13 +17,34 @@ export const createRouter = () => {
   accountsRouter.delete("/:accountID", async (request, response) => {
     const { userID } = request.session.user;
 
+    const noUserID = userID ?? true;
+
+    if (noUserID === true) {
+      response.status(401).end();
+    }
+
     const { accountID } = request.params;
 
-    try {
-      const result = await deleteAccount({ accountID, userID });
+    const [result, error] = await tryCatch(deleteAccount, {
+      accountID,
+      userID,
+    });
 
+    if (result) {
       response.json(result);
-    } catch (error) {
+    }
+
+    if (error !== null) {
+      if (error instanceof CustomError) {
+        if (error.data.id === NO_SUCH_ACCOUNT) {
+          response.status(400).end();
+
+          return;
+        }
+      }
+
+      console.error(error);
+
       response.status(500).end();
     }
   });

@@ -11,6 +11,7 @@ import {
 import {
   accountID01,
   accountID05,
+  accountID06,
   accounts,
   userID01,
 } from "../../data/data.js";
@@ -112,6 +113,32 @@ describe("/DELETE accounts", () => {
 
         // then
         expect(response.status).toEqual(500);
+        expect(rows.length).toEqual(user01AccountCount);
+      });
+    });
+
+    describe("the account does not belong to the given user or does not exist", () => {
+      test("an error is returned, no account is deleted", async () => {
+        // given
+        const user01AccountCount = accounts.length;
+
+        const server = await getServer();
+
+        const sessionIDCookie = await getSessionIDCookie({
+          password: "1234",
+          server,
+          username: "mr.user",
+        });
+
+        // when
+        const response = await server
+          .delete(`/accounts/${accountID06}`)
+          .set("cookie", sessionIDCookie);
+
+        const rows = inspectTable({ table: "account" });
+
+        // then
+        expect(response.status).toEqual(400);
         expect(rows.length).toEqual(user01AccountCount);
       });
     });
