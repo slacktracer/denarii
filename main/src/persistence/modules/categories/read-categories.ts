@@ -1,4 +1,4 @@
-import { db, loadQuery } from "../../../persistence.js";
+import { db, loadQuery } from "../../persistence.js";
 
 const readCategoriesQuery = loadQuery({
   base: import.meta.url,

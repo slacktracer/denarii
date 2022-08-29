@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-import { db, loadQuery } from "../../../persistence.js";
+import { db, loadQuery } from "../../persistence.js";
 
 const updateUserQuery = loadQuery({
   base: import.meta.url,

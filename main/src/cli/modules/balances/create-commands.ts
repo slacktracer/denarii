@@ -1,4 +1,4 @@
-import { calculateBalances } from "../../../persistence/modules/balances/core/calculate-balances.js";
+import { calculateBalances } from "../../../persistence/modules/balances/calculate-balances.js";
 
 export const createCommands = ({ program }) => {
   const balancesCommand = program

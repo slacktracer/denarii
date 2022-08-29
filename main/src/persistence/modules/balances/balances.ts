@@ -1,1 +1,1 @@
-export * from "./core/calculate-balances.js";
+export * from "./calculate-balances.js";

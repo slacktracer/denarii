@@ -6,12 +6,6 @@ import { tryCatch } from "../../../../domain/try-catch.js";
 export const deleteAccountByID = async (request, response) => {
   const { userID } = request.session.user;
 
-  const noUserID = userID ?? true;
-
-  if (noUserID === true) {
-    response.status(401).end();
-  }
-
   const { accountID } = request.params;
 
   const result = await tryCatch(deleteAccount, {
