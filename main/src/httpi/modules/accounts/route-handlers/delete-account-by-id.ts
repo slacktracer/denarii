@@ -1,7 +1,7 @@
 import { CustomError } from "../../../../domain/custom-error.js";
-import { NO_SUCH_ACCOUNT } from "../../../../domain/errors.js";
+import { NO_SUCH_ACCOUNT } from "../../../../domain/data/errors.js";
 import { deleteAccount } from "../../../../domain/modules/accounts/delete-account.js";
-import { tryCatch } from "../../../../domain/try-catch.js";
+import { tryCatch } from "../../../../domain/functions/try-catch.js";
 
 export const deleteAccountByID = async (request, response) => {
   const { userID } = request.session.user;
