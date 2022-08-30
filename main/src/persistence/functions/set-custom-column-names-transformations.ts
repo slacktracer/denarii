@@ -1,4 +1,6 @@
 export const customColumnNamesTransformations = {};
 
-export const setCustomColumnNamesTransformations = ([key, value]) =>
-  (customColumnNamesTransformations[key] = value);
+export const setCustomColumnNamesTransformations = (keyValuePairs) =>
+  keyValuePairs.forEach(
+    ([key, value]) => (customColumnNamesTransformations[key] = value),
+  );
