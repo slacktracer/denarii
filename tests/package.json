@@ -22,6 +22,7 @@
   "license": "MIT",
   "name": "denarii-test-suites",
   "scripts": {
+    "test-on-ci": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config",
     "format": "prettier --write .",
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
