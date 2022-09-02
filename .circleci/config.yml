@@ -6,11 +6,13 @@ orbs:
 workflows:
   main:
     jobs:
-      - node/run:
+      - install:
           npm-run: ci
           pkg-manager: npm
           version: '16.10'
-      - node/run:
+      - test:
           npm-run: test-once
           pkg-manager: npm
           version: '16.10'
+          requires:
+            - install
