@@ -7,6 +7,6 @@ workflows:
   main:
     jobs:
       - node/run:
-          npm-run: test-on-ci
+          npm-run: test-once
           pkg-manager: npm
           version: '16.10'
