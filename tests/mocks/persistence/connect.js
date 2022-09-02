@@ -25,3 +25,12 @@ const host = await redisServer.getHost();
 const port = await redisServer.getPort();
 
 process.env.REDIS_CONNECTION_STRING = `redis://${host}:${port}`;
+
+import { createClient as createRedisClient } from "redis";
+
+export const legacyRedisClient = createRedisClient({
+  legacyMode: true,
+  url: process.env.REDIS_CONNECTION_STRING,
+});
+
+await legacyRedisClient.connect().catch(console.error);

@@ -21,10 +21,8 @@ const { prepareTestDatabase } = await import(
   "../../functions/prepare-test-database.js"
 );
 
-const { db, redisServer } = await import(`denarii/src/persistence/connect.js`);
-
-const { legacyRedisClient } = await import(
-  "../../../main/src/httpi/session-store.js"
+const { db, legacyRedisClient, redisServer } = await import(
+  `denarii/src/persistence/connect.js`
 );
 
 let backup;

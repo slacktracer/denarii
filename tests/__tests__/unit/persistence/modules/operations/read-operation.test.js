@@ -18,7 +18,7 @@ const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
 );
 
-const { db, redisServer } = await import(
+const { db, legacyRedisClient, redisServer } = await import(
   `denarii/src/persistence/persistence.js`
 );
 
@@ -29,7 +29,7 @@ const { readOperation } = await import(
 let backup;
 
 afterAll(async () => {
-  await endConnections({ db, redisServer });
+  await endConnections({ db, legacyRedisClient, redisServer });
 });
 
 beforeAll(async () => {
