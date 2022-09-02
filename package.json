@@ -11,7 +11,7 @@
     "prepare": "husky install",
     "start": "npm start --workspace main",
     "test": "npm test --workspace tests",
-    "test-once": "npm run test-on-ci -w tests",
+    "test-once": "npm run test-once -w tests",
     "x": "node ./build/main.js"
   },
   "workspaces": [

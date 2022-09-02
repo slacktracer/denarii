@@ -27,7 +27,7 @@
     "lint-staged": "lint-staged",
     "start": "nodemon",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config --watch",
-    "test-on-ci": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config"
+    "test-once": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config"
   },
   "type": "module",
   "version": "1.0.0"
