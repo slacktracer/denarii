@@ -1,4 +1,12 @@
-import { jest } from "@jest/globals";
+import {
+  afterAll,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  jest,
+  test,
+} from "@jest/globals";
 
 import { users } from "../../../../../data/data.js";
 import { endConnections } from "../../../../../functions/end-connections.js";
@@ -37,7 +45,7 @@ beforeEach(async () => {
 });
 
 describe("read users", () => {
-  it("returns all users", async () => {
+  test("it returns all users", async () => {
     // given
     const expectedUserCount = users.length;
 

@@ -1,4 +1,12 @@
-import { jest } from "@jest/globals";
+import {
+  afterAll,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  jest,
+  test,
+} from "@jest/globals";
 
 import { user01, userID01 } from "../../../../../data/data.js";
 import { endConnections } from "../../../../../functions/end-connections.js";
@@ -37,7 +45,7 @@ beforeEach(async () => {
 });
 
 describe("read user", () => {
-  it("returns the user with the specified user ID", async () => {
+  test("it returns the user with the specified user ID", async () => {
     // given
     const expectedUser = expect.objectContaining({
       email: user01.email,

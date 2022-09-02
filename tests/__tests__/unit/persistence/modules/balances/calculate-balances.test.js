@@ -1,4 +1,12 @@
-import { jest } from "@jest/globals";
+import {
+  afterAll,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  jest,
+  test,
+} from "@jest/globals";
 
 import {
   accountID01,
@@ -44,7 +52,7 @@ beforeEach(async () => {
 });
 
 describe("calculate balances", () => {
-  it("returns all accounts balances", async () => {
+  test("it returns all accounts balances", async () => {
     // given
     const expectedBalances = [
       {
