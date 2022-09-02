@@ -1,4 +1,4 @@
-import { accounts } from "../../../persistence/modules/accounts/accounts.js";
+import { accounts } from "../../../persistence/persistence.js";
 import { CustomError } from "../../custom-error.js";
 import { NO_SUCH_ACCOUNT } from "../../data/errors.js";
 

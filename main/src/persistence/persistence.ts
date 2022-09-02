@@ -12,3 +12,5 @@ export { loadQuery } from "./functions/load-query.js";
 export { createClient as createRedisClient };
 
 setCustomColumnNamesTransformations(customColumnNamesTransformations);
+
+export { accounts } from "./modules/accounts/accounts.js";
