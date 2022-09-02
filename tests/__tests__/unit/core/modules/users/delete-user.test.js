@@ -3,11 +3,11 @@ import { jest } from "@jest/globals";
 import { userID03, users } from "../../../../../data/data.js";
 import { endConnections } from "../../../../../functions/end-connections.js";
 
-import * as mockPersistence from "../../../../../mocks/persistence.js";
+import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
-  `../../../../../../main/src/persistence/persistence.js`,
-  () => mockPersistence,
+  `../../../../../../main/src/persistence/connect.js`,
+  () => mockConnect,
 );
 
 const { prepareTestDatabase } = await import(

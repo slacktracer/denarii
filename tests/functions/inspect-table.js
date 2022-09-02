@@ -1,6 +1,6 @@
 import { convertObjectKeysFromCamelCaseToSnakeCase } from "denarii/src/persistence/functions/convert-object-keys-from-camel-case-to-snake-case.js";
 
-import { pgm } from "../mocks/persistence.js";
+import { pgm } from "../mocks/persistence/connect.js";
 
 export const inspectTable = ({ table, template } = {}) => {
   const rows = [];

@@ -10,20 +10,18 @@ import {
 
 import { endConnections } from "../../functions/end-connections.js";
 import { getServer } from "../../functions/get-server.js";
-import * as mockPersistence from "../../mocks/persistence.js";
+import * as mockConnect from "../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
-  `../../../main/src/persistence/persistence.js`,
-  () => mockPersistence,
+  `../../../main/src/persistence/connect.js`,
+  () => mockConnect,
 );
 
 const { prepareTestDatabase } = await import(
   "../../functions/prepare-test-database.js"
 );
 
-const { db, redisServer } = await import(
-  `../../../main/src/persistence/persistence.js`
-);
+const { db, redisServer } = await import(`denarii/src/persistence/connect.js`);
 
 const { legacyRedisClient } = await import(
   "../../../main/src/httpi/session-store.js"
