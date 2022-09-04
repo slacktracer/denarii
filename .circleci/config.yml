@@ -11,6 +11,9 @@ jobs:
           node-version: '16.13'
       - run: node --version
 workflows:
-  test_my_app:
+  test:
     jobs:
       - install-node-example
+      - node/test:
+          run-command: test-once
+          test-results-for: jest
