@@ -1,18 +1,9 @@
 version: '2.1'
 
 jobs:
-  lint:
-    docker:
-      - image: cimg/node:16.14.0
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - run: npm ci
-      - run: npm run lint -w main
-
   test:
     docker:
-      - image: cimg/node:16.14.0
+      - image: cimg/node:18.8.0
     working_directory: ~/repo
     steps:
       - checkout
@@ -23,7 +14,4 @@ workflows:
   version: 2
   provisioning:
     jobs:
-      - lint
-      - test:
-          requires:
-            - lint
+      - test
