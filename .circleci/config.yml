@@ -3,12 +3,12 @@ version: '2.1'
 jobs:
   test:
     docker:
-      - image: cimg/node:18.8.0
+      - image: cimg/node:latest
     working_directory: ~/repo
     steps:
       - checkout
       - run: npm ci
-      - run: npm run build
+      - run: npm run build -w main
       - run: npm run test-once
 
 workflows:
