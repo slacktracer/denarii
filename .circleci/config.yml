@@ -1,6 +1,10 @@
 version: '2.1'
 
 references:
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: ~/project
+
   nodejs_workspace: &nodejs_workspace
     working_directory: ~/project
     docker:
@@ -17,6 +21,7 @@ jobs:
     <<: *nodejs_workspace
     steps:
       - checkout
+      - *attach_workspace
       - run: npm run test-once
 
 workflows:
