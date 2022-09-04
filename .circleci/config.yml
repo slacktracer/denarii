@@ -1,18 +1,16 @@
-version: 2.1
-
+version: '2.1'
 orbs:
-  node: circleci/node@5.0.2
-
+  node: circleci/node@5.2
+jobs:
+  install-node-example:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - checkout
+      - node/install:
+          node-version: '16.13'
+      - run: node --version
 workflows:
-  main:
+  test_my_app:
     jobs:
-      - install:
-          npm-run: ci
-          pkg-manager: npm
-          version: '16.10'
-      - test:
-          npm-run: test-once
-          pkg-manager: npm
-          version: '16.10'
-          requires:
-            - install
+      - install-node-example
