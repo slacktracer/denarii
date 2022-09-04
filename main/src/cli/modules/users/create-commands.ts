@@ -1,10 +1,6 @@
-import {
-  createUser,
-  deleteUser,
-  readUser,
-  readUsers,
-  updateUser,
-} from "../../../persistence/modules/users/users.js";
+import { users } from "../../../persistence/modules/users/users.js";
+
+const { createUser, deleteUser, readUser, readUsers, updateUser } = users;
 
 export const createCommands = ({ program }) => {
   const usersCommand = program.command("users");

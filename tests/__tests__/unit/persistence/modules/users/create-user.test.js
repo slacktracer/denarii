@@ -26,9 +26,9 @@ const { db, legacyRedisClient, redisServer } = await import(
   `denarii/src/persistence/persistence.js`
 );
 
-const { createUser, readUsers } = await import(
-  `denarii/src/persistence/modules/users/users.js`
-);
+const {
+  users: { createUser, readUsers },
+} = await import(`denarii/src/persistence/modules/users/users.js`);
 
 let backup;
 

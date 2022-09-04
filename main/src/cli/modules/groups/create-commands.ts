@@ -1,10 +1,6 @@
-import {
-  createGroup,
-  deleteGroup,
-  readGroup,
-  readGroups,
-  updateGroup,
-} from "../../../persistence/modules/groups/groups.js";
+import { groups } from "../../../persistence/modules/groups/groups.js";
+
+const { createGroup, deleteGroup, readGroup, readGroups, updateGroup } = groups;
 
 export const createCommands = ({ program }) => {
   const groupsCommand = program.command("groups");

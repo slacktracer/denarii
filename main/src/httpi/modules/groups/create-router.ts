@@ -1,6 +1,6 @@
 import express from "express";
 
-import { readGroups } from "../../../persistence/modules/groups/groups.js";
+import { groups } from "../../../persistence/modules/groups/groups.js";
 
 export const createRouter = () => {
   const groupsRouter = express.Router();
@@ -8,7 +8,7 @@ export const createRouter = () => {
   groupsRouter.get("/", async (request, response) => {
     const { userID } = request.session.user;
 
-    const groupsRouter = await readGroups({ userID });
+    const groupsRouter = await groups.readGroups({ userID });
 
     response.json(groupsRouter);
   });

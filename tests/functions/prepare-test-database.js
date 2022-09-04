@@ -1,7 +1,9 @@
 import { mockDataAsInsertStatements } from "../data/data.js";
 
-const { db, loadQuery, pgm } = await import(
-  `../../main/src/persistence/persistence.js`
+const { db, pgm } = await import(`../../main/src/persistence/connect.js`);
+
+const { loadQuery } = await import(
+  `../../main/src/persistence/functions/load-query.js`
 );
 
 const createTablesQuery = loadQuery({

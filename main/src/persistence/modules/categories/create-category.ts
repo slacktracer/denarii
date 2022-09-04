@@ -1,4 +1,5 @@
-import { db, loadQuery } from "../../persistence.js";
+import { db } from "../../connect.js";
+import { loadQuery } from "../../functions/load-query.js";
 
 const createCategoryQuery = loadQuery({
   base: import.meta.url,

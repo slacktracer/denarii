@@ -1,14 +1,9 @@
 import bcrypt from "bcrypt";
 
-import { db, loadQuery } from "../../../../persistence/persistence.js";
-
-const readUserByUsernameQuery = loadQuery({
-  base: import.meta.url,
-  url: "./read-user-by-username.sql",
-});
+import { users } from "../../../../persistence/persistence.js";
 
 export const login = async ({ password, username }) => {
-  const user = await db.one(readUserByUsernameQuery, { password, username });
+  const user = await users.readUserByUsername({ password, username });
 
   const passwordMatches = await bcrypt.compare(password, user.password);
 

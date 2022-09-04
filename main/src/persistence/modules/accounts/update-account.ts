@@ -1,4 +1,6 @@
-import { customPGPHelpersSets, db, loadQuery } from "../../persistence.js";
+import { db } from "../../connect.js";
+import { customPGPHelpersSets } from "../../functions/custom-pgp-helpers-sets.js";
+import { loadQuery } from "../../functions/load-query.js";
 
 const updateAccountQuery = loadQuery({
   base: import.meta.url,

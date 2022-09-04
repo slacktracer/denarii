@@ -1,5 +1,13 @@
-export * from "./create-group.js";
-export * from "./delete-group.js";
-export * from "./read-group.js";
-export * from "./read-groups.js";
-export * from "./update-group.js";
+import { createGroup } from "./create-group.js";
+import { deleteGroup } from "./delete-group.js";
+import { readGroup } from "./read-group.js";
+import { readGroups } from "./read-groups.js";
+import { updateGroup } from "./update-group.js";
+
+export const groups = {
+  createGroup,
+  deleteGroup,
+  readGroup,
+  readGroups,
+  updateGroup,
+};

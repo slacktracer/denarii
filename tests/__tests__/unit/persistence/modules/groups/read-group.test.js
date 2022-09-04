@@ -26,9 +26,9 @@ const { db, legacyRedisClient, redisServer } = await import(
   `denarii/src/persistence/persistence.js`
 );
 
-const { readGroup } = await import(
-  `denarii/src/persistence/modules/groups/groups.js`
-);
+const {
+  groups: { readGroup },
+} = await import(`denarii/src/persistence/modules/groups/groups.js`);
 
 let backup;
 
