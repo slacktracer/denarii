@@ -1,19 +1,29 @@
 version: '2.1'
-orbs:
-  node: circleci/node@5.0.2
-jobs:
-  install-node-example:
+
+references:
+  nodejs_workspace: &nodejs_workspace
+    working_directory: ~/project
     docker:
-      - image: 'cimg/base:stable'
+      - image: cimg/node:18.8.0
+
+jobs:
+  install:
+    <<: *nodejs_workspace
     steps:
       - checkout
-      - node/install:
-          node-version: '16.13'
-      - run: node --version
-workflows:
+      - run: npm ci
+
   test:
+    <<: *nodejs_workspace
+    steps:
+      - checkout
+      - run: npm run test-once
+
+workflows:
+  version: 2
+  provisioning:
     jobs:
-      - install-node-example
-      - node/test:
-          run-command: test-once
-          test-results-for: jest
+      - install
+      - test:
+          requires:
+            - install
