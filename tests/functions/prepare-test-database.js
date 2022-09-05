@@ -1,5 +1,3 @@
-import "../../main/src/persistence/setup.js";
-
 import { mockDataAsInsertStatements } from "../data/data.js";
 
 const { db, pgm } = await import(`../../main/src/persistence/connect.js`);

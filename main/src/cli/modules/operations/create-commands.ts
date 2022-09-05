@@ -1,10 +1,12 @@
-import {
+import { operations } from "../../../persistence/persistence.js";
+
+const {
   createOperation,
   deleteOperation,
   readOperation,
   readOperations,
   updateOperation,
-} from "../../../persistence/modules/operations/operations.js";
+} = operations;
 
 export const createCommands = ({ program }) => {
   const operationsCommand = program.command("operations");

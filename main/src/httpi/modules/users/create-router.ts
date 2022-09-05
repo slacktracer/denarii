@@ -1,6 +1,8 @@
 import express from "express";
 
-import { createUser } from "../../../persistence/modules/users/create-user.js";
+import { users } from "../../../persistence/persistence.js";
+
+const { createUser } = users;
 
 export const createRouter = () => {
   const usersRouter = express.Router();

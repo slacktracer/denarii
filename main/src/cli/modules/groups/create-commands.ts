@@ -1,4 +1,4 @@
-import { groups } from "../../../persistence/modules/groups/groups.js";
+import { groups } from "../../../persistence/persistence.js";
 
 const { createGroup, deleteGroup, readGroup, readGroups, updateGroup } = groups;
 

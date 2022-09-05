@@ -1,10 +1,12 @@
-import {
+import { transfers } from "../../../persistence/persistence.js";
+
+const {
   createTransfer,
   deleteTransfer,
   readTransfer,
   readTransfers,
   updateTransfer,
-} from "../../../persistence/modules/transfers/transfers.js";
+} = transfers;
 
 export const createCommands = ({ program }) => {
   const transfersCommand = program.command("transfers");

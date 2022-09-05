@@ -1,4 +1,6 @@
-import { updateAccount } from "../../../../persistence/modules/accounts/update-account.js";
+import { accounts } from "../../../../persistence/persistence.js";
+
+const { updateAccount } = accounts;
 
 export const patchAccount = async (request, response) => {
   const { userID } = request.session.user;

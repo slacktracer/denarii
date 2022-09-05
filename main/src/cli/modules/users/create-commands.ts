@@ -1,4 +1,4 @@
-import { users } from "../../../persistence/modules/users/users.js";
+import { users } from "../../../persistence/persistence.js";
 
 const { createUser, deleteUser, readUser, readUsers, updateUser } = users;
 

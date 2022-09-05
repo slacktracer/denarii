@@ -1,4 +1,6 @@
-import { createAccount } from "../../../../persistence/modules/accounts/create-account.js";
+import { accounts } from "../../../../persistence/persistence.js";
+
+const { createAccount } = accounts;
 
 export const postAccount = async (request, response) => {
   const { userID } = request.session.user;

@@ -1,4 +1,6 @@
-import { readAccount } from "../../../../persistence/modules/accounts/read-account.js";
+import { accounts } from "../../../../persistence/persistence.js";
+
+const { readAccount } = accounts;
 
 export const getAccountByID = async (request, response) => {
   const { userID } = request.session.user;

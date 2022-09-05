@@ -1,10 +1,12 @@
-import {
+import { categories } from "../../../persistence/persistence.js";
+
+const {
   createCategory,
   deleteCategory,
   readCategories,
   readCategory,
   updateCategory,
-} from "../../../persistence/modules/categories/categories.js";
+} = categories;
 
 export const createCommands = ({ program }) => {
   const categoriesCommand = program.command("categories");

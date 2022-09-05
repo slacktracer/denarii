@@ -1,8 +1,6 @@
 import initPGPromise from "pg-promise";
 import { createClient as createRedisClient } from "redis";
 
-import "./setup.js";
-
 import { transformColumnNames } from "./functions/transform-column-names.js";
 
 const pgp = initPGPromise();

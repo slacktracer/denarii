@@ -10,7 +10,6 @@ import {
 
 import { group01, groupID01, userID01 } from "../../../../../data/data.js";
 import { endConnections } from "../../../../../functions/end-connections.js";
-
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
@@ -28,7 +27,7 @@ const { db, legacyRedisClient, redisServer } = await import(
 
 const {
   groups: { readGroup },
-} = await import(`denarii/src/persistence/modules/groups/groups.js`);
+} = await import(`denarii/src/persistence/persistence.js`);
 
 let backup;
 

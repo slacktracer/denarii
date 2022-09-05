@@ -16,7 +16,6 @@ import {
   userID01,
 } from "../../../../../data/data.js";
 import { endConnections } from "../../../../../functions/end-connections.js";
-
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
@@ -32,9 +31,9 @@ const { db, legacyRedisClient, redisServer } = await import(
   `denarii/src/persistence/connect.js`
 );
 
-const { createOperation, readOperations } = await import(
-  `denarii/src/persistence/modules/operations/operations.js`
-);
+const {
+  operations: { createOperation, readOperations },
+} = await import(`denarii/src/persistence/persistence.js`);
 
 let backup;
 
