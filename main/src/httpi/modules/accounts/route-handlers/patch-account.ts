@@ -1,4 +1,4 @@
-import { accounts } from "../../../../persistence/persistence.js";
+import { accounts } from "../../../../domain/domain.js";
 
 const { updateAccount } = accounts;
 

@@ -1,21 +1,23 @@
 import express from "express";
 
-import { users } from "../../../persistence/persistence.js";
-
-const { createUser } = users;
+import { deleteUserByID } from "./route-handlers/delete-user-by-id.js";
+import { getUsers } from "./route-handlers/get-users.js";
+import { getUserByID } from "./route-handlers/get-user-by-id.js";
+import { postUser } from "./route-handlers/post-user.js";
+import { patchUser } from "./route-handlers/patch-user.js";
 
 export const createRouter = () => {
   const usersRouter = express.Router();
 
-  usersRouter.post("/", async (request, response) => {
-    const { email, password, username } = request.body;
+  usersRouter.delete("/:userID", deleteUserByID);
 
-    const data = { email, password, username };
+  usersRouter.get("/", getUsers);
 
-    const createdUser = await createUser({ data });
+  usersRouter.get("/:userID", getUserByID);
 
-    response.json(createdUser);
-  });
+  usersRouter.post("/", postUser);
+
+  usersRouter.patch("/:userID", patchUser);
 
   return usersRouter;
 };

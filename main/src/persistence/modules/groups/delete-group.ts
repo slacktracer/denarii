@@ -6,5 +6,11 @@ const deleteGroupQuery = loadQuery({
   url: "./delete-group.sql",
 });
 
-export const deleteGroup = ({ groupID, userID }) =>
-  db.none(deleteGroupQuery, { groupID, userID });
+export const deleteGroup = async ({ groupID, userID }) => {
+  const result = await db.result(deleteGroupQuery, {
+    groupID,
+    userID,
+  });
+
+  return { deletedRowsCount: result.rowCount };
+};

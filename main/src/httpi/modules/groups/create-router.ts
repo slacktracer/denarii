@@ -1,17 +1,23 @@
 import express from "express";
 
-import { groups } from "../../../persistence/persistence.js";
+import { deleteGroupByID } from "./route-handlers/delete-group-by-id.js";
+import { getGroups } from "./route-handlers/get-groups.js";
+import { getGroupByID } from "./route-handlers/get-group-by-id.js";
+import { postGroup } from "./route-handlers/post-group.js";
+import { patchGroup } from "./route-handlers/patch-group.js";
 
 export const createRouter = () => {
   const groupsRouter = express.Router();
 
-  groupsRouter.get("/", async (request, response) => {
-    const { userID } = request.session.user;
+  groupsRouter.delete("/:groupID", deleteGroupByID);
 
-    const groupsRouter = await groups.readGroups({ userID });
+  groupsRouter.get("/", getGroups);
 
-    response.json(groupsRouter);
-  });
+  groupsRouter.get("/:groupID", getGroupByID);
+
+  groupsRouter.post("/", postGroup);
+
+  groupsRouter.patch("/:groupID", patchGroup);
 
   return groupsRouter;
 };

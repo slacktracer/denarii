@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 
-import { users } from "../../../../persistence/persistence.js";
+import { users } from "../../../../domain/domain.js";
 
 export const login = async ({ password, username }) => {
   const user = await users.readUserByUsername({ password, username });

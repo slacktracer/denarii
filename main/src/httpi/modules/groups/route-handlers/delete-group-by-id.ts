@@ -1,19 +1,19 @@
 import {
-  accounts,
   CustomError,
-  NO_SUCH_ACCOUNT,
+  groups,
+  NO_SUCH_GROUP,
   tryCatch,
 } from "../../../../domain/domain.js";
 
-const { deleteAccount } = accounts;
+const { deleteGroup } = groups;
 
-export const deleteAccountByID = async (request, response) => {
+export const deleteGroupByID = async (request, response) => {
   const { userID } = request.session.user;
 
-  const { accountID } = request.params;
+  const { groupID } = request.params;
 
-  const result = await tryCatch(deleteAccount, {
-    accountID,
+  const result = await tryCatch(deleteGroup, {
+    groupID,
     userID,
   });
 
@@ -24,7 +24,7 @@ export const deleteAccountByID = async (request, response) => {
   }
 
   if (result instanceof CustomError) {
-    if (result.data.id === NO_SUCH_ACCOUNT) {
+    if (result.data.id === NO_SUCH_GROUP) {
       response.status(404).end();
 
       return;

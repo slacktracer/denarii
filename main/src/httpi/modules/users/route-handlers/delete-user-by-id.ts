@@ -1,19 +1,16 @@
 import {
-  accounts,
   CustomError,
-  NO_SUCH_ACCOUNT,
+  NO_SUCH_USER,
   tryCatch,
+  users,
 } from "../../../../domain/domain.js";
 
-const { deleteAccount } = accounts;
+const { deleteUser } = users;
 
-export const deleteAccountByID = async (request, response) => {
-  const { userID } = request.session.user;
+export const deleteUserByID = async (request, response) => {
+  const { userID } = request.params;
 
-  const { accountID } = request.params;
-
-  const result = await tryCatch(deleteAccount, {
-    accountID,
+  const result = await tryCatch(deleteUser, {
     userID,
   });
 
@@ -24,7 +21,7 @@ export const deleteAccountByID = async (request, response) => {
   }
 
   if (result instanceof CustomError) {
-    if (result.data.id === NO_SUCH_ACCOUNT) {
+    if (result.data.id === NO_SUCH_USER) {
       response.status(404).end();
 
       return;
