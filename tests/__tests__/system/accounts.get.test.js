@@ -30,7 +30,7 @@ const { prepareTestDatabase } = await import(
 );
 
 const { db, legacyRedisClient, redisServer } = await import(
-  `denarii/src/persistence/persistence.js`
+  `denarii/src/persistence/connect.js`
 );
 
 let backup;
