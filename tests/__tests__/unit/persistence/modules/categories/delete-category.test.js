@@ -13,7 +13,6 @@ import {
   categoryID04,
   userID01,
 } from "../../../../../data/data.js";
-import { endConnections } from "../../../../../functions/end-connections.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
@@ -25,9 +24,7 @@ const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
 );
 
-const { db, legacyRedisClient, redisServer } = await import(
-  `denarii/src/persistence/connect.js`
-);
+const { disconnect } = await import("../../../../../functions/disconnect.js");
 
 const {
   categories: { deleteCategory, readCategories },
@@ -36,7 +33,7 @@ const {
 let backup;
 
 afterAll(async () => {
-  await endConnections({ db, legacyRedisClient, redisServer });
+  await disconnect();
 });
 
 beforeAll(async () => {

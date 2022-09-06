@@ -9,7 +9,6 @@ import {
 } from "@jest/globals";
 
 import { user01, user01Password } from "../../data/data.js";
-import { endConnections } from "../../functions/end-connections.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
@@ -23,14 +22,12 @@ const { prepareTestDatabase } = await import(
   "../../functions/prepare-test-database.js"
 );
 
-const { db, legacyRedisClient, redisServer } = await import(
-  `denarii/src/persistence/connect.js`
-);
+const { disconnect } = await import("../../functions/disconnect.js");
 
 let backup;
 
 afterAll(async () => {
-  await endConnections({ db, legacyRedisClient, redisServer });
+  await disconnect();
 });
 
 beforeAll(async () => {
