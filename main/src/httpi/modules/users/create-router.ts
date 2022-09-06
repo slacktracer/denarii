@@ -1,10 +1,10 @@
 import express from "express";
 
 import { deleteUserByID } from "./route-handlers/delete-user-by-id.js";
-import { getUsers } from "./route-handlers/get-users.js";
 import { getUserByID } from "./route-handlers/get-user-by-id.js";
-import { postUser } from "./route-handlers/post-user.js";
+import { getUsers } from "./route-handlers/get-users.js";
 import { patchUser } from "./route-handlers/patch-user.js";
+import { postUser } from "./route-handlers/post-user.js";
 
 export const createRouter = () => {
   const usersRouter = express.Router();

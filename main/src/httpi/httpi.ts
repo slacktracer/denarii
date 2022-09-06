@@ -1,9 +1,9 @@
 import expressSession from "express-session";
 
 import { createExpressApplication } from "./create-express-application.js";
+import { createRouter as createAccountsRouter } from "./modules/accounts/create-router.js";
 import { createRouter as createAuthenticationRouter } from "./modules/authentication/create-router.js";
 import { isSessionSet } from "./modules/authentication/middleware/is-session-set.js";
-import { createRouter as createAccountsRouter } from "./modules/accounts/create-router.js";
 import { createRouter as createGroupsRouter } from "./modules/groups/create-router.js";
 import { createRouter as createUsersRouter } from "./modules/users/create-router.js";
 import { sessionStore } from "./session-store.js";

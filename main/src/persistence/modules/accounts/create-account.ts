@@ -1,5 +1,4 @@
 import type { createAccountParameter } from "../../../types.js";
-
 import { db } from "../../connect.js";
 import { loadQuery } from "../../functions/load-query.js";
 

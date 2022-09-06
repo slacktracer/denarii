@@ -8,7 +8,7 @@ import {
   test,
 } from "@jest/globals";
 
-import { transfers, transferID04, userID01 } from "../../../../../data/data.js";
+import { transferID04, transfers, userID01 } from "../../../../../data/data.js";
 import { endConnections } from "../../../../../functions/end-connections.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 

@@ -22,8 +22,8 @@ export const balances = { calculateBalances };
 
 import { createCategory } from "./modules/categories/create-category.js";
 import { deleteCategory } from "./modules/categories/delete-category.js";
-import { readCategory } from "./modules/categories/read-category.js";
 import { readCategories } from "./modules/categories/read-categories.js";
+import { readCategory } from "./modules/categories/read-category.js";
 import { updateCategory } from "./modules/categories/update-category.js";
 
 export const categories = {
@@ -39,7 +39,6 @@ import { deleteGroup } from "./modules/groups/delete-group.js";
 import { readGroup } from "./modules/groups/read-group.js";
 import { readGroups } from "./modules/groups/read-groups.js";
 import { updateGroup } from "./modules/groups/update-group.js";
-
 import { createOperation } from "./modules/operations/create-operation.js";
 import { deleteOperation } from "./modules/operations/delete-operation.js";
 import { readOperation } from "./modules/operations/read-operation.js";
@@ -79,9 +78,9 @@ export const transfers = {
 import { createUser } from "./modules/users/create-user.js";
 import { deleteUser } from "./modules/users/delete-user.js";
 import { readUser } from "./modules/users/read-user.js";
+import { readUserByUsername } from "./modules/users/read-user-by-username.js";
 import { readUsers } from "./modules/users/read-users.js";
 import { updateUser } from "./modules/users/update-user.js";
-import { readUserByUsername } from "./modules/users/read-user-by-username.js";
 
 export const users = {
   createUser,

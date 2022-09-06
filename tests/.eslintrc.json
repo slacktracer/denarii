@@ -8,5 +8,10 @@
   "parserOptions": {
     "ecmaVersion": 2022,
     "sourceType": "module"
+  },
+  "plugins": ["simple-import-sort"],
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   }
 }

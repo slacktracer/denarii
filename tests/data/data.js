@@ -1,8 +1,7 @@
 import bcrypt from "bcrypt";
+import { convertObjectKeysFromCamelCaseToSnakeCase } from "denarii/src/persistence/functions/convert-object-keys-from-camel-case-to-snake-case.js";
 import squel from "squel";
 import { v4 as uuid } from "uuid";
-
-import { convertObjectKeysFromCamelCaseToSnakeCase } from "denarii/src/persistence/functions/convert-object-keys-from-camel-case-to-snake-case.js";
 
 export const accountID01 = uuid();
 export const accountID02 = uuid();

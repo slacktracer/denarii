@@ -1,5 +1,6 @@
-import { globby } from "globby";
 import { promises as fs } from "node:fs";
+
+import { globby } from "globby";
 import { format } from "sql-formatter";
 
 const queryFilesPaths = await globby(["./src/**/*.sql"]);
