@@ -8,7 +8,7 @@ import {
   test,
 } from "@jest/globals";
 
-import { accountID01 } from "../../data/data.js";
+import { accountID01, user01, user01Password } from "../../data/data.js";
 import { endConnections } from "../../functions/end-connections.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
@@ -53,9 +53,9 @@ describe("/PATCH accounts", () => {
       const expectedAccount = expect.objectContaining({ initialAmount, name });
 
       const sessionIDCookie = await getSessionIDCookie({
-        password: "1234",
+        password: user01Password,
         server,
-        username: "mr.user",
+        username: user01.username,
       });
 
       // when

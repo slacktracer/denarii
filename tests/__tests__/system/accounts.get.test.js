@@ -13,6 +13,8 @@ import {
   accountID01,
   accountID06,
   accounts,
+  user01,
+  user01Password,
   userID01,
 } from "../../data/data.js";
 import { endConnections } from "../../functions/end-connections.js";
@@ -61,9 +63,9 @@ describe("GET /accounts", () => {
       });
 
     const sessionIDCookie = await getSessionIDCookie({
-      password: "1234",
+      password: user01Password,
       server,
-      username: "mr.user",
+      username: user01.username,
     });
 
     // when

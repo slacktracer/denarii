@@ -8,6 +8,7 @@ import {
   test,
 } from "@jest/globals";
 
+import { user01, user01Password } from "../../data/data.js";
 import { endConnections } from "../../functions/end-connections.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
@@ -51,9 +52,9 @@ describe("/POST accounts", () => {
     const expectedAccount = expect.objectContaining({ initialAmount, name });
 
     const sessionIDCookie = await getSessionIDCookie({
-      password: "1234",
+      password: user01Password,
       server,
-      username: "mr.user",
+      username: user01.username,
     });
 
     // when
