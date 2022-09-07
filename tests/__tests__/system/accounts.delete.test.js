@@ -91,9 +91,9 @@ describe("/DELETE accounts", () => {
         const server = await getServer();
 
         const sessionIDCookie = await getSessionIDCookie({
-          password: "1234",
+          password: user01Password,
           server,
-          username: "mr.user",
+          username: user01.username,
         });
 
         // when
@@ -120,9 +120,9 @@ describe("/DELETE accounts", () => {
         const server = await getServer();
 
         const sessionIDCookie = await getSessionIDCookie({
-          password: "1234",
+          password: user01Password,
           server,
-          username: "mr.user",
+          username: user01.username,
         });
 
         // when

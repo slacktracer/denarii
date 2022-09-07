@@ -83,9 +83,9 @@ describe("GET /accounts", () => {
       const expectedAccount = expect.objectContaining(account01);
 
       const sessionIDCookie = await getSessionIDCookie({
-        password: "1234",
+        password: user01Password,
         server,
-        username: "mr.user",
+        username: user01.username,
       });
 
       // when
@@ -106,9 +106,9 @@ describe("GET /accounts", () => {
         const expectedAccount = null;
 
         const sessionIDCookie = await getSessionIDCookie({
-          password: "1234",
+          password: user01Password,
           server,
-          username: "mr.user",
+          username: user01.username,
         });
 
         // when

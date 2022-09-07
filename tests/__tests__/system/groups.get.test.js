@@ -81,9 +81,9 @@ describe("GET /groups", () => {
       const expectedGroup = expect.objectContaining(group01);
 
       const sessionIDCookie = await getSessionIDCookie({
-        password: "1234",
+        password: user01Password,
         server,
-        username: "mr.user",
+        username: user01.username,
       });
 
       // when
@@ -104,9 +104,9 @@ describe("GET /groups", () => {
         const expectedGroup = null;
 
         const sessionIDCookie = await getSessionIDCookie({
-          password: "1234",
+          password: user01Password,
           server,
-          username: "mr.user",
+          username: user01.username,
         });
 
         // when
