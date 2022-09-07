@@ -17,6 +17,7 @@ export const groupID01 = uuid();
 export const groupID02 = uuid();
 export const groupID03 = uuid();
 export const groupID04 = uuid();
+export const groupID05 = uuid();
 export const operationID01 = uuid();
 export const operationID02 = uuid();
 export const operationID03 = uuid();
@@ -146,6 +147,13 @@ export const group04 = {
   groupID: groupID04,
   name: "Group 4!",
   userID: userID01,
+};
+
+export const group05 = {
+  createdAt: new Date().toISOString(),
+  groupID: groupID05,
+  name: "Group 5!",
+  userID: userID02,
 };
 
 export const groups = [group01, group02, group03, group04];

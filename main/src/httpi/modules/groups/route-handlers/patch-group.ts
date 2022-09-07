@@ -7,9 +7,9 @@ export const patchGroup = async (request, response) => {
 
   const { groupID } = request.params;
 
-  const { initialAmount, name } = request.body;
+  const { name } = request.body;
 
-  const data = { initialAmount, name };
+  const data = { name };
 
   const updatedGroup = await updateGroup({ groupID, data, userID });
 
