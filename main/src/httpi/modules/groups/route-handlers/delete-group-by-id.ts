@@ -3,6 +3,7 @@ import {
   groups,
   NO_SUCH_GROUP,
   tryCatch,
+  UNKNOWN_ERROR,
 } from "../../../../domain/domain.js";
 
 const { deleteGroup } = groups;
@@ -31,6 +32,7 @@ export const deleteGroupByID = async (request, response) => {
     }
   }
 
+  console.warn(UNKNOWN_ERROR);
   console.error(result);
 
   response.status(500).end();

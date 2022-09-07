@@ -3,6 +3,7 @@ import {
   CustomError,
   NO_SUCH_ACCOUNT,
   tryCatch,
+  UNKNOWN_ERROR,
 } from "../../../../domain/domain.js";
 
 const { deleteAccount } = accounts;
@@ -31,6 +32,7 @@ export const deleteAccountByID = async (request, response) => {
     }
   }
 
+  console.warn(UNKNOWN_ERROR);
   console.error(result);
 
   response.status(500).end();

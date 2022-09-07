@@ -2,6 +2,7 @@ import {
   CustomError,
   NO_SUCH_USER,
   tryCatch,
+  UNKNOWN_ERROR,
   users,
 } from "../../../../domain/domain.js";
 
@@ -28,6 +29,7 @@ export const deleteUserByID = async (request, response) => {
     }
   }
 
+  console.warn(UNKNOWN_ERROR);
   console.error(result);
 
   response.status(500).end();
