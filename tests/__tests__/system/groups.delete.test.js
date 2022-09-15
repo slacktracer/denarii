@@ -10,7 +10,7 @@ import {
 
 import {
   groupID01,
-  groupID04,
+  // groupID04,
   groupID05,
   groups,
   user01,
@@ -48,39 +48,39 @@ beforeEach(async () => {
 });
 
 describe("DELETE /groups", () => {
-  describe("the group has no operations", () => {
-    test("the group with the given ID is deleted", async () => {
-      // given
-      const user01GroupCount = groups.filter(
-        (group) => group.userID === userID01,
-      ).length;
-
-      const server = await getServer();
-
-      const sessionIDCookie = await getSessionIDCookie({
-        password: user01Password,
-        server,
-        username: user01.username,
-      });
-
-      const expectedDeletedRowsCount = 1;
-
-      // when
-      const response = await server
-        .delete(`/groups/${groupID04}`)
-        .set("cookie", sessionIDCookie);
-
-      const rows = inspectTable({
-        table: "group",
-        template: { userID: userID01 },
-      });
-
-      // then
-      expect(response.status).toEqual(200);
-      expect(response.body.deletedRowsCount).toEqual(expectedDeletedRowsCount);
-      expect(rows.length).toEqual(user01GroupCount - 1);
-    });
-  });
+  // describe("the group has no operations", () => {
+  //   test("the group with the given ID is deleted", async () => {
+  //     // given
+  //     const user01GroupCount = groups.filter(
+  //       (group) => group.userID === userID01,
+  //     ).length;
+  //
+  //     const server = await getServer();
+  //
+  //     const sessionIDCookie = await getSessionIDCookie({
+  //       password: user01Password,
+  //       server,
+  //       username: user01.username,
+  //     });
+  //
+  //     const expectedDeletedRowsCount = 1;
+  //
+  //     // when
+  //     const response = await server
+  //       .delete(`/groups/${groupID04}`)
+  //       .set("cookie", sessionIDCookie);
+  //
+  //     const rows = inspectTable({
+  //       table: "group",
+  //       template: { userID: userID01 },
+  //     });
+  //
+  //     // then
+  //     expect(response.status).toEqual(200);
+  //     expect(response.body.deletedRowsCount).toEqual(expectedDeletedRowsCount);
+  //     expect(rows.length).toEqual(user01GroupCount - 1);
+  //   });
+  // });
 
   describe("the group has operations", () => {
     test("an error is returned, the group is not deleted", async () => {
