@@ -29,7 +29,7 @@
     "save-test-output": "NODE_OPTIONS=--experimental-vm-modules jest --no-color --runInBand --setupFiles dotenv/config --silent --testSequencer ./classes/custom-sequencer.js --verbose 2> test-output.txt",
     "start": "nodemon",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config --watch",
-    "test-once": "NODE_OPTIONS=--experimental-vm-modules jest --ci --runInBand"
+    "test-once": "NODE_OPTIONS=--experimental-vm-modules jest --ci"
   },
   "type": "module",
   "version": "1.0.0"
