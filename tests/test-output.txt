@@ -1,13 +1,13 @@
-(node:57621) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
+(node:90909) ExperimentalWarning: VM Modules is an experimental feature. This feature could change at any time
 (Use `node --trace-warnings ...` to show where the warning was created)
 PASS __tests__/system/accounts.delete.test.js
-  /DELETE accounts
+  DELETE /accounts
     the account has no operations
-      ✓ the account with the given ID is deleted (198 ms)
+      ✓ the account with the given ID is deleted (208 ms)
     the account has operations
-      ✓ an error is returned, the account is not deleted (10 ms)
+      ✓ an error is returned, the account is not deleted (11 ms)
     the account does not belong to the given user or does not exist
-      ✓ an error is returned, no account is deleted (10 ms)
+      ✓ an error is returned, no account is deleted (8 ms)
 
 PASS __tests__/system/accounts.get.test.js
   GET /accounts
@@ -18,22 +18,22 @@ PASS __tests__/system/accounts.get.test.js
         ✓ it returns null (6 ms)
 
 PASS __tests__/system/accounts.patch.test.js
-  /PATCH accounts
+  PATCH /accounts
     an account ID was given
-      ✓ an existing account is updated (80 ms)
+      ✓ an existing account is updated (78 ms)
 
 PASS __tests__/system/accounts.post.test.js
-  /POST accounts
-    ✓ a new account is created and returned (80 ms)
+  POST /accounts
+    ✓ a new account is created and returned (78 ms)
 
 PASS __tests__/system/groups.delete.test.js
-  /DELETE groups
+  DELETE /groups
     the group has no operations
-      ✓ the group with the given ID is deleted (77 ms)
+      ✓ the group with the given ID is deleted (76 ms)
     the group has operations
       ✓ an error is returned, the group is not deleted (8 ms)
     the group does not belong to the given user or does not exist
-      ✓ an error is returned, no group is deleted (6 ms)
+      ✓ an error is returned, no group is deleted (10 ms)
 
 PASS __tests__/system/groups.get.test.js
   GET /groups
@@ -44,17 +44,17 @@ PASS __tests__/system/groups.get.test.js
         ✓ it returns null (6 ms)
 
 PASS __tests__/system/groups.patch.test.js
-  /PATCH groups
+  PATCH /groups
     a group ID was given
-      ✓ an existing group is updated (76 ms)
+      ✓ an existing group is updated (75 ms)
 
 PASS __tests__/system/groups.post.test.js
-  /POST groups
+  POST /groups
     ✓ a new group is created and returned (76 ms)
 
 PASS __tests__/system/healthz.get.test.js
   GET /healthz
-    ✓ health is ok (61 ms)
+    ✓ health is ok (57 ms)
 
 PASS __tests__/system/users.post.test.js
   POST /users
@@ -62,19 +62,19 @@ PASS __tests__/system/users.post.test.js
 
 PASS __tests__/unit/persistence/modules/accounts/create-account.test.js
   create account
-    ✓ a new account is created (7 ms)
+    ✓ a new account is created (9 ms)
 
 PASS __tests__/unit/persistence/modules/accounts/delete-account.test.js
   delete account
-    ✓ an existing account is deleted (7 ms)
+    ✓ an existing account is deleted (10 ms)
 
 PASS __tests__/unit/persistence/modules/accounts/read-account.test.js
   read account
-    ✓ an existing account is returned (6 ms)
+    ✓ an existing account is returned (5 ms)
 
 PASS __tests__/unit/persistence/modules/accounts/read-accounts.test.js
   read accounts
-    ✓ all existing accounts for the given user are returned (4 ms)
+    ✓ all existing accounts for the given user are returned (6 ms)
 
 PASS __tests__/unit/persistence/modules/accounts/update-account.test.js
   update account
@@ -82,7 +82,7 @@ PASS __tests__/unit/persistence/modules/accounts/update-account.test.js
 
 PASS __tests__/unit/persistence/modules/balances/calculate-balances.test.js
   calculate balances
-    ✓ it returns all accounts balances (22 ms)
+    ✓ it returns all accounts balances (23 ms)
 
 PASS __tests__/unit/persistence/modules/categories/create-category.test.js
   create category
@@ -98,7 +98,7 @@ PASS __tests__/unit/persistence/modules/categories/read-categories.test.js
 
 PASS __tests__/unit/persistence/modules/categories/read-category.test.js
   read category
-    ✓ an existing category is returned (4 ms)
+    ✓ an existing category is returned (5 ms)
 
 PASS __tests__/unit/persistence/modules/categories/update-category.test.js
   update category
@@ -106,11 +106,11 @@ PASS __tests__/unit/persistence/modules/categories/update-category.test.js
 
 PASS __tests__/unit/persistence/modules/groups/create-group.test.js
   create group
-    ✓ a new group is created (10 ms)
+    ✓ a new group is created (8 ms)
 
 PASS __tests__/unit/persistence/modules/groups/delete-group.test.js
   delete group
-    ✓ an existing group is deleted (6 ms)
+    ✓ an existing group is deleted (7 ms)
 
 PASS __tests__/unit/persistence/modules/groups/read-group.test.js
   read group
@@ -122,23 +122,23 @@ PASS __tests__/unit/persistence/modules/groups/read-groups.test.js
 
 PASS __tests__/unit/persistence/modules/groups/update-group.test.js
   update group
-    ✓ an existing group is updated (7 ms)
+    ✓ an existing group is updated (11 ms)
 
 PASS __tests__/unit/persistence/modules/operations/create-operation.test.js
   create operation
-    ✓ a new operation is created (14 ms)
+    ✓ a new operation is created (16 ms)
 
 PASS __tests__/unit/persistence/modules/operations/delete-operation.test.js
   delete operation
-    ✓ an existing operation is deleted (10 ms)
+    ✓ an existing operation is deleted (7 ms)
 
 PASS __tests__/unit/persistence/modules/operations/read-operation.test.js
   read operation
-    ✓ an existing operation is returned (5 ms)
+    ✓ an existing operation is returned (11 ms)
 
 PASS __tests__/unit/persistence/modules/operations/read-operations.test.js
   read operations
-    ✓ all existing operations for the given user are returned (4 ms)
+    ✓ all existing operations for the given user are returned (5 ms)
 
 PASS __tests__/unit/persistence/modules/operations/update-operation.test.js
   update operation
@@ -146,15 +146,15 @@ PASS __tests__/unit/persistence/modules/operations/update-operation.test.js
 
 PASS __tests__/unit/persistence/modules/transfers/create-transfer.test.js
   create transfer
-    ✓ a new transfer is created (11 ms)
+    ✓ a new transfer is created (9 ms)
 
 PASS __tests__/unit/persistence/modules/transfers/delete-transfer.test.js
   delete transfer
-    ✓ an existing transfer is deleted (6 ms)
+    ✓ an existing transfer is deleted (13 ms)
 
 PASS __tests__/unit/persistence/modules/transfers/read-transfer.test.js
   read transfer
-    ✓ an existing transfer is returned (5 ms)
+    ✓ an existing transfer is returned (4 ms)
 
 PASS __tests__/unit/persistence/modules/transfers/read-transfers.test.js
   read transfers
@@ -166,7 +166,7 @@ PASS __tests__/unit/persistence/modules/transfers/update-transfer.test.js
 
 PASS __tests__/unit/persistence/modules/users/create-user.test.js
   create user
-    ✓ a new user is created (53 ms)
+    ✓ a new user is created (61 ms)
 
 PASS __tests__/unit/persistence/modules/users/delete-user.test.js
   delete user
@@ -174,17 +174,17 @@ PASS __tests__/unit/persistence/modules/users/delete-user.test.js
 
 PASS __tests__/unit/persistence/modules/users/read-user.test.js
   read user
-    ✓ it returns the user with the specified user ID (5 ms)
+    ✓ it returns the user with the specified user ID (4 ms)
 
 PASS __tests__/unit/persistence/modules/users/read-users.test.js
   read users
-    ✓ it returns all users (3 ms)
+    ✓ it returns all users (6 ms)
 
 PASS __tests__/unit/persistence/modules/users/update-user.test.js
   update user
-    ✓ an existing user is updated (17 ms)
+    ✓ an existing user is updated (12 ms)
 
 Test Suites: 41 passed, 41 total
 Tests:       49 passed, 49 total
 Snapshots:   0 total
-Time:        21.852 s
+Time:        22.538 s
