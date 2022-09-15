@@ -80,62 +80,62 @@ describe("/DELETE groups", () => {
       expect(response.body.deletedRowsCount).toEqual(expectedDeletedRowsCount);
       expect(rows.length).toEqual(user01GroupCount - 1);
     });
+  });
 
-    describe("the group has operations", () => {
-      test("an error is returned, the group is not deleted", async () => {
-        // given
-        const user01GroupCount = groups.filter(
-          (group) => group.userID === userID01,
-        ).length;
+  describe("the group has operations", () => {
+    test("an error is returned, the group is not deleted", async () => {
+      // given
+      const user01GroupCount = groups.filter(
+        (group) => group.userID === userID01,
+      ).length;
 
-        const server = await getServer();
+      const server = await getServer();
 
-        const sessionIDCookie = await getSessionIDCookie({
-          password: user01Password,
-          server,
-          username: user01.username,
-        });
-
-        // when
-        const response = await server
-          .delete(`/groups/${groupID01}`)
-          .set("cookie", sessionIDCookie);
-
-        const rows = inspectTable({
-          table: "group",
-          template: { userID: userID01 },
-        });
-
-        // then
-        expect(response.status).toEqual(500);
-        expect(rows.length).toEqual(user01GroupCount);
+      const sessionIDCookie = await getSessionIDCookie({
+        password: user01Password,
+        server,
+        username: user01.username,
       });
+
+      // when
+      const response = await server
+        .delete(`/groups/${groupID01}`)
+        .set("cookie", sessionIDCookie);
+
+      const rows = inspectTable({
+        table: "group",
+        template: { userID: userID01 },
+      });
+
+      // then
+      expect(response.status).toEqual(500);
+      expect(rows.length).toEqual(user01GroupCount);
     });
+  });
 
-    describe("the group does not belong to the given user or does not exist", () => {
-      test("an error is returned, no group is deleted", async () => {
-        // given
-        const user01GroupCount = groups.length;
+  describe("the group does not belong to the given user or does not exist", () => {
+    test("an error is returned, no group is deleted", async () => {
+      // given
+      const user01GroupCount = groups.length;
 
-        const server = await getServer();
+      const server = await getServer();
 
-        const sessionIDCookie = await getSessionIDCookie({
-          password: user01Password,
-          server,
-          username: user01.username,
-        });
-
-        // when
-        const response = await server
-          .delete(`/groups/${groupID05}`)
-          .set("cookie", sessionIDCookie);
-
-        const rows = inspectTable({ table: "group" });
-
-        // then
-        expect(response.status).toEqual(404);
-        expect(rows.length).toEqual(user01GroupCount);
+      const sessionIDCookie = await getSessionIDCookie({
+        password: user01Password,
+        server,
+        username: user01.username,
       });
+
+      // when
+      const response = await server
+        .delete(`/groups/${groupID05}`)
+        .set("cookie", sessionIDCookie);
+
+      const rows = inspectTable({ table: "group" });
+
+      // then
+      expect(response.status).toEqual(404);
+      expect(rows.length).toEqual(user01GroupCount);
     });
   });
 });

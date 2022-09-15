@@ -80,62 +80,62 @@ describe("/DELETE accounts", () => {
       expect(response.body.deletedRowsCount).toEqual(expectedDeletedRowsCount);
       expect(rows.length).toEqual(user01AccountCount - 1);
     });
+  });
 
-    describe("the account has operations", () => {
-      test("an error is returned, the account is not deleted", async () => {
-        // given
-        const user01AccountCount = accounts.filter(
-          (account) => account.userID === userID01,
-        ).length;
+  describe("the account has operations", () => {
+    test("an error is returned, the account is not deleted", async () => {
+      // given
+      const user01AccountCount = accounts.filter(
+        (account) => account.userID === userID01,
+      ).length;
 
-        const server = await getServer();
+      const server = await getServer();
 
-        const sessionIDCookie = await getSessionIDCookie({
-          password: user01Password,
-          server,
-          username: user01.username,
-        });
-
-        // when
-        const response = await server
-          .delete(`/accounts/${accountID01}`)
-          .set("cookie", sessionIDCookie);
-
-        const rows = inspectTable({
-          table: "account",
-          template: { userID: userID01 },
-        });
-
-        // then
-        expect(response.status).toEqual(500);
-        expect(rows.length).toEqual(user01AccountCount);
+      const sessionIDCookie = await getSessionIDCookie({
+        password: user01Password,
+        server,
+        username: user01.username,
       });
+
+      // when
+      const response = await server
+        .delete(`/accounts/${accountID01}`)
+        .set("cookie", sessionIDCookie);
+
+      const rows = inspectTable({
+        table: "account",
+        template: { userID: userID01 },
+      });
+
+      // then
+      expect(response.status).toEqual(500);
+      expect(rows.length).toEqual(user01AccountCount);
     });
+  });
 
-    describe("the account does not belong to the given user or does not exist", () => {
-      test("an error is returned, no account is deleted", async () => {
-        // given
-        const user01AccountCount = accounts.length;
+  describe("the account does not belong to the given user or does not exist", () => {
+    test("an error is returned, no account is deleted", async () => {
+      // given
+      const user01AccountCount = accounts.length;
 
-        const server = await getServer();
+      const server = await getServer();
 
-        const sessionIDCookie = await getSessionIDCookie({
-          password: user01Password,
-          server,
-          username: user01.username,
-        });
-
-        // when
-        const response = await server
-          .delete(`/accounts/${accountID06}`)
-          .set("cookie", sessionIDCookie);
-
-        const rows = inspectTable({ table: "account" });
-
-        // then
-        expect(response.status).toEqual(404);
-        expect(rows.length).toEqual(user01AccountCount);
+      const sessionIDCookie = await getSessionIDCookie({
+        password: user01Password,
+        server,
+        username: user01.username,
       });
+
+      // when
+      const response = await server
+        .delete(`/accounts/${accountID06}`)
+        .set("cookie", sessionIDCookie);
+
+      const rows = inspectTable({ table: "account" });
+
+      // then
+      expect(response.status).toEqual(404);
+      expect(rows.length).toEqual(user01AccountCount);
     });
   });
 });
