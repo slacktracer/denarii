@@ -47,7 +47,7 @@ beforeEach(async () => {
   backup.restore();
 });
 
-describe("/DELETE groups", () => {
+describe("DELETE /groups", () => {
   describe("the group has no operations", () => {
     test("the group with the given ID is deleted", async () => {
       // given

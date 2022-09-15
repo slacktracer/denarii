@@ -38,7 +38,7 @@ beforeEach(async () => {
   backup.restore();
 });
 
-describe("/PATCH groups", () => {
+describe("PATCH /groups", () => {
   describe("a group ID was given", () => {
     test("an existing group is updated", async () => {
       // given

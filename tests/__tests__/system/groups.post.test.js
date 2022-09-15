@@ -38,7 +38,7 @@ beforeEach(async () => {
   backup.restore();
 });
 
-describe("/POST groups", () => {
+describe("POST /groups", () => {
   test("a new group is created and returned", async () => {
     // given
     const server = await getServer();

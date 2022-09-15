@@ -47,7 +47,7 @@ beforeEach(async () => {
   backup.restore();
 });
 
-describe("/DELETE accounts", () => {
+describe("DELETE /accounts", () => {
   describe("the account has no operations", () => {
     test("the account with the given ID is deleted", async () => {
       // given

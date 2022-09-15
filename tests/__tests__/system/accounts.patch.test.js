@@ -38,7 +38,7 @@ beforeEach(async () => {
   backup.restore();
 });
 
-describe("/PATCH accounts", () => {
+describe("PATCH /accounts", () => {
   describe("an account ID was given", () => {
     test("an existing account is updated", async () => {
       // given

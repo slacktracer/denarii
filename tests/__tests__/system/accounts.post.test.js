@@ -38,7 +38,7 @@ beforeEach(async () => {
   backup.restore();
 });
 
-describe("/POST accounts", () => {
+describe("POST /accounts", () => {
   test("a new account is created and returned", async () => {
     // given
     const server = await getServer();
