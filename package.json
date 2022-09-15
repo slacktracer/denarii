@@ -7,11 +7,12 @@
   "scripts": {
     "build": "chmod +x ./build.sh && ./build.sh",
     "d": "npm run decompile --workspace main",
+    "execute": "node ./build/main.js",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
     "start": "npm start --workspace main",
     "test": "npm test --workspace tests",
-    "x": "node ./build/main.js"
+    "x": "npm run execute"
   },
   "workspaces": [
     "main",

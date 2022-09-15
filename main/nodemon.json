@@ -1,4 +1,4 @@
 {
-  "exec": "npm run build && npm run x || exit 1",
+  "exec": "npm run compile && npm run execute || exit 1",
   "ext": "json,ts"
 }

@@ -36,17 +36,20 @@
   "main": "build/main.js",
   "name": "denarii",
   "scripts": {
-    "build": "tsc",
+    "c": "npm run compile",
+    "compile": "tsc",
+    "compile-on-ci": "tsc",
     "check-types": "tsc --noEmit --project ./tsconfig.json",
     "cli": "node --require dotenv/config src/cli/cli.js",
     "decompile": "tsc --build --clean",
     "d": "npm run decompile",
+    "execute": "node --require dotenv/config src/main.js",
     "format": "prettier --write .",
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
-    "postbuild": "node ./tools/postbuild.js && chmod u+x src/cli/cli.js",
+    "postcompile": "node tools/postcompile.js && chmod u+x src/cli/cli.js",
     "start": "nodemon",
-    "x": "node --require dotenv/config src/main.js"
+    "x": "npm run execute"
   },
   "type": "module",
   "version": "1.0.0"
