@@ -29,6 +29,8 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "fs-extra": "^10.1.0",
     "globby": "^13.1.2",
     "sql-formatter": "^9.0.1"
   },
