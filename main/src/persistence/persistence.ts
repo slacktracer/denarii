@@ -20,25 +20,6 @@ import { calculateBalances } from "./modules/balances/calculate-balances.js";
 
 export const balances = { calculateBalances };
 
-import { createCategory } from "./modules/categories/create-category.js";
-import { deleteCategory } from "./modules/categories/delete-category.js";
-import { readCategories } from "./modules/categories/read-categories.js";
-import { readCategory } from "./modules/categories/read-category.js";
-import { updateCategory } from "./modules/categories/update-category.js";
-
-export const categories = {
-  createCategory,
-  deleteCategory,
-  readCategory,
-  readCategories,
-  updateCategory,
-};
-
-import { createGroup } from "./modules/groups/create-group.js";
-import { deleteGroup } from "./modules/groups/delete-group.js";
-import { readGroup } from "./modules/groups/read-group.js";
-import { readGroups } from "./modules/groups/read-groups.js";
-import { updateGroup } from "./modules/groups/update-group.js";
 import { createOperation } from "./modules/operations/create-operation.js";
 import { deleteOperation } from "./modules/operations/delete-operation.js";
 import { readOperation } from "./modules/operations/read-operation.js";
@@ -51,14 +32,6 @@ export const operations = {
   readOperation,
   readOperations,
   updateOperation,
-};
-
-export const groups = {
-  createGroup,
-  deleteGroup,
-  readGroup,
-  readGroups,
-  updateGroup,
 };
 
 import { createTransfer } from "./modules/transfers/create-transfer.js";

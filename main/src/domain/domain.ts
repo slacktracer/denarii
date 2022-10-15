@@ -16,20 +16,6 @@ export const accounts = {
   updateAccount,
 };
 
-import { createGroup } from "./modules/groups/create-group.js";
-import { deleteGroup } from "./modules/groups/delete-group.js";
-import { readGroup } from "./modules/groups/read-group.js";
-import { readGroups } from "./modules/groups/read-groups.js";
-import { updateGroup } from "./modules/groups/update-group.js";
-
-export const groups = {
-  createGroup,
-  deleteGroup,
-  readGroup,
-  readGroups,
-  updateGroup,
-};
-
 import { createUser } from "./modules/users/create-user.js";
 import { deleteUser } from "./modules/users/delete-user.js";
 import { readUser } from "./modules/users/read-user.js";

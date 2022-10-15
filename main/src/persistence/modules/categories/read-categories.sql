@@ -1,8 +1,0 @@
-SELECT
-  *
-FROM
-  PUBLIC.CATEGORY
-WHERE
-  USER_ID = ${ userID }
-ORDER BY
-  NAME

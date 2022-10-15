@@ -1,5 +1,0 @@
-DELETE FROM
-  PUBLIC.GROUP
-WHERE
-  GROUP_ID = ${ groupID }
-  AND USER_ID = ${ userID }

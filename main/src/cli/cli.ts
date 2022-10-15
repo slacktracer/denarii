@@ -5,8 +5,6 @@ import commander from "commander";
 
 import { createCommands as createAccountsCommands } from "./modules/accounts/create-commands.js";
 import { createCommands as createBalancesCommands } from "./modules/balances/create-commands.js";
-import { createCommands as createCategoriesCommands } from "./modules/categories/create-commands.js";
-import { createCommands as createGroupsCommands } from "./modules/groups/create-commands.js";
 import { createCommands as createOperationsCommands } from "./modules/operations/create-commands.js";
 import { createCommands as createTransfersCommands } from "./modules/transfers/create-commands.js";
 import { createCommands as createUsersCommands } from "./modules/users/create-commands.js";
@@ -15,8 +13,6 @@ const program = new commander.Command();
 
 createAccountsCommands({ program });
 createBalancesCommands({ program });
-createCategoriesCommands({ program });
-createGroupsCommands({ program });
 createOperationsCommands({ program });
 createTransfersCommands({ program });
 createUsersCommands({ program });
