@@ -9,15 +9,6 @@ export const accountID03 = uuid();
 export const accountID04 = uuid();
 export const accountID05 = uuid();
 export const accountID06 = uuid();
-export const categoryID01 = uuid();
-export const categoryID02 = uuid();
-export const categoryID03 = uuid();
-export const categoryID04 = uuid();
-export const groupID01 = uuid();
-export const groupID02 = uuid();
-export const groupID03 = uuid();
-export const groupID04 = uuid();
-export const groupID05 = uuid();
 export const operationID01 = uuid();
 export const operationID02 = uuid();
 export const operationID03 = uuid();
@@ -87,86 +78,13 @@ export const accounts = [
   account06,
 ];
 
-export const category01 = {
-  categoryID: categoryID01,
-  createdAt: new Date().toISOString(),
-  name: "Category 1!",
-  groupID: groupID01,
-  userID: userID01,
-};
-
-export const category02 = {
-  categoryID: categoryID02,
-  createdAt: new Date().toISOString(),
-  name: "Category 2!",
-  groupID: groupID01,
-  userID: userID01,
-};
-
-export const category03 = {
-  categoryID: categoryID03,
-  createdAt: new Date().toISOString(),
-  name: "Category 3!",
-  groupID: groupID01,
-  userID: userID01,
-};
-
-export const category04 = {
-  categoryID: categoryID04,
-  createdAt: new Date().toISOString(),
-  name: "Category 4!",
-  groupID: groupID01,
-  userID: userID01,
-};
-
-export const categories = [category01, category02, category03, category04];
-
-export const group01 = {
-  createdAt: new Date().toISOString(),
-  groupID: groupID01,
-  name: "Group 1!",
-  userID: userID01,
-};
-
-export const group02 = {
-  createdAt: new Date().toISOString(),
-  groupID: groupID02,
-  name: "Group 2!",
-  userID: userID01,
-};
-
-export const group03 = {
-  createdAt: new Date().toISOString(),
-  groupID: groupID03,
-  name: "Group 3!",
-  userID: userID01,
-};
-
-export const group04 = {
-  createdAt: new Date().toISOString(),
-  groupID: groupID04,
-  name: "Group 4!",
-  userID: userID01,
-};
-
-export const group05 = {
-  createdAt: new Date().toISOString(),
-  groupID: groupID05,
-  name: "Group 5!",
-  userID: userID02,
-};
-
-export const groups = [group01, group02, group03, group04];
-
 export const operation01 = {
   accountID: accountID01,
   amount: 100_00,
   amountPerUnit: 100_00,
   at: new Date().toISOString(),
-  categoryID: categoryID01,
   comments: "This is operation 1.",
   createdAt: new Date().toISOString(),
-  groupID: groupID01,
   operationID: operationID01,
   type: "Income",
   unitCount: 1,
@@ -178,10 +96,8 @@ export const operation02 = {
   amount: 100_00,
   amountPerUnit: 100_00,
   at: new Date().toISOString(),
-  categoryID: categoryID01,
   comments: "This is operation 2.",
   createdAt: new Date().toISOString(),
-  groupID: groupID01,
   operationID: operationID02,
   type: "Income",
   unitCount: 1,
@@ -193,10 +109,8 @@ export const operation03 = {
   amount: 100_00,
   amountPerUnit: 100_00,
   at: new Date().toISOString(),
-  categoryID: categoryID01,
   comments: "This is operation 3.",
   createdAt: new Date().toISOString(),
-  groupID: groupID01,
   operationID: operationID03,
   type: "Income",
   unitCount: 1,
@@ -208,10 +122,8 @@ export const operation04 = {
   amount: 100_00,
   amountPerUnit: 100_00,
   at: new Date().toISOString(),
-  categoryID: categoryID01,
   comments: "This is operation 4.",
   createdAt: new Date().toISOString(),
-  groupID: groupID01,
   operationID: operationID04,
   type: "Income",
   unitCount: 1,
@@ -223,10 +135,8 @@ export const operation05 = {
   amount: 100_00,
   amountPerUnit: 100_00,
   at: new Date().toISOString(),
-  categoryID: categoryID01,
   comments: "This is operation 4.",
   createdAt: new Date().toISOString(),
-  groupID: groupID01,
   operationID: operationID04,
   type: "Income",
   unitCount: 1,
@@ -314,16 +224,6 @@ const insertAccountsQuery = squel
   .into("public.account")
   .setFieldsRows(accounts.map(convertObjectKeysFromCamelCaseToSnakeCase));
 
-const insertGroupsQuery = squel
-  .insert()
-  .into("public.group")
-  .setFieldsRows(groups.map(convertObjectKeysFromCamelCaseToSnakeCase));
-
-const insertCategoriesQuery = squel
-  .insert()
-  .into("public.category")
-  .setFieldsRows(categories.map(convertObjectKeysFromCamelCaseToSnakeCase));
-
 const insertOperationsQuery = squel
   .insert()
   .into("public.operation")
@@ -342,10 +242,6 @@ const insertUsersQuery = squel
 export const mockDataAsInsertStatements = `${insertUsersQuery};
 
 ${insertAccountsQuery};
-
-${insertGroupsQuery};
-
-${insertCategoriesQuery};
 
 ${insertTransfersQuery};
 

@@ -8,13 +8,7 @@ import {
   test,
 } from "@jest/globals";
 
-import {
-  accountID01,
-  categoryID01,
-  groupID01,
-  operations,
-  userID01,
-} from "../../../../../data/data.js";
+import { accountID01, operations, userID01 } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
@@ -59,9 +53,7 @@ describe("create operation", () => {
       accountID: accountID01,
       amount,
       amountPerUnit,
-      categoryID: categoryID01,
       comments,
-      groupID: groupID01,
       type,
       unitCount,
     };
@@ -70,9 +62,7 @@ describe("create operation", () => {
       accountID: accountID01,
       amount,
       amountPerUnit,
-      categoryID: categoryID01,
       comments,
-      groupID: groupID01,
       type,
       unitCount,
       userID: userID01,
