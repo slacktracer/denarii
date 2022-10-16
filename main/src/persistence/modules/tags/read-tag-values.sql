@@ -1,0 +1,8 @@
+SELECT
+  *
+FROM
+  TAG_VALUE
+WHERE
+  USER_ID = ${ userID }
+ORDER BY
+  NAME

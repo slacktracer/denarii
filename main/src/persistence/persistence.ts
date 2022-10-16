@@ -34,6 +34,40 @@ export const operations = {
   updateOperation,
 };
 
+import { createTag } from "./modules/tags/create-tag.js";
+import { createTagKey } from "./modules/tags/create-tag-key.js";
+import { createTagValue } from "./modules/tags/create-tag-value.js";
+import { deleteTag } from "./modules/tags/delete-tag.js";
+import { deleteTagKey } from "./modules/tags/delete-tag-key.js";
+import { deleteTagValue } from "./modules/tags/delete-tag-value.js";
+import { readTag } from "./modules/tags/read-tag.js";
+import { readTagKey } from "./modules/tags/read-tag-key.js";
+import { readTagKeys } from "./modules/tags/read-tag-keys.js";
+import { readTagValue } from "./modules/tags/read-tag-value.js";
+import { readTagValues } from "./modules/tags/read-tag-values.js";
+import { readTags } from "./modules/tags/read-tags.js";
+import { updateTag } from "./modules/tags/update-tag.js";
+import { updateTagKey } from "./modules/tags/update-tag-key.js";
+import { updateTagValue } from "./modules/tags/update-tag-value.js";
+
+export const tags = {
+  createTag,
+  createTagKey,
+  createTagValue,
+  deleteTag,
+  deleteTagKey,
+  deleteTagValue,
+  readTag,
+  readTagKey,
+  readTagValue,
+  readTags,
+  readTagKeys,
+  readTagValues,
+  updateTag,
+  updateTagKey,
+  updateTagValue,
+};
+
 import { createTransfer } from "./modules/transfers/create-transfer.js";
 import { deleteTransfer } from "./modules/transfers/delete-transfer.js";
 import { readTransfer } from "./modules/transfers/read-transfer.js";
