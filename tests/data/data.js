@@ -4,20 +4,17 @@ import squel from "squel";
 import { makeAccountData } from "./make-account-data.js";
 import { makeOperationData } from "./make-operation-data.js";
 import { makeTransferData } from "./make-transfer-data.js";
-// import { makeUserData } from "./users.js";
-import { user01, user02, user03, userID01, userID02 } from "./users.js";
+import { makeUserData } from "./make-user-data.js";
 
-export {
+export const {
   user01,
   user01Password,
   user02,
-  user02Password,
   user03,
-  user03Password,
   userID01,
   userID02,
   userID03,
-} from "./users.js";
+} = await makeUserData();
 
 export const users = [user01, user02, user03];
 
