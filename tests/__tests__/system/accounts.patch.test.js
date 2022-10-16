@@ -8,7 +8,7 @@ import {
   test,
 } from "@jest/globals";
 
-import { accountID01, user01, user01Password } from "../../data/data.js";
+import { accounts, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
@@ -17,6 +17,11 @@ jest.unstable_mockModule(
   `../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { user01 } = users.$;
+const { user01Password } = userPasswords.$;
+
+const { account01 } = accounts.$;
 
 const { prepareTestDatabase } = await import(
   "../../functions/prepare-test-database.js"
@@ -57,7 +62,7 @@ describe("PATCH /accounts", () => {
 
       // when
       const response = await server
-        .patch(`/accounts/${accountID01}`)
+        .patch(`/accounts/${account01.accountID}`)
         .send({ initialAmount, name })
         .set("cookie", sessionIDCookie);
 

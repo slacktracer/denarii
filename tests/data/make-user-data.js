@@ -2,17 +2,13 @@ import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 
 export const makeUserData = async () => {
-  const userID01 = uuid();
-  const userID02 = uuid();
-  const userID03 = uuid();
-
   const user01Password = "1234";
 
   const user01 = {
     createdAt: new Date().toISOString(),
     email: "mr.user@example.com",
     password: await bcrypt.hash(user01Password, 1),
-    userID: userID01,
+    userID: uuid(),
     username: "mr.user",
   };
 
@@ -22,7 +18,7 @@ export const makeUserData = async () => {
     createdAt: new Date().toISOString(),
     email: "mr.user2@example.com",
     password: await bcrypt.hash(user02Password, 1),
-    userID: userID02,
+    userID: uuid(),
     username: "mr.user2",
   };
 
@@ -32,19 +28,17 @@ export const makeUserData = async () => {
     createdAt: new Date().toISOString(),
     email: "mr.user3@example.com",
     password: await bcrypt.hash(user03Password, 1),
-    userID: userID03,
+    userID: uuid(),
     username: "mr.user3",
   };
 
-  return {
-    user01,
-    user01Password,
-    user02,
-    user02Password,
-    user03,
-    user03Password,
-    userID01,
-    userID02,
-    userID03,
-  };
+  const users = [user01, user02, user03];
+
+  users.$ = { user01, user02, user03 };
+
+  const userPasswords = [user01Password, user02Password, user03Password];
+
+  userPasswords.$ = { user01Password, user02Password, user03Password };
+
+  return { users, userPasswords };
 };

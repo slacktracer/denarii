@@ -8,13 +8,15 @@ import {
   test,
 } from "@jest/globals";
 
-import { userID01, users } from "../../../../../data/data.js";
+import { users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { user01 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -47,14 +49,14 @@ describe("update user", () => {
 
     const expectedUser = expect.objectContaining({
       username: newUserUsername,
-      userID: userID01,
+      userID: user01.userID,
     });
 
     const expectedUserCount = users.length;
 
     // when
     const updatedUser = await updateUser({
-      data: { username: newUserUsername, userID: userID01 },
+      data: { username: newUserUsername, userID: user01.userID },
     });
     const actualUserCount = (await readUsers()).length;
 

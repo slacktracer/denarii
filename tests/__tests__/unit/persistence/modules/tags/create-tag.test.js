@@ -9,11 +9,11 @@ import {
 } from "@jest/globals";
 
 import {
-  operationID01,
-  tagKeyID01,
+  operations,
+  tagKeys,
   tags,
-  tagValueID01,
-  userID01,
+  tagValues,
+  users,
 } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
@@ -21,6 +21,11 @@ jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { tagKey01 } = tagKeys.$;
+const { tagValue01 } = tagValues.$;
+const { operation01 } = operations.$;
+const { user01 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -50,10 +55,10 @@ describe("create tag", () => {
   test("a new tag is created", async () => {
     // given
     const tagData = {
-      operationID: operationID01,
-      tagKeyID: tagKeyID01,
-      tagValueID: tagValueID01,
-      userID: userID01,
+      operationID: operation01.operationID,
+      tagKeyID: tagKey01.tagKeyID,
+      tagValueID: tagValue01.tagValueID,
+      userID: user01.userID,
     };
 
     const expectedCreatedTag = expect.objectContaining(tagData);
@@ -63,9 +68,9 @@ describe("create tag", () => {
     // when
     const createdTag = await createTag({
       data: tagData,
-      userID: userID01,
+      userID: user01.userID,
     });
-    const actualTagCount = (await readTags({ userID: userID01 })).length;
+    const actualTagCount = (await readTags({ userID: user01.userID })).length;
 
     // then
     expect(createdTag).toEqual(expectedCreatedTag);

@@ -8,17 +8,17 @@ import {
   test,
 } from "@jest/globals";
 
-import {
-  operationID01,
-  operations,
-  userID01,
-} from "../../../../../data/data.js";
+import { operations, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { user01 } = users.$;
+
+const { operation01 } = operations.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -50,24 +50,25 @@ describe("update operation", () => {
     const newOperationAmount = 10000;
 
     const expectedOperation = expect.objectContaining({
-      operationID: operationID01,
+      operationID: operation01.operationID,
       amount: newOperationAmount,
-      userID: userID01,
+      userID: user01.userID,
     });
 
     const expectedOperationCount = operations.filter(
-      (operation) => operation.userID === userID01,
+      (operation) => operation.userID === user01.userID,
     ).length;
 
     // when
     const updatedOperation = await updateOperation({
-      operationID: operationID01,
+      operationID: operation01.operationID,
       data: { amount: newOperationAmount },
-      userID: userID01,
+      userID: user01.userID,
     });
 
-    const actualOperationCount = (await readOperations({ userID: userID01 }))
-      .length;
+    const actualOperationCount = (
+      await readOperations({ userID: user01.userID })
+    ).length;
 
     // then
     expect(updatedOperation).toEqual(expectedOperation);

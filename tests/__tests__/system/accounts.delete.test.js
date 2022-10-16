@@ -8,15 +8,7 @@ import {
   test,
 } from "@jest/globals";
 
-import {
-  accountID01,
-  accountID05,
-  accountID06,
-  accounts,
-  user01,
-  user01Password,
-  userID01,
-} from "../../data/data.js";
+import { accounts, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
 import { inspectTable } from "../../functions/inspect-table.js";
@@ -26,6 +18,11 @@ jest.unstable_mockModule(
   `../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { user01 } = users.$;
+const { user01Password } = userPasswords.$;
+
+const { account01, account05, account06 } = accounts.$;
 
 const { prepareTestDatabase } = await import(
   "../../functions/prepare-test-database.js"
@@ -52,7 +49,7 @@ describe("DELETE /accounts", () => {
     test("the account with the given ID is deleted", async () => {
       // given
       const user01AccountCount = accounts.filter(
-        (account) => account.userID === userID01,
+        (account) => account.userID === user01.userID,
       ).length;
 
       const server = await getServer();
@@ -67,12 +64,12 @@ describe("DELETE /accounts", () => {
 
       // when
       const response = await server
-        .delete(`/accounts/${accountID05}`)
+        .delete(`/accounts/${account05.accountID}`)
         .set("cookie", sessionIDCookie);
 
       const rows = inspectTable({
         table: "account",
-        template: { userID: userID01 },
+        template: { userID: user01.userID },
       });
 
       // then
@@ -86,7 +83,7 @@ describe("DELETE /accounts", () => {
     test("an error is returned, the account is not deleted", async () => {
       // given
       const user01AccountCount = accounts.filter(
-        (account) => account.userID === userID01,
+        (account) => account.userID === user01.userID,
       ).length;
 
       const server = await getServer();
@@ -99,12 +96,12 @@ describe("DELETE /accounts", () => {
 
       // when
       const response = await server
-        .delete(`/accounts/${accountID01}`)
+        .delete(`/accounts/${account01.accountID}`)
         .set("cookie", sessionIDCookie);
 
       const rows = inspectTable({
         table: "account",
-        template: { userID: userID01 },
+        template: { userID: user01.userID },
       });
 
       // then
@@ -128,7 +125,7 @@ describe("DELETE /accounts", () => {
 
       // when
       const response = await server
-        .delete(`/accounts/${accountID06}`)
+        .delete(`/accounts/${account06.accountID}`)
         .set("cookie", sessionIDCookie);
 
       const rows = inspectTable({ table: "account" });

@@ -8,13 +8,16 @@ import {
   test,
 } from "@jest/globals";
 
-import { accountID01, operations, userID01 } from "../../../../../data/data.js";
+import { accounts, operations, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { account01 } = accounts.$;
+const { user01 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -50,7 +53,7 @@ describe("create operation", () => {
     const unitCount = 1;
 
     const data = {
-      accountID: accountID01,
+      accountID: account01.accountID,
       amount,
       amountPerUnit,
       comments,
@@ -59,22 +62,28 @@ describe("create operation", () => {
     };
 
     const expectedCreatedOperation = expect.objectContaining({
-      accountID: accountID01,
+      accountID: account01.accountID,
       amount,
       amountPerUnit,
       comments,
       type,
       unitCount,
-      userID: userID01,
+      userID: user01.userID,
     });
 
-    const expectedOperationCount = operations.length + 1;
+    const expectedOperationCount =
+      operations.filter((operation) => operation.userID === user01.userID)
+        .length + 1;
 
     // when
-    const createdOperation = await createOperation({ data, userID: userID01 });
+    const createdOperation = await createOperation({
+      data,
+      userID: user01.userID,
+    });
 
-    const actualOperationCount = (await readOperations({ userID: userID01 }))
-      .length;
+    const actualOperationCount = (
+      await readOperations({ userID: user01.userID })
+    ).length;
 
     // then
     expect(createdOperation).toEqual(expectedCreatedOperation);

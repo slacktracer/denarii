@@ -8,17 +8,16 @@ import {
   test,
 } from "@jest/globals";
 
-import {
-  operationID02,
-  operations,
-  userID01,
-} from "../../../../../data/data.js";
+import { operations, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { operation02 } = operations.$;
+const { user01 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -48,13 +47,17 @@ describe("delete operation", () => {
   test("an existing operation is deleted", async () => {
     // given
     const expectedOperationCount =
-      operations.filter((operation) => operation.userID === userID01).length -
-      1;
+      operations.filter((operation) => operation.userID === user01.userID)
+        .length - 1;
 
     // when
-    await deleteOperation({ operationID: operationID02, userID: userID01 });
-    const actualOperationCount = (await readOperations({ userID: userID01 }))
-      .length;
+    await deleteOperation({
+      operationID: operation02.operationID,
+      userID: user01.userID,
+    });
+    const actualOperationCount = (
+      await readOperations({ userID: user01.userID })
+    ).length;
 
     // then
     expect(actualOperationCount).toEqual(expectedOperationCount);

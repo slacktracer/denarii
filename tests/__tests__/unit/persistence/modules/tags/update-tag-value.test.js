@@ -8,13 +8,16 @@ import {
   test,
 } from "@jest/globals";
 
-import { tagValueID01, tagValues, userID01 } from "../../../../../data/data.js";
+import { tagValues, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { tagValue01 } = tagValues.$;
+const { user01 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -46,23 +49,23 @@ describe("update tagValue", () => {
     const newTagValueName = "New TagValue Name!";
 
     const expectedTagValue = expect.objectContaining({
-      tagValueID: tagValueID01,
+      tagValueID: tagValue01.tagValueID,
       name: newTagValueName,
-      userID: userID01,
+      userID: user01.userID,
     });
 
     const expectedTagValueCount = tagValues.filter(
-      (tagValue) => tagValue.userID === userID01,
+      (tagValue) => tagValue.userID === user01.userID,
     ).length;
 
     // when
     const updatedTagValue = await updateTagValue({
-      tagValueID: tagValueID01,
+      tagValueID: tagValue01.tagValueID,
       data: { name: newTagValueName },
-      userID: userID01,
+      userID: user01.userID,
     });
 
-    const actualTagValueCount = (await readTagValues({ userID: userID01 }))
+    const actualTagValueCount = (await readTagValues({ userID: user01.userID }))
       .length;
 
     // then

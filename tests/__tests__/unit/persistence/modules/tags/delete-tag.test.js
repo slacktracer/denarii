@@ -8,13 +8,16 @@ import {
   test,
 } from "@jest/globals";
 
-import { tagID05, tags, userID01 } from "../../../../../data/data.js";
+import { tags, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { tag05 } = tags.$;
+const { user01 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -44,11 +47,11 @@ describe("delete tag", () => {
   test("an existing tag is deleted", async () => {
     // given
     const expectedTagCount =
-      tags.filter((tag) => tag.userID === userID01).length - 1;
+      tags.filter((tag) => tag.userID === user01.userID).length - 1;
 
     // when
-    await deleteTag({ tagID: tagID05, userID: userID01 });
-    const actualTagCount = (await readTags({ userID: userID01 })).length;
+    await deleteTag({ tagID: tag05.tagID, userID: user01.userID });
+    const actualTagCount = (await readTags({ userID: user01.userID })).length;
 
     // then
     expect(actualTagCount).toEqual(expectedTagCount);

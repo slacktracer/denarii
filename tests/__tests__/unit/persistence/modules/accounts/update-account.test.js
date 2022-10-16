@@ -8,13 +8,17 @@ import {
   test,
 } from "@jest/globals";
 
-import { accountID01, accounts, userID01 } from "../../../../../data/data.js";
+import { accounts, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { user01 } = users.$;
+
+const { account01 } = accounts.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -46,23 +50,23 @@ describe("update account", () => {
     const newAccountName = "New Account Name!";
 
     const expectedAccount = expect.objectContaining({
-      accountID: accountID01,
+      accountID: account01.accountID,
       name: newAccountName,
-      userID: userID01,
+      userID: user01.userID,
     });
 
     const expectedAccountCount = accounts.filter(
-      (account) => account.userID === userID01,
+      (account) => account.userID === user01.userID,
     ).length;
 
     // when
     const updatedAccount = await updateAccount({
-      accountID: accountID01,
+      accountID: account01.accountID,
       data: { initialAmount: 100, name: newAccountName },
-      userID: userID01,
+      userID: user01.userID,
     });
 
-    const actualAccountCount = (await readAccounts({ userID: userID01 }))
+    const actualAccountCount = (await readAccounts({ userID: user01.userID }))
       .length;
 
     // then

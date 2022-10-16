@@ -8,17 +8,16 @@ import {
   test,
 } from "@jest/globals";
 
-import {
-  tagValue01,
-  tagValueID01,
-  userID01,
-} from "../../../../../data/data.js";
+import { tagValues, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { tagValue01 } = tagValues.$;
+const { user01 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -54,8 +53,8 @@ describe("read tagValue", () => {
 
     // when
     const actualTagValue = await readTagValue({
-      tagValueID: tagValueID01,
-      userID: userID01,
+      tagValueID: tagValue01.tagValueID,
+      userID: user01.userID,
     });
 
     // then

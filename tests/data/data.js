@@ -7,101 +7,45 @@ import { makeTagData } from "./make-tag-data.js";
 import { makeTransferData } from "./make-transfer-data.js";
 import { makeUserData } from "./make-user-data.js";
 
-export const {
-  user01,
-  user01Password,
-  user02,
-  user03,
-  userID01,
-  userID02,
-  userID03,
-} = await makeUserData();
+export const { users, userPasswords } = await makeUserData();
 
-export const users = [user01, user02, user03];
+const {
+  user01: { userID: userID01 },
+  user02: { userID: userID02 },
+} = users.$;
 
-export const {
-  account01,
-  account02,
-  account03,
-  account04,
-  account05,
-  account06,
-  accountID01,
-  accountID02,
-  accountID03,
-  accountID04,
-  accountID05,
-  accountID06,
-} = makeAccountData({
+export const { accounts } = makeAccountData({
   userID01,
   userID02,
 });
 
-export const accounts = [
-  account01,
-  account02,
-  account03,
-  account04,
-  account05,
-  account06,
-];
+const {
+  account01: { accountID: accountID01 },
+  account02: { accountID: accountID02 },
+} = accounts.$;
 
-export const {
-  operation01,
-  operation02,
-  operation03,
-  operation04,
+export const { operations } = makeOperationData({
+  accountID01,
+  userID01,
+  userID02,
+});
+
+const {
+  operation01: { operationID: operationID01 },
+  operation03: { operationID: operationID03 },
+} = operations.$;
+
+export const { tags, tagKeys, tagValues } = makeTagData({
   operationID01,
-  operationID02,
   operationID03,
-} = makeOperationData({ accountID01, userID01, userID02 });
+  userID01,
+});
 
-export const operations = [operation01, operation02, operation03, operation04];
-
-export const {
-  tag01,
-  tag02,
-  tag03,
-  tag04,
-  tag05,
-  tagID01,
-  tagID05,
-  tagKey01,
-  tagKey02,
-  tagKey03,
-  tagKeyID01,
-  tagKeyID02,
-  tagKeyID03,
-  tagValue01,
-  tagValue02,
-  tagValue03,
-  tagValue04,
-  tagValue05,
-  tagValueID01,
-  tagValueID02,
-  tagValueID05,
-} = makeTagData({ operationID01, operationID03, userID01 });
-
-export const tags = [tag01, tag02, tag03, tag04, tag05];
-export const tagKeys = [tagKey01, tagKey02, tagKey03];
-export const tagValues = [
-  tagValue01,
-  tagValue02,
-  tagValue03,
-  tagValue04,
-  tagValue05,
-];
-
-export const {
-  transfer01,
-  transfer02,
-  transfer03,
-  transfer04,
-  transferID01,
-  transferID04,
-} = makeTransferData({ accountID01, accountID02, userID01 });
-
-export const transfers = [transfer01, transfer02, transfer03, transfer04];
+export const { transfers } = makeTransferData({
+  accountID01,
+  accountID02,
+  userID01,
+});
 
 export const insertUsersQuery = squel
   .insert()

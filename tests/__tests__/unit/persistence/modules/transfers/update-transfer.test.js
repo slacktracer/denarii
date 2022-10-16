@@ -8,13 +8,16 @@ import {
   test,
 } from "@jest/globals";
 
-import { transferID01, transfers, userID01 } from "../../../../../data/data.js";
+import { transfers, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { transfer01 } = transfers.$;
+const { user01 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -46,23 +49,23 @@ describe("update transfer", () => {
     const newAmount = 1_000_00;
 
     const expectedTransfer = expect.objectContaining({
-      transferID: transferID01,
+      transferID: transfer01.transferID,
       amount: newAmount,
-      userID: userID01,
+      userID: user01.userID,
     });
 
     const expectedTransferCount = transfers.filter(
-      (transfer) => transfer.userID === userID01,
+      (transfer) => transfer.userID === user01.userID,
     ).length;
 
     // when
     const updatedTransfer = await updateTransfer({
-      transferID: transferID01,
+      transferID: transfer01.transferID,
       data: { amount: newAmount },
-      userID: userID01,
+      userID: user01.userID,
     });
 
-    const actualTransferCount = (await readTransfers({ userID: userID01 }))
+    const actualTransferCount = (await readTransfers({ userID: user01.userID }))
       .length;
 
     // then

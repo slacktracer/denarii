@@ -8,13 +8,17 @@ import {
   test,
 } from "@jest/globals";
 
-import { account01, accountID01, userID01 } from "../../../../../data/data.js";
+import { accounts, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { user01 } = users.$;
+
+const { account01 } = accounts.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -50,8 +54,8 @@ describe("read account", () => {
 
     // when
     const actualAccount = await readAccount({
-      accountID: accountID01,
-      userID: userID01,
+      accountID: account01.accountID,
+      userID: user01.userID,
     });
 
     // then

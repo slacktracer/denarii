@@ -8,17 +8,17 @@ import {
   test,
 } from "@jest/globals";
 
-import {
-  accountID01,
-  accountID02,
-  userID01,
-} from "../../../../../data/data.js";
+import { accounts, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { user01 } = users.$;
+
+const { account01, account02 } = accounts.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -49,9 +49,9 @@ describe("create transfer", () => {
     // given
     const amount = 10_000_00;
     const at = new Date();
-    const fromAccountID = accountID01;
-    const toAccountID = accountID02;
-    const userID = userID01;
+    const fromAccountID = account01.accountID;
+    const toAccountID = account02.accountID;
+    const userID = user01.userID;
 
     const transferData = { amount, at, fromAccountID, toAccountID };
 

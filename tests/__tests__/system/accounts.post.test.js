@@ -8,7 +8,7 @@ import {
   test,
 } from "@jest/globals";
 
-import { user01, user01Password } from "../../data/data.js";
+import { userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
@@ -17,6 +17,9 @@ jest.unstable_mockModule(
   `../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { user01 } = users.$;
+const { user01Password } = userPasswords.$;
 
 const { prepareTestDatabase } = await import(
   "../../functions/prepare-test-database.js"

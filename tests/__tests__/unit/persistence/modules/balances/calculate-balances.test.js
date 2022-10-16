@@ -8,20 +8,17 @@ import {
   test,
 } from "@jest/globals";
 
-import {
-  accountID01,
-  accountID02,
-  accountID03,
-  accountID04,
-  accountID05,
-  userID01,
-} from "../../../../../data/data.js";
+import { accounts, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { user01 } = users.$;
+
+const { account01, account02, account03, account04, account05 } = accounts.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -52,29 +49,29 @@ describe("calculate balances", () => {
     // given
     const expectedBalances = [
       {
-        accountID: accountID01,
+        accountID: account01.accountID,
         total: -39_600_00,
       },
       {
-        accountID: accountID02,
+        accountID: account02.accountID,
         total: 40_000_00,
       },
       {
-        accountID: accountID03,
+        accountID: account03.accountID,
         total: 0,
       },
       {
-        accountID: accountID04,
+        accountID: account04.accountID,
         total: 0,
       },
       {
-        accountID: accountID05,
+        accountID: account05.accountID,
         total: 0,
       },
     ];
 
     // when
-    const actualBalances = await calculateBalances({ userID: userID01 });
+    const actualBalances = await calculateBalances({ userID: user01.userID });
 
     // then
     expect(actualBalances).toEqual(expectedBalances);

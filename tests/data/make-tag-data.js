@@ -113,27 +113,39 @@ export const makeTagData = ({ operationID01, operationID03, userID01 }) => {
     userID: userID01,
   };
 
-  return {
+  const tags = [tag01, tag02, tag03, tag04, tag05];
+
+  tags.$ = {
     tag01,
     tag02,
     tag03,
     tag04,
     tag05,
-    tagID01,
-    tagID03,
-    tagID05,
-    tagKey01,
-    tagKey02,
-    tagKey03,
-    tagKeyID01,
-    tagKeyID03,
+  };
+
+  const tagKeys = [tagKey01, tagKey02, tagKey03];
+
+  tagKeys.$ = { tagKey01, tagKey02, tagKey03 };
+
+  const tagValues = [
     tagValue01,
     tagValue02,
     tagValue03,
     tagValue04,
     tagValue05,
-    tagValueID01,
-    tagValueID02,
-    tagValueID05,
+  ];
+
+  tagValues.$ = {
+    tagValue01,
+    tagValue02,
+    tagValue03,
+    tagValue04,
+    tagValue05,
+  };
+
+  return {
+    tagKeys,
+    tagValues,
+    tags,
   };
 };

@@ -8,13 +8,16 @@ import {
   test,
 } from "@jest/globals";
 
-import { transferID04, transfers, userID01 } from "../../../../../data/data.js";
+import { transfers, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { transfer04 } = transfers.$;
+const { user01 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -44,11 +47,15 @@ describe("delete transfer", () => {
   test("an existing transfer is deleted", async () => {
     // given
     const expectedTransferCount =
-      transfers.filter((transfer) => transfer.userID === userID01).length - 1;
+      transfers.filter((transfer) => transfer.userID === user01.userID).length -
+      1;
 
     // when
-    await deleteTransfer({ transferID: transferID04, userID: userID01 });
-    const actualTransferCount = (await readTransfers({ userID: userID01 }))
+    await deleteTransfer({
+      transferID: transfer04.transferID,
+      userID: user01.userID,
+    });
+    const actualTransferCount = (await readTransfers({ userID: user01.userID }))
       .length;
 
     // then

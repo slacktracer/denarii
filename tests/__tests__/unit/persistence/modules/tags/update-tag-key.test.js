@@ -8,13 +8,16 @@ import {
   test,
 } from "@jest/globals";
 
-import { tagKeyID01, tagKeys, userID01 } from "../../../../../data/data.js";
+import { tagKeys, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { tagKey01 } = tagKeys.$;
+const { user01 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -46,23 +49,24 @@ describe("update tagKey", () => {
     const newTagKeyName = "New TagKey Name!";
 
     const expectedTagKey = expect.objectContaining({
-      tagKeyID: tagKeyID01,
+      tagKeyID: tagKey01.tagKeyID,
       name: newTagKeyName,
-      userID: userID01,
+      userID: user01.userID,
     });
 
     const expectedTagKeyCount = tagKeys.filter(
-      (tagKey) => tagKey.userID === userID01,
+      (tagKey) => tagKey.userID === user01.userID,
     ).length;
 
     // when
     const updatedTagKey = await updateTagKey({
-      tagKeyID: tagKeyID01,
+      tagKeyID: tagKey01.tagKeyID,
       data: { name: newTagKeyName },
-      userID: userID01,
+      userID: user01.userID,
     });
 
-    const actualTagKeyCount = (await readTagKeys({ userID: userID01 })).length;
+    const actualTagKeyCount = (await readTagKeys({ userID: user01.userID }))
+      .length;
 
     // then
     expect(updatedTagKey).toEqual(expectedTagKey);

@@ -8,13 +8,15 @@ import {
   test,
 } from "@jest/globals";
 
-import { accounts, userID01 } from "../../../../../data/data.js";
+import { accounts, users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { user01 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -46,24 +48,24 @@ describe("create account", () => {
     const initialAmount = 0;
     const name = "Account!";
 
-    const accountData = { initialAmount, name, userID: userID01 };
+    const accountData = { initialAmount, name, userID: user01.userID };
 
     const expectedCreatedAccount = expect.objectContaining({
       initialAmount,
       name,
-      userID: userID01,
+      userID: user01.userID,
     });
 
     const expectedAccountCount =
-      accounts.filter((account) => account.userID === userID01).length + 1;
+      accounts.filter((account) => account.userID === user01.userID).length + 1;
 
     // when
     const createdAccount = await createAccount({
       data: accountData,
-      userID: userID01,
+      userID: user01.userID,
     });
 
-    const actualAccountCount = (await readAccounts({ userID: userID01 }))
+    const actualAccountCount = (await readAccounts({ userID: user01.userID }))
       .length;
 
     // then

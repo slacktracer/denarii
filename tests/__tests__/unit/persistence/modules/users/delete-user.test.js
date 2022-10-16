@@ -8,13 +8,15 @@ import {
   test,
 } from "@jest/globals";
 
-import { userID03, users } from "../../../../../data/data.js";
+import { users } from "../../../../../data/data.js";
 import * as mockConnect from "../../../../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
   `../../../../../../main/src/persistence/connect.js`,
   () => mockConnect,
 );
+
+const { user03 } = users.$;
 
 const { prepareTestDatabase } = await import(
   "../../../../../functions/prepare-test-database.js"
@@ -46,7 +48,7 @@ describe("delete user", () => {
     const expectedUserCount = users.length - 1;
 
     // when
-    await deleteUser({ userID: userID03 });
+    await deleteUser({ userID: user03.userID });
     const actualUserCount = (await readUsers()).length;
 
     // then
