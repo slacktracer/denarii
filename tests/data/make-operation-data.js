@@ -1,5 +1,7 @@
 import { v4 as uuid } from "uuid";
 
+import { makeEnhancedArray } from "./make-enhanced-array.js";
+
 export const makeOperationData = ({ accountID01, userID01, userID02 }) => {
   const operation01 = {
     accountID: accountID01,
@@ -66,21 +68,13 @@ export const makeOperationData = ({ accountID01, userID01, userID02 }) => {
     userID: userID02,
   };
 
-  const operations = [
+  const operations = makeEnhancedArray({
     operation01,
     operation02,
     operation03,
     operation04,
     operation05,
-  ];
-
-  operations.$ = {
-    operation01,
-    operation02,
-    operation03,
-    operation04,
-    operation05,
-  };
+  });
 
   return { operations };
 };

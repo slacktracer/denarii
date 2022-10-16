@@ -1,5 +1,7 @@
 import { v4 as uuid } from "uuid";
 
+import { makeEnhancedArray } from "./make-enhanced-array.js";
+
 export const makeTransferData = ({ accountID01, accountID02, userID01 }) => {
   const transfer01 = {
     amount: 10_000_00,
@@ -41,9 +43,12 @@ export const makeTransferData = ({ accountID01, accountID02, userID01 }) => {
     userID: userID01,
   };
 
-  const transfers = [transfer01, transfer02, transfer03, transfer04];
-
-  transfers.$ = { transfer01, transfer02, transfer03, transfer04 };
+  const transfers = makeEnhancedArray({
+    transfer01,
+    transfer02,
+    transfer03,
+    transfer04,
+  });
 
   return { transfers };
 };

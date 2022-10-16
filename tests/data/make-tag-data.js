@@ -1,5 +1,7 @@
 import { v4 as uuid } from "uuid";
 
+import { makeEnhancedArray } from "./make-enhanced-array.js";
+
 export const makeTagData = ({ operationID01, operationID03, userID01 }) => {
   const tagKey01 = {
     createdAt: new Date().toISOString(),
@@ -65,6 +67,7 @@ export const makeTagData = ({ operationID01, operationID03, userID01 }) => {
     operationID: operationID01,
     userID: userID01,
   };
+
   const tag02 = {
     createdAt: new Date().toISOString(),
     tagID: uuid(),
@@ -73,6 +76,7 @@ export const makeTagData = ({ operationID01, operationID03, userID01 }) => {
     operationID: operationID01,
     userID: userID01,
   };
+
   const tag03 = {
     createdAt: new Date().toISOString(),
     tagID: uuid(),
@@ -81,6 +85,7 @@ export const makeTagData = ({ operationID01, operationID03, userID01 }) => {
     operationID: operationID03,
     userID: userID01,
   };
+
   const tag04 = {
     createdAt: new Date().toISOString(),
     tagID: uuid(),
@@ -99,35 +104,17 @@ export const makeTagData = ({ operationID01, operationID03, userID01 }) => {
     userID: userID01,
   };
 
-  const tags = [tag01, tag02, tag03, tag04, tag05];
+  const tagKeys = makeEnhancedArray({ tagKey01, tagKey02, tagKey03 });
 
-  tags.$ = {
-    tag01,
-    tag02,
-    tag03,
-    tag04,
-    tag05,
-  };
+  const tags = makeEnhancedArray({ tag01, tag02, tag03, tag04, tag05 });
 
-  const tagKeys = [tagKey01, tagKey02, tagKey03];
-
-  tagKeys.$ = { tagKey01, tagKey02, tagKey03 };
-
-  const tagValues = [
+  const tagValues = makeEnhancedArray({
     tagValue01,
     tagValue02,
     tagValue03,
     tagValue04,
     tagValue05,
-  ];
-
-  tagValues.$ = {
-    tagValue01,
-    tagValue02,
-    tagValue03,
-    tagValue04,
-    tagValue05,
-  };
+  });
 
   return {
     tagKeys,

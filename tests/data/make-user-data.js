@@ -1,6 +1,8 @@
 import bcrypt from "bcrypt";
 import { v4 as uuid } from "uuid";
 
+import { makeEnhancedArray } from "./make-enhanced-array.js";
+
 export const makeUserData = async () => {
   const user01Password = "1234";
 
@@ -32,13 +34,13 @@ export const makeUserData = async () => {
     username: "mr.user3",
   };
 
-  const users = [user01, user02, user03];
+  const users = makeEnhancedArray({ user01, user02, user03 });
 
-  users.$ = { user01, user02, user03 };
-
-  const userPasswords = [user01Password, user02Password, user03Password];
-
-  userPasswords.$ = { user01Password, user02Password, user03Password };
+  const userPasswords = makeEnhancedArray({
+    user01Password,
+    user02Password,
+    user03Password,
+  });
 
   return { users, userPasswords };
 };
