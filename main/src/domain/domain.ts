@@ -16,6 +16,40 @@ export const accounts = {
   updateAccount,
 };
 
+import { createTag } from "./modules/tags/create-tag.js";
+import { createTagKey } from "./modules/tags/create-tag-key.js";
+import { createTagValue } from "./modules/tags/create-tag-value.js";
+import { deleteTag } from "./modules/tags/delete-tag.js";
+import { deleteTagKey } from "./modules/tags/delete-tag-key.js";
+import { deleteTagValue } from "./modules/tags/delete-tag-value.js";
+import { readTag } from "./modules/tags/read-tag.js";
+import { readTagKey } from "./modules/tags/read-tag-key.js";
+import { readTagKeys } from "./modules/tags/read-tag-keys.js";
+import { readTagValue } from "./modules/tags/read-tag-value.js";
+import { readTagValues } from "./modules/tags/read-tag-values.js";
+import { readTags } from "./modules/tags/read-tags.js";
+import { updateTag } from "./modules/tags/update-tag.js";
+import { updateTagKey } from "./modules/tags/update-tag-key.js";
+import { updateTagValue } from "./modules/tags/update-tag-value.js";
+
+export const tags = {
+  createTag,
+  deleteTag,
+  readTag,
+  readTags,
+  updateTag,
+  createTagKey,
+  deleteTagKey,
+  readTagKey,
+  readTagKeys,
+  updateTagKey,
+  createTagValue,
+  deleteTagValue,
+  readTagValue,
+  readTagValues,
+  updateTagValue,
+};
+
 import { createUser } from "./modules/users/create-user.js";
 import { deleteUser } from "./modules/users/delete-user.js";
 import { readUser } from "./modules/users/read-user.js";
