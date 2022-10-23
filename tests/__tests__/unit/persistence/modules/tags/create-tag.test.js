@@ -63,13 +63,15 @@ describe("create tag", () => {
 
     const expectedCreatedTag = expect.objectContaining(tagData);
 
-    const expectedTagCount = tags.length + 1;
+    const expectedTagCount =
+      tags.filter((tag) => tag.userID === user01.userID).length + 1;
 
     // when
     const createdTag = await createTag({
       data: tagData,
       userID: user01.userID,
     });
+
     const actualTagCount = (await readTags({ userID: user01.userID })).length;
 
     // then

@@ -54,7 +54,8 @@ describe("create tagKey", () => {
       userID: user01.userID,
     });
 
-    const expectedTagKeyCount = tagKeys.length + 1;
+    const expectedTagKeyCount =
+      tagKeys.filter((tagKey) => tagKey.userID === user01.userID).length + 1;
 
     // when
     const createdTagKey = await createTagKey({

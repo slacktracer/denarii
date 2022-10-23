@@ -39,6 +39,7 @@ export const { tags, tagKeys, tagValues } = makeTagData({
   operationID01,
   operationID03,
   userID01,
+  userID02,
 });
 
 export const { transfers } = makeTransferData({

@@ -2,7 +2,12 @@ import { v4 as uuid } from "uuid";
 
 import { makeEnhancedArray } from "./make-enhanced-array.js";
 
-export const makeTagData = ({ operationID01, operationID03, userID01 }) => {
+export const makeTagData = ({
+  operationID01,
+  operationID03,
+  userID01,
+  userID02,
+}) => {
   const tagKey01 = {
     createdAt: new Date().toISOString(),
     name: "Group",
@@ -22,6 +27,20 @@ export const makeTagData = ({ operationID01, operationID03, userID01 }) => {
     name: "Location",
     tagKeyID: uuid(),
     userID: userID01,
+  };
+
+  const tagKey04 = {
+    createdAt: new Date().toISOString(),
+    name: "Location",
+    tagKeyID: uuid(),
+    userID: userID02,
+  };
+
+  const tagKey05 = {
+    createdAt: new Date().toISOString(),
+    name: "Location",
+    tagKeyID: uuid(),
+    userID: userID02,
   };
 
   const tagValue01 = {
@@ -57,6 +76,13 @@ export const makeTagData = ({ operationID01, operationID03, userID01 }) => {
     name: "Some value 5",
     tagValueID: uuid(),
     userID: userID01,
+  };
+
+  const tagValue06 = {
+    createdAt: new Date().toISOString(),
+    name: "Some value 5",
+    tagValueID: uuid(),
+    userID: userID02,
   };
 
   const tag01 = {
@@ -104,9 +130,24 @@ export const makeTagData = ({ operationID01, operationID03, userID01 }) => {
     userID: userID01,
   };
 
-  const tagKeys = makeEnhancedArray({ tagKey01, tagKey02, tagKey03 });
+  const tag06 = {
+    createdAt: new Date().toISOString(),
+    tagID: uuid(),
+    tagKeyID: tagKey02.tagKeyID,
+    tagValueID: tagValue04.tagValueID,
+    operationID: operationID03,
+    userID: userID02,
+  };
 
-  const tags = makeEnhancedArray({ tag01, tag02, tag03, tag04, tag05 });
+  const tagKeys = makeEnhancedArray({
+    tagKey01,
+    tagKey02,
+    tagKey03,
+    tagKey04,
+    tagKey05,
+  });
+
+  const tags = makeEnhancedArray({ tag01, tag02, tag03, tag04, tag05, tag06 });
 
   const tagValues = makeEnhancedArray({
     tagValue01,
@@ -114,6 +155,7 @@ export const makeTagData = ({ operationID01, operationID03, userID01 }) => {
     tagValue03,
     tagValue04,
     tagValue05,
+    tagValue06,
   });
 
   return {
