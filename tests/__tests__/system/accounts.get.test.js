@@ -48,13 +48,15 @@ describe("GET /accounts", () => {
     // given
     const server = await getServer();
 
-    const expectedAccounts = accounts
-      .filter((account) => account.userID === user01.userID)
-      .map((account) => {
-        account.updatedAt = null;
+    const expectedAccounts = expect.arrayContaining(
+      accounts
+        .filter((account) => account.userID === user01.userID)
+        .map((account) => {
+          account.updatedAt = null;
 
-        return account;
-      });
+          return account;
+        }),
+    );
 
     const sessionIDCookie = await getSessionIDCookie({
       password: user01Password,

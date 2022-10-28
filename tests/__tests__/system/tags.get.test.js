@@ -48,13 +48,15 @@ describe("GET /tags", () => {
     // given
     const server = await getServer();
 
-    const expectedTags = tags
-      .filter((tag) => tag.userID === user01.userID)
-      .map((tag) => {
-        tag.updatedAt = null;
+    const expectedTags = expect.arrayContaining(
+      tags
+        .filter((tag) => tag.userID === user01.userID)
+        .map((tag) => {
+          tag.updatedAt = null;
 
-        return tag;
-      });
+          return tag;
+        }),
+    );
 
     const sessionIDCookie = await getSessionIDCookie({
       password: user01Password,

@@ -48,13 +48,15 @@ describe("GET /operations", () => {
     // given
     const server = await getServer();
 
-    const expectedOperations = operations
-      .filter((operation) => operation.userID === user01.userID)
-      .map((operation) => {
-        operation.updatedAt = null;
+    const expectedOperations = expect.arrayContaining(
+      operations
+        .filter((operation) => operation.userID === user01.userID)
+        .map((operation) => {
+          operation.updatedAt = null;
 
-        return operation;
-      });
+          return operation;
+        }),
+    );
 
     const sessionIDCookie = await getSessionIDCookie({
       password: user01Password,
