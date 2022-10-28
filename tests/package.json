@@ -30,7 +30,8 @@
     "start": "nodemon",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config --watch",
     "test-once": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config",
-    "test-once-on-ci": "NODE_OPTIONS=--experimental-vm-modules jest --ci --runInBand"
+    "test-once-on-ci": "NODE_OPTIONS=--experimental-vm-modules jest --ci --runInBand",
+    "test-silently": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config --silent --watch"
   },
   "type": "module",
   "version": "1.0.0"

@@ -16,6 +16,20 @@ export const accounts = {
   updateAccount,
 };
 
+import { createOperation } from "./modules/operations/create-operation.js";
+import { deleteOperation } from "./modules/operations/delete-operation.js";
+import { readOperation } from "./modules/operations/read-operation.js";
+import { readOperations } from "./modules/operations/read-operations.js";
+import { updateOperation } from "./modules/operations/update-operation.js";
+
+export const operations = {
+  createOperation,
+  deleteOperation,
+  readOperation,
+  readOperations,
+  updateOperation,
+};
+
 import { createTag } from "./modules/tags/create-tag.js";
 import { createTagKey } from "./modules/tags/create-tag-key.js";
 import { createTagValue } from "./modules/tags/create-tag-value.js";

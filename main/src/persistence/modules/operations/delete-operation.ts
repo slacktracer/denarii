@@ -6,5 +6,11 @@ const deleteOperationQuery = loadQuery({
   url: "./delete-operation.sql",
 });
 
-export const deleteOperation = ({ operationID, userID }) =>
-  db.none(deleteOperationQuery, { operationID, userID });
+export const deleteOperation = async ({ operationID, userID }) => {
+  const result = await db.result(deleteOperationQuery, {
+    operationID,
+    userID,
+  });
+
+  return { deletedRowsCount: result.rowCount };
+};

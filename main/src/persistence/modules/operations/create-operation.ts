@@ -7,25 +7,14 @@ const createOperationQuery = loadQuery({
 });
 
 export const createOperation = async ({ data, userID }) => {
-  const {
-    accountID,
-    amount,
-    amountPerUnit,
-    categoryID,
-    comments,
-    groupID,
-    type,
-    unitCount,
-  } = data;
+  const { accountID, amount, amountPerUnit, comments, type, unitCount } = data;
 
   const createdOperation = db.one(createOperationQuery, {
     accountID,
     amount,
     amountPerUnit,
-    categoryID,
     comments,
     createdAt: new Date(),
-    groupID,
     type,
     unitCount,
     userID,

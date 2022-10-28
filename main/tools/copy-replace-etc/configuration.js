@@ -1,5 +1,5 @@
 export const path =
-  "/home/slacktracer/source/denarii/main/src/domain/modules/accounts";
+  "/home/slacktracer/source/denarii/main/src/httpi/modules/accounts";
 
 export const replace = [
   "ACCOUNTS",
@@ -10,4 +10,11 @@ export const replace = [
   "account",
 ];
 
-export const replaceBy = ["TAGS", "TAG", "Tags", "Tag", "tags", "tag"];
+export const replaceBy = [
+  "OPERATIONS",
+  "OPERATION",
+  "Operations",
+  "Operation",
+  "operations",
+  "operation",
+];
