@@ -14,9 +14,6 @@ export const patchTag = async (request, response) => {
 
   const updatedTag = await updateTag({
     tagID,
-    // this "data transformation" is probably going to be necessary in every
-    // PATCH. The lack of it is just not causing other issues right now because
-    // the other tests and entities being patched are too simple/small...
     data: filterOutUndefinedEntries({ object: data }),
     userID,
   });

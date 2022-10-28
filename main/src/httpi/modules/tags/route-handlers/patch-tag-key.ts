@@ -1,4 +1,5 @@
 import { tags } from "../../../../domain/domain.js";
+import { filterOutUndefinedEntries } from "../../../functions/filter-out-undefined-entries.js";
 
 const { updateTagKey } = tags;
 
@@ -11,7 +12,11 @@ export const patchTagKey = async (request, response) => {
 
   const data = { name };
 
-  const updatedTagKey = await updateTagKey({ tagKeyID, data, userID });
+  const updatedTagKey = await updateTagKey({
+    tagKeyID,
+    data: filterOutUndefinedEntries({ object: data }),
+    userID,
+  });
 
   response.json(updatedTagKey);
 };

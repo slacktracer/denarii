@@ -1,4 +1,5 @@
 import { accounts } from "../../../../domain/domain.js";
+import { filterOutUndefinedEntries } from "../../../functions/filter-out-undefined-entries.js";
 
 const { updateAccount } = accounts;
 
@@ -11,7 +12,11 @@ export const patchAccount = async (request, response) => {
 
   const data = { initialAmount, name };
 
-  const updatedAccount = await updateAccount({ accountID, data, userID });
+  const updatedAccount = await updateAccount({
+    accountID,
+    data: filterOutUndefinedEntries({ object: data }),
+    userID,
+  });
 
   response.json(updatedAccount);
 };
