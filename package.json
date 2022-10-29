@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "husky": "^8.0.0",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.3"
   },
   "name": "denarii",
