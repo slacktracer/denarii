@@ -9,8 +9,6 @@ export const postTag = async (request, response) => {
 
   const data = { operationID, tagKeyID, tagValueID };
 
-  console.log(data);
-
   const createdTag = await createTag({ data, userID });
 
   response.json(createdTag);

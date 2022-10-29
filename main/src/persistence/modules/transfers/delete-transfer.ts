@@ -6,5 +6,8 @@ const deleteTransferQuery = loadQuery({
   url: "./delete-transfer.sql",
 });
 
-export const deleteTransfer = ({ transferID, userID }) =>
-  db.none(deleteTransferQuery, { transferID, userID });
+export const deleteTransfer = async ({ transferID, userID }) => {
+  const result = await db.result(deleteTransferQuery, { transferID, userID });
+
+  return { deletedRowsCount: result.rowCount };
+};

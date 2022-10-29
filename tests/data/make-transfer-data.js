@@ -2,7 +2,12 @@ import { v4 as uuid } from "uuid";
 
 import { makeEnhancedArray } from "./make-enhanced-array.js";
 
-export const makeTransferData = ({ accountID01, accountID02, userID01 }) => {
+export const makeTransferData = ({
+  accountID01,
+  accountID02,
+  userID01,
+  userID02,
+}) => {
   const transfer01 = {
     amount: 10_000_00,
     at: new Date().toISOString(),
@@ -43,11 +48,22 @@ export const makeTransferData = ({ accountID01, accountID02, userID01 }) => {
     userID: userID01,
   };
 
+  const transfer05 = {
+    amount: 10_000_00,
+    at: new Date().toISOString(),
+    createdAt: new Date().toISOString(),
+    fromAccountID: accountID01,
+    toAccountID: accountID02,
+    transferID: uuid(),
+    userID: userID02,
+  };
+
   const transfers = makeEnhancedArray({
     transfer01,
     transfer02,
     transfer03,
     transfer04,
+    transfer05,
   });
 
   return { transfers };

@@ -64,6 +64,20 @@ export const tags = {
   updateTagValue,
 };
 
+import { createTransfer } from "./modules/transfers/create-transfer.js";
+import { deleteTransfer } from "./modules/transfers/delete-transfer.js";
+import { readTransfer } from "./modules/transfers/read-transfer.js";
+import { readTransfers } from "./modules/transfers/read-transfers.js";
+import { updateTransfer } from "./modules/transfers/update-transfer.js";
+
+export const transfers = {
+  createTransfer,
+  deleteTransfer,
+  readTransfer,
+  readTransfers,
+  updateTransfer,
+};
+
 import { createUser } from "./modules/users/create-user.js";
 import { deleteUser } from "./modules/users/delete-user.js";
 import { readUser } from "./modules/users/read-user.js";

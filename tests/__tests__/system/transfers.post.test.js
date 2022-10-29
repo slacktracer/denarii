@@ -18,7 +18,7 @@ jest.unstable_mockModule(
   () => mockConnect,
 );
 
-const { account01 } = accounts.$;
+const { account01, account02 } = accounts.$;
 const { user01 } = users.$;
 const { user01Password } = userPasswords.$;
 
@@ -42,21 +42,19 @@ beforeEach(async () => {
   backup.restore();
 });
 
-describe("POST /operations", () => {
-  test("a new operation is created and returned", async () => {
+describe("POST /transfers", () => {
+  test("a new transfer is created and returned", async () => {
     // given
     const server = await getServer();
 
-    const operationData = {
-      accountID: account01.accountID,
-      amount: 123_00,
-      amountPerUnit: 123_00,
-      comments: "This is a new operation!",
-      type: "Income",
-      unitCount: 1,
+    const transferData = {
+      amount: 10_000_00,
+      at: new Date().toISOString(),
+      fromAccountID: account01.accountID,
+      toAccountID: account02.accountID,
     };
 
-    const expectedOperation = expect.objectContaining(operationData);
+    const expectedTransfer = expect.objectContaining(transferData);
 
     const sessionIDCookie = await getSessionIDCookie({
       password: user01Password,
@@ -66,12 +64,12 @@ describe("POST /operations", () => {
 
     // when
     const response = await server
-      .post("/operations")
-      .send(operationData)
+      .post("/transfers")
+      .send(transferData)
       .set("cookie", sessionIDCookie);
 
     // then
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual(expectedOperation);
+    expect(response.body).toEqual(expectedTransfer);
   });
 });

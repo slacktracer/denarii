@@ -46,6 +46,7 @@ export const { transfers } = makeTransferData({
   accountID01,
   accountID02,
   userID01,
+  userID02,
 });
 
 export const insertUsersQuery = squel
