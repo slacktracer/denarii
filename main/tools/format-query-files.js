@@ -28,7 +28,7 @@ const placePlaceHoldersReplaceFunction = (
 
   variablesMap[key] = parenthesizedCaptureGroup1;
 
-  return `$ { ${key} }`;
+  return `__${key}__`;
 };
 
 const placePlaceholders = ({ query }) => {
@@ -49,7 +49,7 @@ const placeVariablesBackReplaceFunction = (
 };
 
 const placeVariablesBack = ({ query }) => {
-  const placeholderRegex = /\$ \{ (.+?) \}/g;
+  const placeholderRegex = /__(.+?)__/g;
 
   return query.replace(placeholderRegex, placeVariablesBackReplaceFunction);
 };
