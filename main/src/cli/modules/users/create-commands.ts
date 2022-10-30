@@ -1,4 +1,5 @@
 import { users } from "../../../persistence/persistence.js";
+import { print } from "../../objects/print.js";
 
 const { createUser, deleteUser, readUser, readUsers, updateUser } = users;
 
@@ -13,7 +14,7 @@ export const createCommands = ({ program }) => {
 
       const user = JSON.stringify(await createUser({ data }), null, 2);
 
-      console.log(user);
+      print.info(user);
     });
 
   usersCommand
@@ -24,7 +25,7 @@ export const createCommands = ({ program }) => {
 
       await deleteUser({ userID });
 
-      console.log(`User ${userID} deleted.`);
+      print.info(`User ${userID} deleted.`);
     });
 
   usersCommand
@@ -36,14 +37,14 @@ export const createCommands = ({ program }) => {
       if (userID) {
         const user = await readUser({ userID });
 
-        console.log(user);
+        print.info(user);
 
         return;
       }
 
       const users = await readUsers();
 
-      console.table(users);
+      print.table(users);
     });
 
   usersCommand
@@ -54,7 +55,7 @@ export const createCommands = ({ program }) => {
 
       const user = JSON.stringify(await updateUser({ data }), null, 2);
 
-      console.log(user);
+      print.info(user);
     });
 
   return usersCommand;

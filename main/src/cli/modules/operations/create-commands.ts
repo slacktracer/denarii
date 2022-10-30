@@ -1,4 +1,5 @@
 import { operations } from "../../../persistence/persistence.js";
+import { print } from "../../objects/print.js";
 
 const {
   createOperation,
@@ -26,7 +27,7 @@ export const createCommands = ({ program }) => {
         2,
       );
 
-      console.log(operation);
+      print.info(operation);
     });
 
   operationsCommand
@@ -37,7 +38,7 @@ export const createCommands = ({ program }) => {
 
       await deleteOperation({ operationID, userID });
 
-      console.log(`User ${userID} deleted.`);
+      print.info(`User ${userID} deleted.`);
     });
 
   operationsCommand
@@ -50,14 +51,14 @@ export const createCommands = ({ program }) => {
       if (operationID) {
         const operation = await readOperation({ operationID, userID });
 
-        console.log(operation);
+        print.info(operation);
 
         return;
       }
 
       const operations = await readOperations({ userID });
 
-      console.table(operations);
+      print.table(operations);
     });
 
   operationsCommand
@@ -75,7 +76,7 @@ export const createCommands = ({ program }) => {
         2,
       );
 
-      console.log(operation);
+      print.info(operation);
     });
 
   return operationsCommand;

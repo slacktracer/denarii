@@ -1,4 +1,5 @@
 import { accounts } from "../../../persistence/persistence.js";
+import { print } from "../../objects/print.js";
 
 const {
   createAccount,
@@ -26,7 +27,7 @@ export const createCommands = ({ program }) => {
         2,
       );
 
-      console.log(account);
+      print.info(account);
     });
 
   accountsCommand
@@ -38,7 +39,7 @@ export const createCommands = ({ program }) => {
 
       await deleteAccount({ accountID, userID });
 
-      console.log(`Account ${accountID} deleted.`);
+      print.info(`Account ${accountID} deleted.`);
     });
 
   accountsCommand
@@ -51,14 +52,14 @@ export const createCommands = ({ program }) => {
       if (accountID) {
         const account = await readAccount({ accountID, userID });
 
-        console.log(account);
+        print.info(account);
 
         return;
       }
 
       const accounts = await readAccounts({ userID });
 
-      console.table(accounts);
+      print.table(accounts);
     });
 
   accountsCommand
@@ -76,7 +77,7 @@ export const createCommands = ({ program }) => {
         2,
       );
 
-      console.log(account);
+      print.info(account);
     });
 
   return accountsCommand;

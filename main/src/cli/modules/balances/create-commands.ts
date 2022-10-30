@@ -1,4 +1,5 @@
 import { balances } from "../../../persistence/persistence.js";
+import { print } from "../../objects/print.js";
 
 const { calculateBalances } = balances;
 
@@ -11,7 +12,7 @@ export const createCommands = ({ program }) => {
 
       const balances = await calculateBalances({ userID });
 
-      console.table(balances);
+      print.table(balances);
     });
 
   return balancesCommand;

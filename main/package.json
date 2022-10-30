@@ -49,7 +49,7 @@
     "format": "prettier --write .",
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
-    "postcompile": "node tools/postcompile.js && chmod u+x src/cli/cli.js",
+    "postcompile": "node tools/postcompile.js",
     "start": "nodemon",
     "x": "npm run execute"
   },

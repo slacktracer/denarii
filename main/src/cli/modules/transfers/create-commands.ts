@@ -1,4 +1,5 @@
 import { transfers } from "../../../persistence/persistence.js";
+import { print } from "../../objects/print.js";
 
 const {
   createTransfer,
@@ -26,7 +27,7 @@ export const createCommands = ({ program }) => {
         2,
       );
 
-      console.log(transfer);
+      print.info(transfer);
     });
 
   transfersCommand
@@ -38,7 +39,7 @@ export const createCommands = ({ program }) => {
 
       await deleteTransfer({ transferID, userID });
 
-      console.log(`Transfer ${transferID} deleted.`);
+      print.info(`Transfer ${transferID} deleted.`);
     });
 
   transfersCommand
@@ -51,14 +52,14 @@ export const createCommands = ({ program }) => {
       if (transferID) {
         const transfer = await readTransfer({ transferID, userID });
 
-        console.log(transfer);
+        print.info(transfer);
 
         return;
       }
 
       const transfers = await readTransfers({ userID });
 
-      console.table(transfers);
+      print.table(transfers);
     });
 
   transfersCommand
@@ -76,7 +77,7 @@ export const createCommands = ({ program }) => {
         2,
       );
 
-      console.log(transfer);
+      print.info(transfer);
     });
 
   return transfersCommand;

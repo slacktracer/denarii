@@ -1,7 +1,4 @@
-#!/usr/bin/env node
-import "dotenv/config";
-
-import commander from "commander";
+import { Command } from "commander";
 
 import { createCommands as createAccountsCommands } from "./modules/accounts/create-commands.js";
 import { createCommands as createBalancesCommands } from "./modules/balances/create-commands.js";
@@ -9,7 +6,7 @@ import { createCommands as createOperationsCommands } from "./modules/operations
 import { createCommands as createTransfersCommands } from "./modules/transfers/create-commands.js";
 import { createCommands as createUsersCommands } from "./modules/users/create-commands.js";
 
-const program = new commander.Command();
+const program = new Command();
 
 createAccountsCommands({ program });
 createBalancesCommands({ program });
