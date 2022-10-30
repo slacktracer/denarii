@@ -5,6 +5,7 @@ import {
   tryCatch,
   UNKNOWN_ERROR,
 } from "../../../../domain/domain.js";
+import { print } from "../../../objects/print.js";
 
 const { deleteAccount } = accounts;
 
@@ -32,8 +33,8 @@ export const deleteAccountByID = async (request, response) => {
     }
   }
 
-  console.warn(UNKNOWN_ERROR);
-  console.error(result);
+  print.warn(UNKNOWN_ERROR);
+  print.error(result);
 
   response.status(500).end();
 };

@@ -2,9 +2,11 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 
+import { print } from "./objects/print.js";
+
 export const createExpressApplication = async () => {
   if (!process.env.PORT) {
-    console.error("NO_PORT");
+    print.error("NO_PORT");
 
     process.exit(1);
   }
@@ -29,11 +31,11 @@ export const createExpressApplication = async () => {
       response.json({ healthy: true }),
     );
 
-    console.log(`Server listening on port ${port}`);
-    console.log(`Health checks available at ${healthCheckEndpoint}`);
+    print.info(`Server listening on port ${port}`);
+    print.info(`Health checks available at ${healthCheckEndpoint}`);
 
     return expressApplication;
   } catch (error) {
-    console.error(error);
+    print.error(error);
   }
 };
