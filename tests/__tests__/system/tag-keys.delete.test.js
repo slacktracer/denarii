@@ -22,7 +22,7 @@ jest.unstable_mockModule(
 const { user01 } = users.$;
 const { user01Password } = userPasswords.$;
 
-const { tagKey01, tagKey03, tagKey04 } = tagKeys.$;
+const { tagKey03, tagKey04 } = tagKeys.$;
 
 const { prepareTestDatabase } = await import(
   "../../functions/prepare-test-database.js"
@@ -45,69 +45,36 @@ beforeEach(async () => {
 });
 
 describe("DELETE /tags/keys", () => {
-  describe("the tagKey is used in no operations", () => {
-    test("the tagKey with the given ID is deleted", async () => {
-      // given
-      const user01TagKeyCount = tagKeys.filter(
-        (tagKey) => tagKey.userID === user01.userID,
-      ).length;
+  test("the tagKey with the given ID is deleted", async () => {
+    // given
+    const user01TagKeyCount = tagKeys.filter(
+      (tagKey) => tagKey.userID === user01.userID,
+    ).length;
 
-      const server = await getServer();
+    const server = await getServer();
 
-      const sessionIDCookie = await getSessionIDCookie({
-        password: user01Password,
-        server,
-        username: user01.username,
-      });
-
-      const expectedDeletedRowsCount = 1;
-
-      // when
-      const response = await server
-        .delete(`/tags/keys/${tagKey03.tagKeyID}`)
-        .set("cookie", sessionIDCookie);
-
-      const rows = inspectTable({
-        table: "tag_key",
-        template: { userID: user01.userID },
-      });
-
-      // then
-      expect(response.status).toEqual(200);
-      expect(response.body.deletedRowsCount).toEqual(expectedDeletedRowsCount);
-      expect(rows.length).toEqual(user01TagKeyCount - 1);
+    const sessionIDCookie = await getSessionIDCookie({
+      password: user01Password,
+      server,
+      username: user01.username,
     });
-  });
 
-  describe("the tagKey has operations", () => {
-    test("an error is returned, the tagKey is not deleted", async () => {
-      // given
-      const user01TagKeyCount = tagKeys.filter(
-        (tagKey) => tagKey.userID === user01.userID,
-      ).length;
+    const expectedDeletedRowsCount = 1;
 
-      const server = await getServer();
+    // when
+    const response = await server
+      .delete(`/tags/keys/${tagKey03.tagKeyID}`)
+      .set("cookie", sessionIDCookie);
 
-      const sessionIDCookie = await getSessionIDCookie({
-        password: user01Password,
-        server,
-        username: user01.username,
-      });
-
-      // when
-      const response = await server
-        .delete(`/tags/keys/${tagKey01.tagKeyID}`)
-        .set("cookie", sessionIDCookie);
-
-      const rows = inspectTable({
-        table: "tag_key",
-        template: { userID: user01.userID },
-      });
-
-      // then
-      expect(response.status).toEqual(500);
-      expect(rows.length).toEqual(user01TagKeyCount);
+    const rows = inspectTable({
+      table: "tag_key",
+      template: { userID: user01.userID },
     });
+
+    // then
+    expect(response.status).toEqual(200);
+    expect(response.body.deletedRowsCount).toEqual(expectedDeletedRowsCount);
+    expect(rows.length).toEqual(user01TagKeyCount - 1);
   });
 
   describe("the tagKey does not belong to the given user or does not exist", () => {

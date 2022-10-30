@@ -2,7 +2,19 @@ import { v4 as uuid } from "uuid";
 
 import { makeEnhancedArray } from "./make-enhanced-array.js";
 
-export const makeOperationData = ({ accountID01, userID01, userID02 }) => {
+export const makeOperationData = ({
+  accountID01,
+  tagKeyID01,
+  tagKeyID02,
+  tagKeyID03,
+  tagKeyID04,
+  tagValueID01,
+  tagValueID02,
+  tagValueID03,
+  tagValueID04,
+  userID01,
+  userID02,
+}) => {
   const operation01 = {
     accountID: accountID01,
     amount: 100_00,
@@ -11,6 +23,10 @@ export const makeOperationData = ({ accountID01, userID01, userID02 }) => {
     comments: "This is operation 1.",
     createdAt: new Date().toISOString(),
     operationID: uuid(),
+    tags: {
+      [tagKeyID01]: tagValueID01,
+      [tagKeyID02]: tagValueID02,
+    },
     type: "Income",
     unitCount: 1,
     userID: userID01,
@@ -24,6 +40,10 @@ export const makeOperationData = ({ accountID01, userID01, userID02 }) => {
     comments: "This is operation 2.",
     createdAt: new Date().toISOString(),
     operationID: uuid(),
+    tags: {
+      [tagKeyID01]: tagValueID01,
+      [tagKeyID02]: tagValueID02,
+    },
     type: "Income",
     unitCount: 1,
     userID: userID01,
@@ -37,6 +57,10 @@ export const makeOperationData = ({ accountID01, userID01, userID02 }) => {
     comments: "This is operation 3.",
     createdAt: new Date().toISOString(),
     operationID: uuid(),
+    tags: {
+      [tagKeyID03]: tagValueID03,
+      [tagKeyID04]: tagValueID04,
+    },
     type: "Income",
     unitCount: 1,
     userID: userID01,
@@ -50,6 +74,10 @@ export const makeOperationData = ({ accountID01, userID01, userID02 }) => {
     comments: "This is operation 4.",
     createdAt: new Date().toISOString(),
     operationID: uuid(),
+    tags: {
+      [tagKeyID03]: tagValueID03,
+      [tagKeyID04]: tagValueID04,
+    },
     type: "Income",
     unitCount: 1,
     userID: userID01,
@@ -63,6 +91,10 @@ export const makeOperationData = ({ accountID01, userID01, userID02 }) => {
     comments: "This is operation 5.",
     createdAt: new Date().toISOString(),
     operationID: uuid(),
+    tags: {
+      [tagKeyID01]: tagValueID01,
+      [tagKeyID02]: tagValueID02,
+    },
     type: "Income",
     unitCount: 1,
     userID: userID02,

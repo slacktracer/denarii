@@ -1,6 +1,7 @@
 import { convertObjectKeysFromCamelCaseToSnakeCase } from "denarii/src/persistence/functions/convert-object-keys-from-camel-case-to-snake-case.js";
 import squel from "squel";
 
+import { handleJSONColumns } from "../functions/handle-json-columns.js";
 import { makeAccountData } from "./make-account-data.js";
 import { makeOperationData } from "./make-operation-data.js";
 import { makeTagData } from "./make-tag-data.js";
@@ -19,25 +20,40 @@ export const { accounts } = makeAccountData({
   userID02,
 });
 
-const {
-  account01: { accountID: accountID01 },
-  account02: { accountID: accountID02 },
-} = accounts.$;
-
-export const { operations } = makeOperationData({
-  accountID01,
+export const { tagKeys, tagValues } = makeTagData({
   userID01,
   userID02,
 });
 
 const {
-  operation01: { operationID: operationID01 },
-  operation03: { operationID: operationID03 },
-} = operations.$;
+  account01: { accountID: accountID01 },
+  account02: { accountID: accountID02 },
+} = accounts.$;
 
-export const { tags, tagKeys, tagValues } = makeTagData({
-  operationID01,
-  operationID03,
+const {
+  tagKey01: { tagKeyID: tagKeyID01 },
+  tagKey02: { tagKeyID: tagKeyID02 },
+  tagKey03: { tagKeyID: tagKeyID03 },
+  tagKey04: { tagKeyID: tagKeyID04 },
+} = tagKeys.$;
+
+const {
+  tagValue01: { tagValueID: tagValueID01 },
+  tagValue02: { tagValueID: tagValueID02 },
+  tagValue03: { tagValueID: tagValueID03 },
+  tagValue04: { tagValueID: tagValueID04 },
+} = tagValues.$;
+
+export const { operations } = makeOperationData({
+  accountID01,
+  tagKeyID01,
+  tagKeyID02,
+  tagKeyID03,
+  tagKeyID04,
+  tagValueID01,
+  tagValueID02,
+  tagValueID03,
+  tagValueID04,
   userID01,
   userID02,
 });
@@ -62,12 +78,11 @@ const insertAccountsQuery = squel
 const insertOperationsQuery = squel
   .insert()
   .into("public.operation")
-  .setFieldsRows(operations.map(convertObjectKeysFromCamelCaseToSnakeCase));
-
-const insertTagsQuery = squel
-  .insert()
-  .into("public.tag")
-  .setFieldsRows(tags.map(convertObjectKeysFromCamelCaseToSnakeCase));
+  .setFieldsRows(
+    operations
+      .map(convertObjectKeysFromCamelCaseToSnakeCase)
+      .map(handleJSONColumns),
+  );
 
 const insertTagKeysQuery = squel
   .insert()
@@ -94,6 +109,4 @@ ${insertOperationsQuery};
 
 ${insertTagKeysQuery};
 
-${insertTagValuesQuery};
-
-${insertTagsQuery};`;
+${insertTagValuesQuery};`;
