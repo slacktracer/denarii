@@ -16,8 +16,13 @@ export const createExpressApplication = async () => {
 
   const expressApplication = express();
 
+  const corsOptions = {
+    credentials: true,
+    origin: process.env.ORIGIN.split(","),
+  };
+
   expressApplication.use(helmet());
-  expressApplication.use(cors());
+  expressApplication.use(cors({ ...corsOptions }));
   expressApplication.use(express.json());
 
   try {
