@@ -45,7 +45,7 @@
     "cli": "node --require dotenv/config src/cli/cli.js",
     "decompile": "tsc --build --clean",
     "d": "npm run decompile",
-    "execute": "node --require dotenv/config src/main.js",
+    "execute": "node --inspect --require dotenv/config src/main.js",
     "format": "prettier --write .",
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
