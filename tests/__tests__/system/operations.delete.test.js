@@ -10,7 +10,7 @@ import {
 
 import { operations, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
-import { getSessionCookies } from "../../functions/get-session-id-cookie.js";
+import { getSessionCookies } from "../../functions/get-session-cookies.js";
 import { inspectTable } from "../../functions/inspect-table.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
 
