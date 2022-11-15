@@ -10,7 +10,7 @@ import {
 
 import { accounts, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
-import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
+import { getSessionCookies } from "../../functions/get-session-id-cookie.js";
 import { inspectTable } from "../../functions/inspect-table.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
 
@@ -54,7 +54,7 @@ describe("DELETE /accounts", () => {
 
       const server = await getServer();
 
-      const sessionIDCookie = await getSessionIDCookie({
+      const { secretCookie, sessionIDCookie } = await getSessionCookies({
         password: user01Password,
         server,
         username: user01.username,
@@ -65,7 +65,7 @@ describe("DELETE /accounts", () => {
       // when
       const response = await server
         .delete(`/accounts/${account05.accountID}`)
-        .set("cookie", sessionIDCookie);
+        .set("cookie", [secretCookie, sessionIDCookie]);
 
       const rows = inspectTable({
         table: "account",
@@ -88,7 +88,7 @@ describe("DELETE /accounts", () => {
 
       const server = await getServer();
 
-      const sessionIDCookie = await getSessionIDCookie({
+      const { secretCookie, sessionIDCookie } = await getSessionCookies({
         password: user01Password,
         server,
         username: user01.username,
@@ -97,7 +97,7 @@ describe("DELETE /accounts", () => {
       // when
       const response = await server
         .delete(`/accounts/${account01.accountID}`)
-        .set("cookie", sessionIDCookie);
+        .set("cookie", [secretCookie, sessionIDCookie]);
 
       const rows = inspectTable({
         table: "account",
@@ -117,7 +117,7 @@ describe("DELETE /accounts", () => {
 
       const server = await getServer();
 
-      const sessionIDCookie = await getSessionIDCookie({
+      const { secretCookie, sessionIDCookie } = await getSessionCookies({
         password: user01Password,
         server,
         username: user01.username,
@@ -126,7 +126,7 @@ describe("DELETE /accounts", () => {
       // when
       const response = await server
         .delete(`/accounts/${account06.accountID}`)
-        .set("cookie", sessionIDCookie);
+        .set("cookie", [secretCookie, sessionIDCookie]);
 
       const rows = inspectTable({ table: "account" });
 
