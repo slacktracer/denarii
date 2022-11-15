@@ -1,5 +1,7 @@
 import express from "express";
+import { v4 as uuid } from "uuid";
 
+import { print } from "../../objects/print.js";
 import { login } from "./login/login.js";
 
 export const createRouter = () => {
@@ -11,7 +13,11 @@ export const createRouter = () => {
     const user = await login({ password, username });
 
     if (user !== false) {
-      request.session.user = user;
+      const secret = uuid();
+
+      request.session.user = { ...user, secret };
+
+      response.cookie("secret", secret);
     }
 
     response.json(user);
@@ -20,12 +26,14 @@ export const createRouter = () => {
   authenticationRouter.post("/logout", async (request, response) => {
     request.session.destroy((error) => {
       if (error) {
-        request.status(400).end();
+        response.status(500);
 
-        return;
+        print.error(error);
+      } else {
+        response.status(205);
       }
 
-      response.clearCookie("connect.sid").end();
+      response.clearCookie("secret").clearCookie("connect.sid").end();
     });
   });
 
