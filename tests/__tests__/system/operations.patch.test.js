@@ -10,7 +10,7 @@ import {
 
 import { operations, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
-import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
+import { getSessionCookies } from "../../functions/get-session-id-cookie.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
@@ -53,7 +53,7 @@ describe("PATCH /operations", () => {
 
       const expectedOperation = expect.objectContaining(updatedOperationData);
 
-      const sessionIDCookie = await getSessionIDCookie({
+      const { secretCookie, sessionIDCookie } = await getSessionCookies({
         password: user01Password,
         server,
         username: user01.username,
@@ -63,7 +63,7 @@ describe("PATCH /operations", () => {
       const response = await server
         .patch(`/operations/${operation01.operationID}`)
         .send(updatedOperationData)
-        .set("cookie", sessionIDCookie);
+        .set("cookie", [secretCookie, sessionIDCookie]);
 
       // then
       expect(response.status).toEqual(200);

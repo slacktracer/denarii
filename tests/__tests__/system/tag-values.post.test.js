@@ -10,7 +10,7 @@ import {
 
 import { userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
-import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
+import { getSessionCookies } from "../../functions/get-session-id-cookie.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
@@ -50,7 +50,7 @@ describe("POST /tags/values", () => {
 
     const expectedTagValue = expect.objectContaining({ name });
 
-    const sessionIDCookie = await getSessionIDCookie({
+    const { secretCookie, sessionIDCookie } = await getSessionCookies({
       password: user01Password,
       server,
       username: user01.username,
@@ -60,7 +60,7 @@ describe("POST /tags/values", () => {
     const response = await server
       .post("/tags/values")
       .send({ name })
-      .set("cookie", sessionIDCookie);
+      .set("cookie", [secretCookie, sessionIDCookie]);
 
     // then
     expect(response.status).toEqual(200);

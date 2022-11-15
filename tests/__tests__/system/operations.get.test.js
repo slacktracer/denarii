@@ -10,7 +10,7 @@ import {
 
 import { operations, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
-import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
+import { getSessionCookies } from "../../functions/get-session-id-cookie.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
@@ -58,16 +58,18 @@ describe("GET /operations", () => {
         }),
     );
 
-    const sessionIDCookie = await getSessionIDCookie({
+    const { secretCookie, sessionIDCookie } = await getSessionCookies({
       password: user01Password,
       server,
       username: user01.username,
     });
 
+    console.log({ secretCookie, sessionIDCookie });
+
     // when
     const response = await server
       .get("/operations")
-      .set("cookie", sessionIDCookie);
+      .set("cookie", [secretCookie, sessionIDCookie]);
 
     // then
     expect(response.status).toEqual(200);
@@ -81,7 +83,7 @@ describe("GET /operations", () => {
 
       const expectedOperation = expect.objectContaining(operation01);
 
-      const sessionIDCookie = await getSessionIDCookie({
+      const { secretCookie, sessionIDCookie } = await getSessionCookies({
         password: user01Password,
         server,
         username: user01.username,
@@ -90,7 +92,7 @@ describe("GET /operations", () => {
       // when
       const response = await server
         .get(`/operations/${operation01.operationID}`)
-        .set("cookie", sessionIDCookie);
+        .set("cookie", [secretCookie, sessionIDCookie]);
 
       // then
       expect(response.status).toEqual(200);
@@ -104,7 +106,7 @@ describe("GET /operations", () => {
 
         const expectedOperation = null;
 
-        const sessionIDCookie = await getSessionIDCookie({
+        const { secretCookie, sessionIDCookie } = await getSessionCookies({
           password: user01Password,
           server,
           username: user01.username,
@@ -113,7 +115,7 @@ describe("GET /operations", () => {
         // when
         const response = await server
           .get(`/operations/${operation05.operationID}`)
-          .set("cookie", sessionIDCookie);
+          .set("cookie", [secretCookie, sessionIDCookie]);
 
         // then
         expect(response.status).toEqual(200);

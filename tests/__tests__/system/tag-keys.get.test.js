@@ -10,7 +10,7 @@ import {
 
 import { tagKeys, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
-import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
+import { getSessionCookies } from "../../functions/get-session-id-cookie.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
 
 jest.unstable_mockModule(
@@ -58,7 +58,7 @@ describe("GET /tags/keys", () => {
         }),
     );
 
-    const sessionIDCookie = await getSessionIDCookie({
+    const { secretCookie, sessionIDCookie } = await getSessionCookies({
       password: user01Password,
       server,
       username: user01.username,
@@ -67,7 +67,7 @@ describe("GET /tags/keys", () => {
     // when
     const response = await server
       .get("/tags/keys")
-      .set("cookie", sessionIDCookie);
+      .set("cookie", [secretCookie, sessionIDCookie]);
 
     // then
     expect(response.status).toEqual(200);
@@ -81,7 +81,7 @@ describe("GET /tags/keys", () => {
 
       const expectedTagKey = expect.objectContaining(tagKey01);
 
-      const sessionIDCookie = await getSessionIDCookie({
+      const { secretCookie, sessionIDCookie } = await getSessionCookies({
         password: user01Password,
         server,
         username: user01.username,
@@ -90,7 +90,7 @@ describe("GET /tags/keys", () => {
       // when
       const response = await server
         .get(`/tags/keys/${tagKey01.tagKeyID}`)
-        .set("cookie", sessionIDCookie);
+        .set("cookie", [secretCookie, sessionIDCookie]);
 
       // then
       expect(response.status).toEqual(200);
@@ -104,7 +104,7 @@ describe("GET /tags/keys", () => {
 
         const expectedTagKey = null;
 
-        const sessionIDCookie = await getSessionIDCookie({
+        const { secretCookie, sessionIDCookie } = await getSessionCookies({
           password: user01Password,
           server,
           username: user01.username,
@@ -113,7 +113,7 @@ describe("GET /tags/keys", () => {
         // when
         const response = await server
           .get(`/tags/keys/${tagKey04.tagKeyID}`)
-          .set("cookie", sessionIDCookie);
+          .set("cookie", [secretCookie, sessionIDCookie]);
 
         // then
         expect(response.status).toEqual(200);

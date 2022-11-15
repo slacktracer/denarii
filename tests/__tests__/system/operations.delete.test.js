@@ -10,7 +10,7 @@ import {
 
 import { operations, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
-import { getSessionIDCookie } from "../../functions/get-session-id-cookie.js";
+import { getSessionCookies } from "../../functions/get-session-id-cookie.js";
 import { inspectTable } from "../../functions/inspect-table.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
 
@@ -53,7 +53,7 @@ describe("DELETE /operations", () => {
 
     const server = await getServer();
 
-    const sessionIDCookie = await getSessionIDCookie({
+    const { secretCookie, sessionIDCookie } = await getSessionCookies({
       password: user01Password,
       server,
       username: user01.username,
@@ -64,7 +64,7 @@ describe("DELETE /operations", () => {
     // when
     const response = await server
       .delete(`/operations/${operation04.operationID}`)
-      .set("cookie", sessionIDCookie);
+      .set("cookie", [secretCookie, sessionIDCookie]);
 
     const rows = inspectTable({
       table: "operation",
@@ -84,7 +84,7 @@ describe("DELETE /operations", () => {
 
       const server = await getServer();
 
-      const sessionIDCookie = await getSessionIDCookie({
+      const { secretCookie, sessionIDCookie } = await getSessionCookies({
         password: user01Password,
         server,
         username: user01.username,
@@ -93,7 +93,7 @@ describe("DELETE /operations", () => {
       // when
       const response = await server
         .delete(`/operations/${operation05.operationID}`)
-        .set("cookie", sessionIDCookie);
+        .set("cookie", [secretCookie, sessionIDCookie]);
 
       const rows = inspectTable({ table: "operation" });
 
