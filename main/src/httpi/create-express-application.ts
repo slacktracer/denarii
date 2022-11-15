@@ -1,3 +1,4 @@
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
@@ -21,6 +22,7 @@ export const createExpressApplication = async () => {
     origin: process.env.ORIGIN.split(","),
   };
 
+  expressApplication.use(cookieParser());
   expressApplication.use(helmet());
   expressApplication.use(cors({ ...corsOptions }));
   expressApplication.use(express.json());
