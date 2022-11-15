@@ -31,7 +31,7 @@ const usersRouter = createUsersRouter();
 
 expressApplication.use("/accounts", isSessionSet, accountsRouter);
 expressApplication.use("/authentication", authenticationRouter);
-expressApplication.use("/operations", operationsRouter);
-expressApplication.use("/tags", tagsRouter);
-expressApplication.use("/transfers", transfersRouter);
+expressApplication.use("/operations", isSessionSet, operationsRouter);
+expressApplication.use("/tags", isSessionSet, tagsRouter);
+expressApplication.use("/transfers", isSessionSet, transfersRouter);
 expressApplication.use("/users", usersRouter);
