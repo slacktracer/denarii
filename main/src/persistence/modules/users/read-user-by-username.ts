@@ -7,7 +7,10 @@ const readUserByUsernameQuery = loadQuery({
 });
 
 export const readUserByUsername = async ({ password, username }) => {
-  const user = await db.one(readUserByUsernameQuery, { password, username });
+  const user = await db.oneOrNone(readUserByUsernameQuery, {
+    password,
+    username,
+  });
 
   return user;
 };
