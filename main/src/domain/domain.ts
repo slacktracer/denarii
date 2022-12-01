@@ -16,6 +16,12 @@ export const accounts = {
   updateAccount,
 };
 
+import { calculateBalances } from "./modules/balances/calculate-balances.js";
+
+export const balances = {
+  calculateBalances,
+};
+
 import { createOperation } from "./modules/operations/create-operation.js";
 import { deleteOperation } from "./modules/operations/delete-operation.js";
 import { readOperation } from "./modules/operations/read-operation.js";
