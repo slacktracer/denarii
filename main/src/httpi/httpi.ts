@@ -15,7 +15,6 @@ export const expressApplication = await createExpressApplication();
 
 expressApplication.use(
   expressSession({
-    cookie: { secure: process.env.LOCAL === "true" },
     resave: false,
     saveUninitialized: false,
     secret: process.env.SESSION_SECRET,

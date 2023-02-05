@@ -17,7 +17,7 @@ export const createRouter = () => {
 
       request.session.user = { ...user, secret };
 
-      response.cookie("secret", secret);
+      response.cookie("secret", secret, { sameSite: "None", secure: true });
     }
 
     response.json(user);
