@@ -5,10 +5,13 @@ export const getSessionCookies = async ({ password, server, username }) => {
 
   const cookies = response.get("set-cookie");
 
+  console.log(cookies);
+
   const secretCookie = cookies.find(
     (cookie) =>
-      /^(?<secretCookie>secret=.+); Path=\/$/.exec(cookie)?.groups
-        ?.secretCookie,
+      /^(?<secretCookie>secret=.+); Path=\/; Secure; SameSite=None$/.exec(
+        cookie,
+      )?.groups?.secretCookie,
   );
 
   const sessionIDCookie = cookies.find(
