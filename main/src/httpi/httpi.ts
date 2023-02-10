@@ -15,11 +15,14 @@ export const expressApplication = await createExpressApplication();
 
 expressApplication.use(
   expressSession({
-    cookie: { maxAge: 24 * 60 * 60 * 1000 },
+    cookie: {
+      maxAge: Number(process.env.DEFAULT_SESSION_DURATION_IN_SECONDS) * 1000,
+    },
     resave: false,
     saveUninitialized: false,
     secret: process.env.SESSION_SECRET,
     store: sessionStore,
+    ttl: process.env.DEFAULT_SESSION_DURATION_IN_SECONDS,
   }),
 );
 
