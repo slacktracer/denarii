@@ -15,7 +15,7 @@ export const expressApplication = await createExpressApplication();
 
 expressApplication.use(
   expressSession({
-    expiry: new Date(new Date().setDate(new Date().getDate() + 3)), // Sue me.
+    expires: new Date(new Date().setDate(new Date().getDate() + 3)), // Sue me.
     resave: false,
     saveUninitialized: false,
     secret: process.env.SESSION_SECRET,
