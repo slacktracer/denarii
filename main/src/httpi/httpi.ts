@@ -15,7 +15,7 @@ export const expressApplication = await createExpressApplication();
 
 expressApplication.use(
   expressSession({
-    expires: new Date(new Date().setDate(new Date().getDate() + 3)), // Sue me.
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
     resave: false,
     saveUninitialized: false,
     secret: process.env.SESSION_SECRET,
