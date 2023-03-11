@@ -64,8 +64,6 @@ describe("GET /operations", () => {
       username: user01.username,
     });
 
-    console.log({ secretCookie, sessionIDCookie });
-
     // when
     const response = await server
       .get("/operations")
