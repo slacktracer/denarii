@@ -19,7 +19,7 @@ export const createExpressApplication = async () => {
 
   const corsOptions = {
     credentials: true,
-    origin: process.env.ORIGIN.split(","),
+    origin: process.env.ORIGIN?.split(","),
   };
 
   expressApplication.use(cookieParser());

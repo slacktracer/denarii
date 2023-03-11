@@ -5,6 +5,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "skipLibCheck": true,
+    "strictNullChecks": true,
     "sourceMap": true,
     "target": "ESNext"
   }

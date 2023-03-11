@@ -13,7 +13,7 @@ db.$config.options.receive = transformColumnNames;
 
 export const legacyRedisClient = createRedisClient({
   legacyMode: true,
-  url: process.env.REDIS_CONNECTION_STRING,
+  url: process.env.REDIS_CONNECTION_STRING || "",
 });
 
 await legacyRedisClient.connect().catch(console.error);
