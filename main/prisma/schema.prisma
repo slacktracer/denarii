@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  accountID     String      @id @map("account_id") @db.Uuid
+  createdAt     DateTime    @map("created_at") @db.Timestamptz(6)
+  deleted       Boolean     @default(false)
+  fromAccount   Transfer[]  @relation("transfer_from_account_idToaccount")
+  initialAmount Int         @map("initial_amount")
+  name          String
+  operation     Operation[]
+  toAccount     Transfer[]  @relation("transfer_to_account_idToaccount")
+  updatedAt     DateTime?   @map("updated_at") @db.Timestamptz(6)
+  user          User        @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID        String      @map("user_id") @db.Uuid
+
+  @@map("account")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model balance {
+  account_id String @db.Uuid
+  total      Int
+
+  @@ignore
+}
+
+model Operation {
+  account       Account   @relation(fields: [accountID], references: [accountID], onDelete: NoAction, onUpdate: NoAction, map: "account_id")
+  accountID     String    @map("account_id") @db.Uuid
+  amount        Int
+  amountPerUnit Int       @map("amount_per_unit")
+  at            DateTime  @db.Timestamptz(6)
+  comments      String?
+  createdAt     DateTime  @map("created_at") @db.Timestamptz(6)
+  deleted       Boolean   @default(false)
+  operationID   String    @id @map("operation_id") @db.Uuid
+  tags          Json      @default("{}") @map("tags")
+  type          String
+  unitCount     Int?      @map("unit_count")
+  updatedAt     DateTime? @map("updated_at") @db.Timestamptz(6)
+  user          User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID        String    @map("user_id") @db.Uuid
+
+  @@map("operation")
+}
+
+model TagKey {
+  createdAt DateTime  @map("created_at") @db.Timestamptz(6)
+  deleted   Boolean   @default(false)
+  name      String
+  tagKeyID  String    @id @map("tag_key_id") @db.Uuid
+  updatedAt DateTime? @map("updated_at") @db.Timestamptz(6)
+  user      User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID    String    @map("user_id") @db.Uuid
+
+  @@map("tag_key")
+}
+
+model TagValue {
+  createdAt  DateTime  @map("created_at") @db.Timestamptz(6)
+  deleted    Boolean   @default(false)
+  name       String
+  tagValueID String    @id @map("tag_value_id") @db.Uuid
+  updatedAt  DateTime? @map("updated_at") @db.Timestamptz(6)
+  user       User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID     String    @map("user_id") @db.Uuid
+
+  @@map("tag_value")
+}
+
+model Transfer {
+  amount        Int
+  at            DateTime  @db.Timestamptz(6)
+  createdAt     DateTime  @map("created_at") @db.Timestamptz(6)
+  deleted       Boolean   @default(false)
+  fromAccount   Account   @relation("transfer_from_account_idToaccount", fields: [fromAccountID], references: [accountID], onDelete: NoAction, onUpdate: NoAction, map: "from_account_id")
+  fromAccountID String    @map("from_account_id") @db.Uuid
+  toAccount     Account   @relation("transfer_to_account_idToaccount", fields: [toAccountID], references: [accountID], onDelete: NoAction, onUpdate: NoAction, map: "to_account_id")
+  toAccountID   String    @map("to_account_id") @db.Uuid
+  transferID    String    @id @map("transfer_id") @db.Uuid
+  updatedAt     DateTime? @map("updated_at") @db.Timestamptz(6)
+  user          User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID        String    @map("user_id") @db.Uuid
+
+  @@map("transfer")
+}
+
+model User {
+  account   Account[]
+  createdAt DateTime    @map("created_at") @db.Timestamptz(6)
+  deleted   Boolean     @default(false)
+  email     String      @unique
+  operation Operation[]
+  password  String
+  tag_key   TagKey[]
+  tag_value TagValue[]
+  transfer  Transfer[]
+  updatedAt DateTime?   @map("updated_at") @db.Timestamptz(6)
+  userID    String      @id @map("user_id") @db.Uuid
+  username  String      @unique
+
+  @@map("user")
+}

@@ -1,6 +1,7 @@
 {
   "author": "slacktracer",
   "dependencies": {
+    "@prisma/client": "^4.11.0",
     "@types/node": "^18.11.7",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
@@ -33,6 +34,7 @@
     "@types/fs-extra": "^9.0.13",
     "fs-extra": "^10.1.0",
     "globby": "^13.1.2",
+    "prisma": "^4.11.0",
     "sql-formatter": "^11.0.2"
   },
   "license": "MIT",
