@@ -22,6 +22,7 @@ export const makeOperationData = ({
     at: new Date().toISOString(),
     comments: "This is operation 1.",
     createdAt: new Date().toISOString(),
+    deleted: false,
     operationID: uuid(),
     tags: {
       [tagKeyID01]: tagValueID01,
@@ -39,6 +40,7 @@ export const makeOperationData = ({
     at: new Date().toISOString(),
     comments: "This is operation 2.",
     createdAt: new Date().toISOString(),
+    deleted: false,
     operationID: uuid(),
     tags: {
       [tagKeyID01]: tagValueID01,
@@ -56,6 +58,7 @@ export const makeOperationData = ({
     at: new Date().toISOString(),
     comments: "This is operation 3.",
     createdAt: new Date().toISOString(),
+    deleted: false,
     operationID: uuid(),
     tags: {
       [tagKeyID03]: tagValueID03,
@@ -73,6 +76,7 @@ export const makeOperationData = ({
     at: new Date().toISOString(),
     comments: "This is operation 4.",
     createdAt: new Date().toISOString(),
+    deleted: false,
     operationID: uuid(),
     tags: {
       [tagKeyID03]: tagValueID03,
@@ -90,6 +94,7 @@ export const makeOperationData = ({
     at: new Date().toISOString(),
     comments: "This is operation 5.",
     createdAt: new Date().toISOString(),
+    deleted: false,
     operationID: uuid(),
     tags: {
       [tagKeyID01]: tagValueID01,

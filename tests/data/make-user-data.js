@@ -8,6 +8,7 @@ export const makeUserData = async () => {
 
   const user01 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     email: "mr.user@example.com",
     password: await bcrypt.hash(user01Password, 1),
     userID: uuid(),
@@ -18,6 +19,7 @@ export const makeUserData = async () => {
 
   const user02 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     email: "mr.user2@example.com",
     password: await bcrypt.hash(user02Password, 1),
     userID: uuid(),
@@ -28,6 +30,7 @@ export const makeUserData = async () => {
 
   const user03 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     email: "mr.user3@example.com",
     password: await bcrypt.hash(user03Password, 1),
     userID: uuid(),

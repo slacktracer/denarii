@@ -5,6 +5,7 @@ import { makeEnhancedArray } from "./make-enhanced-array.js";
 export const makeTagData = ({ userID01, userID02 }) => {
   const tagKey01 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     name: "Group",
     tagKeyID: uuid(),
     userID: userID01,
@@ -12,6 +13,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
 
   const tagKey02 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     name: "Category",
     tagKeyID: uuid(),
     userID: userID01,
@@ -19,6 +21,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
 
   const tagKey03 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     name: "Location",
     tagKeyID: uuid(),
     userID: userID01,
@@ -26,6 +29,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
 
   const tagKey04 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     name: "Location",
     tagKeyID: uuid(),
     userID: userID02,
@@ -33,6 +37,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
 
   const tagKey05 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     name: "Location",
     tagKeyID: uuid(),
     userID: userID02,
@@ -40,6 +45,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
 
   const tagValue01 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     name: "Some value 1",
     tagValueID: uuid(),
     userID: userID01,
@@ -47,6 +53,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
 
   const tagValue02 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     name: "Some value 2",
     tagValueID: uuid(),
     userID: userID01,
@@ -54,6 +61,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
 
   const tagValue03 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     name: "Some value 3",
     tagValueID: uuid(),
     userID: userID01,
@@ -61,6 +69,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
 
   const tagValue04 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     name: "Some value 4",
     tagValueID: uuid(),
     userID: userID01,
@@ -68,6 +77,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
 
   const tagValue05 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     name: "Some value 5",
     tagValueID: uuid(),
     userID: userID01,
@@ -75,6 +85,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
 
   const tagValue06 = {
     createdAt: new Date().toISOString(),
+    deleted: false,
     name: "Some value 5",
     tagValueID: uuid(),
     userID: userID02,
