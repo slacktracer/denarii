@@ -68,8 +68,6 @@ describe("create account", () => {
     const actualAccountCount = (await readAccounts({ userID: user01.userID }))
       .length;
 
-    console.log(await readAccounts({ userID: user01.userID }));
-
     // then
     expect(createdAccount).toEqual(expectedCreatedAccount);
     expect(actualAccountCount).toEqual(expectedAccountCount);
