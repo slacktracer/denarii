@@ -68,12 +68,14 @@ export const { transfers } = makeTransferData({
 export const insertUsersQuery = squel
   .insert()
   .into("public.user")
-  .setFieldsRows(users.map(convertObjectKeysFromCamelCaseToSnakeCase));
+  .setFieldsRows(users.map(convertObjectKeysFromCamelCaseToSnakeCase))
+  .toString();
 
 const insertAccountsQuery = squel
   .insert()
   .into("public.account")
-  .setFieldsRows(accounts.map(convertObjectKeysFromCamelCaseToSnakeCase));
+  .setFieldsRows(accounts.map(convertObjectKeysFromCamelCaseToSnakeCase))
+  .toString();
 
 const insertOperationsQuery = squel
   .insert()
@@ -82,31 +84,32 @@ const insertOperationsQuery = squel
     operations
       .map(convertObjectKeysFromCamelCaseToSnakeCase)
       .map(handleJSONColumns),
-  );
+  )
+  .toString();
 
 const insertTagKeysQuery = squel
   .insert()
   .into("public.tag_key")
-  .setFieldsRows(tagKeys.map(convertObjectKeysFromCamelCaseToSnakeCase));
+  .setFieldsRows(tagKeys.map(convertObjectKeysFromCamelCaseToSnakeCase))
+  .toString();
 
 const insertTagValuesQuery = squel
   .insert()
   .into("public.tag_value")
-  .setFieldsRows(tagValues.map(convertObjectKeysFromCamelCaseToSnakeCase));
+  .setFieldsRows(tagValues.map(convertObjectKeysFromCamelCaseToSnakeCase))
+  .toString();
 
 const insertTransfersQuery = squel
   .insert()
   .into("public.transfer")
-  .setFieldsRows(transfers.map(convertObjectKeysFromCamelCaseToSnakeCase));
+  .setFieldsRows(transfers.map(convertObjectKeysFromCamelCaseToSnakeCase))
+  .toString();
 
-export const mockDataAsInsertStatements = `${insertUsersQuery};
-
-${insertAccountsQuery};
-
-${insertTransfersQuery};
-
-${insertOperationsQuery};
-
-${insertTagKeysQuery};
-
-${insertTagValuesQuery};`;
+export const mockDataAsInsertStatements = [
+  insertUsersQuery,
+  insertAccountsQuery,
+  insertTransfersQuery,
+  insertOperationsQuery,
+  insertTagKeysQuery,
+  insertTagValuesQuery,
+];
