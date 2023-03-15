@@ -1,12 +1,4 @@
-import {
-  // afterAll,
-  // beforeAll,
-  // beforeEach,
-  describe,
-  expect,
-  test,
-  vi,
-} from "vitest";
+import { describe, expect, test, vi } from "vitest";
 
 import { accounts, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
@@ -17,22 +9,7 @@ vi.mock(`../../../../main/src/persistence/connect.js`, () => mockConnect);
 
 const { user01 } = users.$;
 const { user01Password } = userPasswords.$;
-
 const { account01, account06 } = accounts.$;
-
-// const { prepareTestDatabase } = await import(
-//   "../../functions/prepare-test-database.js"
-// );
-
-// const { disconnect } = await import("../../functions/disconnect.js");
-
-// let backup;
-
-// afterAll(async () => {});
-
-// beforeAll(async () => {});
-
-// beforeEach(async () => {});
 
 describe("GET /accounts", () => {
   test("it returns all the given user accounts", async () => {
