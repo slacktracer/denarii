@@ -29,6 +29,8 @@ jobs:
           key: node-deps-v1-{{ .Branch }}-{{checksum "package-lock.json"}}
           paths:
             - ~/.npm
+      - setup_remote_docker:
+          version: 20.10.14
       - run: npm run compile-on-ci --workspace main
       - run: npm run test-once-on-ci --workspace tests
 
