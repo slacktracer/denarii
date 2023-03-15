@@ -30,7 +30,7 @@
     "start": "nodemon",
     "test": "chmod +x ./scripts/run-integration-tests.sh && ./scripts/run-integration-tests.sh",
     "test-once": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config",
-    "test-once-on-ci": "chmod +x ./scripts/run-integration-tests.sh && ./scripts/run-integration-tests.sh",
+    "test-once-on-ci": "prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts",
     "test-silently": "NODE_OPTIONS=--experimental-vm-modules jest --setupFiles dotenv/config --silent --watch"
   },
   "type": "module",
