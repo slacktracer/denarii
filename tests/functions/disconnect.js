@@ -6,7 +6,7 @@ import {
 
 export const disconnect = () =>
   Promise.all([
-    db.$pool.end(),
+    db.$disconnect(),
     legacyRedisClient.disconnect(),
     redisServer.stop(),
   ]);

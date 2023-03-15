@@ -1,21 +1,20 @@
-import { db } from "../../connect.js";
-import { loadQuery } from "../../functions/load-query.js";
+import { randomUUID } from "crypto";
 
-const createTransferQuery = loadQuery({
-  base: import.meta.url,
-  url: "./create-transfer.sql",
-});
+import { db } from "../../connect.js";
 
 export const createTransfer = async ({ data, userID }) => {
   const { amount, at, fromAccountID, toAccountID } = data;
 
-  const createdTransfer = db.one(createTransferQuery, {
-    amount,
-    at,
-    createdAt: new Date(),
-    fromAccountID,
-    toAccountID,
-    userID,
+  const createdTransfer = db.transfer.create({
+    data: {
+      amount,
+      at,
+      createdAt: new Date(),
+      fromAccountID,
+      toAccountID,
+      transferID: randomUUID(),
+      userID,
+    },
   });
 
   return createdTransfer;

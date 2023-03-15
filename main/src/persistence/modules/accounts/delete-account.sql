@@ -1,5 +1,0 @@
-DELETE FROM
-  PUBLIC.ACCOUNT
-WHERE
-  ACCOUNT_ID = ${ accountID }
-  AND USER_ID = ${ userID }

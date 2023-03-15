@@ -1,15 +1,10 @@
 import { db } from "../../connect.js";
-import { loadQuery } from "../../functions/load-query.js";
-
-const deleteUserQuery = loadQuery({
-  base: import.meta.url,
-  url: "./delete-user.sql",
-});
 
 export const deleteUser = async ({ userID }) => {
-  const result = await db.result(deleteUserQuery, {
-    userID,
+  const result = await db.user.update({
+    data: { deleted: true },
+    where: { userID },
   });
 
-  return { deletedRowsCount: result.rowCount };
+  return { deletedUser: result };
 };

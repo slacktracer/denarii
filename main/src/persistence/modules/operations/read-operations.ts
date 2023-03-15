@@ -1,13 +1,13 @@
 import { db } from "../../connect.js";
-import { loadQuery } from "../../functions/load-query.js";
-
-const readOperationsQuery = loadQuery({
-  base: import.meta.url,
-  url: "./read-operations.sql",
-});
 
 export const readOperations = async ({ userID }) => {
-  const operations = await db.manyOrNone(readOperationsQuery, { userID });
+  const operations = await db.operation.findMany({
+    where: {
+      userID,
+    },
+  });
+
+  console.log("this is new stuff from persistence with prisma");
 
   return operations;
 };

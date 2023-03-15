@@ -1,4 +1,0 @@
-DELETE FROM
-  PUBLIC.USER
-WHERE
-  USER_ID = ${ userID };

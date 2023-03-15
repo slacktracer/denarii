@@ -1,11 +1,7 @@
+import { randomUUID } from "crypto";
+
 import type { createTagValueParameter } from "../../../types.js";
 import { db } from "../../connect.js";
-import { loadQuery } from "../../functions/load-query.js";
-
-const createTagValueQuery = loadQuery({
-  base: import.meta.url,
-  url: "./create-tag-value.sql",
-});
 
 export const createTagValue = async ({
   data,
@@ -13,10 +9,13 @@ export const createTagValue = async ({
 }: createTagValueParameter) => {
   const { name } = data;
 
-  const createdTagValue = db.one(createTagValueQuery, {
-    createdAt: new Date(),
-    name,
-    userID,
+  const createdTagValue = db.tagValue.create({
+    data: {
+      createdAt: new Date(),
+      name,
+      tagValueID: randomUUID(),
+      userID,
+    },
   });
 
   return createdTagValue;

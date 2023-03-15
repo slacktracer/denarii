@@ -1,15 +1,7 @@
-import initPGPromise from "pg-promise";
+import { PrismaClient } from "@prisma/client";
 import { createClient as createRedisClient } from "redis";
 
-import { transformColumnNames } from "./functions/transform-column-names.js";
-
-const pgp = initPGPromise();
-
-const options = process.env.LOCAL === "yes" ? { ssl: true } : {};
-
-export const db = pgp(options);
-
-db.$config.options.receive = transformColumnNames;
+export const db = new PrismaClient({ errorFormat: "pretty" });
 
 export const legacyRedisClient = createRedisClient({
   legacyMode: true,

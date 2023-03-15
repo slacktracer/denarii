@@ -12,11 +12,11 @@ export const deleteTransfer = async ({ transferID, userID }) => {
   }
 
   if (transfer) {
-    const { deletedRowsCount } = await transfers.deleteTransfer({
+    const { deletedTransfer } = await transfers.deleteTransfer({
       transferID,
       userID,
     });
 
-    return { deletedRowsCount };
+    return { deletedTransfer };
   }
 };

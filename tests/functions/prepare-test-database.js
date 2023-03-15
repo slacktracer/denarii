@@ -1,20 +1,12 @@
 import { mockDataAsInsertStatements } from "../data/data.js";
-
-const { db, pgm } = await import(`../../main/src/persistence/connect.js`);
-
-const { loadQuery } = await import(
-  `../../main/src/persistence/functions/load-query.js`
-);
-
-const createTablesQuery = loadQuery({
-  base: import.meta.url,
-  url: `../../main/src/persistence/create-tables.sql`,
-});
+import { db } from "../mocks/persistence/connect.js";
 
 export const prepareTestDatabase = async () => {
-  await db.query(createTablesQuery);
+  const insertStatements = mockDataAsInsertStatements
+    .split("\n")
+    .filter(Boolean);
 
-  await db.query(mockDataAsInsertStatements);
-
-  return pgm.backup();
+  for (const insertStatement of insertStatements) {
+    await db.$queryRawUnsafe(insertStatement);
+  }
 };

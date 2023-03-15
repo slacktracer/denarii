@@ -1,8 +1,0 @@
-SELECT
-  *
-FROM
-  ACCOUNT
-WHERE
-  USER_ID = ${ userID }
-ORDER BY
-  NAME

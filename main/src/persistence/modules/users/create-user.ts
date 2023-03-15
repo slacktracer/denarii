@@ -1,23 +1,22 @@
 import bcrypt from "bcrypt";
+import { randomUUID } from "crypto";
 
+import { createUserParameter } from "../../../types.js";
 import { db } from "../../connect.js";
-import { loadQuery } from "../../functions/load-query.js";
 
-const createUserQuery = loadQuery({
-  base: import.meta.url,
-  url: "./create-user.sql",
-});
-
-export const createUser = async ({ data }) => {
+export const createUser = async ({ data }: createUserParameter) => {
   const { email, password, username } = data;
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const createdUser = db.one(createUserQuery, {
-    createdAt: new Date(),
-    email,
-    password: hashedPassword,
-    username,
+  const createdUser = db.user.create({
+    data: {
+      createdAt: new Date(),
+      email,
+      password: hashedPassword,
+      userID: randomUUID(),
+      username,
+    },
   });
 
   return createdUser;

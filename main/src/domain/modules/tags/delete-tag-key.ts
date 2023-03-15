@@ -12,11 +12,11 @@ export const deleteTagKey = async ({ tagKeyID, userID }) => {
   }
 
   if (tagKey) {
-    const { deletedRowsCount } = await tags.deleteTagKey({
+    const { deletedTagKey } = await tags.deleteTagKey({
       tagKeyID,
       userID,
     });
 
-    return { deletedRowsCount };
+    return { deletedTagKey };
   }
 };

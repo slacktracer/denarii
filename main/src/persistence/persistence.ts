@@ -1,5 +1,3 @@
-import "./setup.js";
-
 export { legacyRedisClient } from "./connect.js";
 
 import { createAccount } from "./modules/accounts/create-account.js";

@@ -11,6 +11,8 @@ export const login = async ({ password, username }) => {
 
   const passwordMatches = await bcrypt.compare(password, user.password);
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   delete user.password;
 
   if (passwordMatches === false) {

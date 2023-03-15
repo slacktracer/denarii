@@ -12,11 +12,11 @@ export const deleteOperation = async ({ operationID, userID }) => {
   }
 
   if (operation) {
-    const { deletedRowsCount } = await operations.deleteOperation({
+    const { deletedOperation } = await operations.deleteOperation({
       operationID,
       userID,
     });
 
-    return { deletedRowsCount };
+    return { deletedOperation };
   }
 };

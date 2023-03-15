@@ -1,47 +1,38 @@
 import {
-  afterAll,
-  beforeAll,
-  beforeEach,
+  // afterAll,
+  // beforeAll,
+  // beforeEach,
   describe,
   expect,
-  jest,
   test,
-} from "@jest/globals";
+  vi,
+} from "vitest";
 
 import { accounts, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionCookies } from "../../functions/get-session-cookies.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
 
-jest.unstable_mockModule(
-  `../../../main/src/persistence/connect.js`,
-  () => mockConnect,
-);
+vi.mock(`../../../../main/src/persistence/connect.js`, () => mockConnect);
 
 const { user01 } = users.$;
 const { user01Password } = userPasswords.$;
 
 const { account01, account06 } = accounts.$;
 
-const { prepareTestDatabase } = await import(
-  "../../functions/prepare-test-database.js"
-);
+// const { prepareTestDatabase } = await import(
+//   "../../functions/prepare-test-database.js"
+// );
 
-const { disconnect } = await import("../../functions/disconnect.js");
+// const { disconnect } = await import("../../functions/disconnect.js");
 
-let backup;
+// let backup;
 
-afterAll(async () => {
-  await disconnect();
-});
+// afterAll(async () => {});
 
-beforeAll(async () => {
-  backup = await prepareTestDatabase();
-});
+// beforeAll(async () => {});
 
-beforeEach(async () => {
-  backup.restore();
-});
+// beforeEach(async () => {});
 
 describe("GET /accounts", () => {
   test("it returns all the given user accounts", async () => {

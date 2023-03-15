@@ -1,11 +1,7 @@
+import { randomUUID } from "crypto";
+
 import type { createAccountParameter } from "../../../types.js";
 import { db } from "../../connect.js";
-import { loadQuery } from "../../functions/load-query.js";
-
-const createAccountQuery = loadQuery({
-  base: import.meta.url,
-  url: "./create-account.sql",
-});
 
 export const createAccount = async ({
   data,
@@ -13,11 +9,14 @@ export const createAccount = async ({
 }: createAccountParameter) => {
   const { initialAmount, name } = data;
 
-  const createdAccount = db.one(createAccountQuery, {
-    createdAt: new Date(),
-    initialAmount,
-    name,
-    userID,
+  const createdAccount = db.account.create({
+    data: {
+      accountID: randomUUID(),
+      createdAt: new Date(),
+      initialAmount,
+      name,
+      userID,
+    },
   });
 
   return createdAccount;

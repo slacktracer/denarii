@@ -12,11 +12,11 @@ export const deleteAccount = async ({ accountID, userID }) => {
   }
 
   if (account) {
-    const { deletedRowsCount } = await accounts.deleteAccount({
+    const { deletedAccount } = await accounts.deleteAccount({
       accountID,
       userID,
     });
 
-    return { deletedRowsCount };
+    return { deletedAccount };
   }
 };
