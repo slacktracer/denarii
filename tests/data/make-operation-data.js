@@ -30,6 +30,7 @@ export const makeOperationData = ({
     },
     type: "Income",
     unitCount: 1,
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -48,6 +49,7 @@ export const makeOperationData = ({
     },
     type: "Income",
     unitCount: 1,
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -66,6 +68,7 @@ export const makeOperationData = ({
     },
     type: "Income",
     unitCount: 1,
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -84,6 +87,7 @@ export const makeOperationData = ({
     },
     type: "Income",
     unitCount: 1,
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -102,6 +106,7 @@ export const makeOperationData = ({
     },
     type: "Income",
     unitCount: 1,
+    updatedAt: null,
     userID: userID02,
   };
 

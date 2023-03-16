@@ -37,6 +37,8 @@ export const deleteAccountByID = async (request, response) => {
       response
         .status(400)
         .json({ message: ACCOUNT_HAS_OPERATION_OR_TRANSFER.description });
+
+      return;
     }
   }
 

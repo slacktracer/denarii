@@ -7,7 +7,5 @@ export const readOperations = async ({ userID }) => {
     },
   });
 
-  console.log("this is new stuff from persistence with prisma");
-
   return operations;
 };
