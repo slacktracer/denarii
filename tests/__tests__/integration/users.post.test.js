@@ -1,40 +1,9 @@
-import {
-  afterAll,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  jest,
-  test,
-} from "@jest/globals";
+import { describe, expect, test, vi } from "vitest";
 
 import { getServer } from "../../functions/get-server.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
 
-jest.unstable_mockModule(
-  `../../../main/src/persistence/connect.js`,
-  () => mockConnect,
-);
-
-const { prepareTestDatabase } = await import(
-  "../../functions/prepare-test-database.js"
-);
-
-const { disconnect } = await import("../../functions/disconnect.js");
-
-let backup;
-
-afterAll(async () => {
-  await disconnect();
-});
-
-beforeAll(async () => {
-  backup = await prepareTestDatabase();
-});
-
-beforeEach(async () => {
-  backup.restore();
-});
+vi.mock(`../../../main/src/persistence/connect.js`, () => mockConnect);
 
 describe("POST /users", () => {
   test("it returns new user", async () => {
