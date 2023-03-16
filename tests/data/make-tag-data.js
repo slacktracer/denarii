@@ -8,6 +8,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     deleted: false,
     name: "Group",
     tagKeyID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -16,6 +17,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     deleted: false,
     name: "Category",
     tagKeyID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -24,6 +26,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     deleted: false,
     name: "Location",
     tagKeyID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -32,6 +35,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     deleted: false,
     name: "Location",
     tagKeyID: uuid(),
+    updatedAt: null,
     userID: userID02,
   };
 
@@ -40,6 +44,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     deleted: false,
     name: "Location",
     tagKeyID: uuid(),
+    updatedAt: null,
     userID: userID02,
   };
 
@@ -48,6 +53,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     deleted: false,
     name: "Some value 1",
     tagValueID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -56,6 +62,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     deleted: false,
     name: "Some value 2",
     tagValueID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -64,6 +71,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     deleted: false,
     name: "Some value 3",
     tagValueID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -72,6 +80,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     deleted: false,
     name: "Some value 4",
     tagValueID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -80,6 +89,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     deleted: false,
     name: "Some value 5",
     tagValueID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -88,6 +98,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     deleted: false,
     name: "Some value 5",
     tagValueID: uuid(),
+    updatedAt: null,
     userID: userID02,
   };
 

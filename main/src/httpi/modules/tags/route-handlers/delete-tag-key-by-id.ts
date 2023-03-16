@@ -27,7 +27,7 @@ export const deleteTagKeyByID = async (request, response) => {
 
   if (result instanceof CustomError) {
     if (result.data.id === NO_SUCH_TAG_KEY) {
-      response.status(404).end();
+      response.status(404).send({ message: NO_SUCH_TAG_KEY.description });
 
       return;
     }

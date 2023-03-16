@@ -27,7 +27,7 @@ export const deleteTransferByID = async (request, response) => {
 
   if (result instanceof CustomError) {
     if (result.data.id === NO_SUCH_TRANSFER) {
-      response.status(404).end();
+      response.status(404).send({ message: NO_SUCH_TRANSFER.description });
 
       return;
     }

@@ -16,6 +16,7 @@ export const makeTransferData = ({
     fromAccountID: accountID01,
     toAccountID: accountID02,
     transferID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -27,6 +28,7 @@ export const makeTransferData = ({
     fromAccountID: accountID01,
     toAccountID: accountID02,
     transferID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -38,6 +40,7 @@ export const makeTransferData = ({
     fromAccountID: accountID01,
     toAccountID: accountID02,
     transferID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -49,6 +52,7 @@ export const makeTransferData = ({
     fromAccountID: accountID01,
     toAccountID: accountID02,
     transferID: uuid(),
+    updatedAt: null,
     userID: userID01,
   };
 
@@ -60,6 +64,7 @@ export const makeTransferData = ({
     fromAccountID: accountID01,
     toAccountID: accountID02,
     transferID: uuid(),
+    updatedAt: null,
     userID: userID02,
   };
 
