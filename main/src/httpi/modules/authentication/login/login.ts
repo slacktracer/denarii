@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import { users } from "../../../../domain/domain.js";
 
 export const login = async ({ password, username }) => {
-  const user = await users.readUserByUsername({ password, username });
+  const user = await users.readUserByUsername({ username });
 
   if (user === null) {
     return false;

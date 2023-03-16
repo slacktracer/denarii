@@ -1,7 +1,7 @@
 import connectRedis from "connect-redis";
 import expressSession from "express-session";
 
-import { legacyRedisClient } from "../persistence/persistence.js";
+import { legacyRedisClient } from "../domain/domain.js";
 
 const RedisStore = connectRedis(expressSession);
 
