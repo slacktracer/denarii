@@ -20,6 +20,7 @@ describe("POST /operations", () => {
       accountID: account01.accountID,
       amount: 123_00,
       amountPerUnit: 123_00,
+      at: new Date().toISOString(),
       comments: "This is a new operation!",
       type: "Income",
       unitCount: 1,
