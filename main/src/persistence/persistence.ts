@@ -1,5 +1,6 @@
 export { legacyRedisClient } from "./connect.js";
 
+import { accountHasOperationOrTransfer } from "./modules/accounts/account-has-operation-or-transfer.js";
 import { createAccount } from "./modules/accounts/create-account.js";
 import { deleteAccount } from "./modules/accounts/delete-account.js";
 import { readAccount } from "./modules/accounts/read-account.js";
@@ -7,6 +8,7 @@ import { readAccounts } from "./modules/accounts/read-accounts.js";
 import { updateAccount } from "./modules/accounts/update-account.js";
 
 export const accounts = {
+  accountHasOperationOrTransfer,
   createAccount,
   deleteAccount,
   readAccount,

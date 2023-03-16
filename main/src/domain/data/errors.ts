@@ -1,3 +1,6 @@
+export const ACCOUNT_HAS_OPERATION_OR_TRANSFER = Symbol(
+  "ACCOUNT_HAS_OPERATION_OR_TRANSFER",
+);
 export const NO_SUCH_ACCOUNT = Symbol("NO_SUCH_ACCOUNT");
 export const NO_SUCH_OPERATION = Symbol("NO_SUCH_OPERATION");
 export const NO_SUCH_TAG = Symbol("NO_SUCH_TAG");

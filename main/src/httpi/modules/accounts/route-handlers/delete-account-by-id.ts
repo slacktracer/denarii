@@ -1,4 +1,5 @@
 import {
+  ACCOUNT_HAS_OPERATION_OR_TRANSFER,
   accounts,
   CustomError,
   NO_SUCH_ACCOUNT,
@@ -27,9 +28,15 @@ export const deleteAccountByID = async (request, response) => {
 
   if (result instanceof CustomError) {
     if (result.data.id === NO_SUCH_ACCOUNT) {
-      response.status(404).end();
+      response.status(404).json({ message: NO_SUCH_ACCOUNT.description });
 
       return;
+    }
+
+    if (result.data.id === ACCOUNT_HAS_OPERATION_OR_TRANSFER) {
+      response
+        .status(400)
+        .json({ message: ACCOUNT_HAS_OPERATION_OR_TRANSFER.description });
     }
   }
 
