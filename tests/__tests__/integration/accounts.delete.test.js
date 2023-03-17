@@ -1,5 +1,6 @@
 import {
-  ACCOUNT_HAS_OPERATION_OR_TRANSFER,
+  ACCOUNT_HAS_OPERATION,
+  ACCOUNT_HAS_TRANSFER,
   NO_SUCH_ACCOUNT,
 } from "denarii/src/domain/data/errors.js";
 import { describe, expect, test, vi } from "vitest";
@@ -14,10 +15,10 @@ vi.mock(`../../../main/src/persistence/connect.js`, () => mockConnect);
 const { user01 } = users.$;
 const { user01Password } = userPasswords.$;
 
-const { account01, account05, account06 } = accounts.$;
+const { account01, account02, account05, account06 } = accounts.$;
 
 describe("DELETE /accounts", () => {
-  describe("the account has no operations", () => {
+  describe("the account has no operations nor transfers", () => {
     test("the account with the given ID is deleted", async () => {
       // given
       const expectedAccount = { ...account05, deleted: true };
@@ -53,12 +54,38 @@ describe("DELETE /accounts", () => {
       });
 
       const expectedResponseBody = {
-        message: ACCOUNT_HAS_OPERATION_OR_TRANSFER.description,
+        message: ACCOUNT_HAS_OPERATION.description,
       };
 
       // when
       const response = await server
         .delete(`/accounts/${account01.accountID}`)
+        .set("cookie", [secretCookie, sessionIDCookie]);
+
+      // then
+      expect(response.status).toEqual(400);
+      expect(response.body).toEqual(expectedResponseBody);
+    });
+  });
+
+  describe("the account has transfers", () => {
+    test("an error is returned, the account is not deleted", async () => {
+      // given
+      const server = await getServer();
+
+      const { secretCookie, sessionIDCookie } = await getSessionCookies({
+        password: user01Password,
+        server,
+        username: user01.username,
+      });
+
+      const expectedResponseBody = {
+        message: ACCOUNT_HAS_TRANSFER.description,
+      };
+
+      // when
+      const response = await server
+        .delete(`/accounts/${account02.accountID}`)
         .set("cookie", [secretCookie, sessionIDCookie]);
 
       // then
