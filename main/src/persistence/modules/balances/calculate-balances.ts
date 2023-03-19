@@ -1,4 +1,5 @@
 import { db } from "../../connect.js";
+import { convertMultiQueryStringToMultipleQueryStrings } from "./convert-multi-query-string-to-multiple-query-strings.js";
 
 const calculateBalancesQuery = ({ userID }) => `
 DROP TABLE IF EXISTS
@@ -11,7 +12,7 @@ SELECT
 FROM
   ACCOUNT
 WHERE
-  USER_ID = ${userID}
+  USER_ID = '${userID}'
 ORDER BY
   ACCOUNT.NAME;
 
@@ -24,7 +25,7 @@ SELECT
 FROM
   TRANSFER
 WHERE
-  USER_ID = ${userID}
+  USER_ID = '${userID}'
 GROUP BY
   TRANSFER.FROM_ACCOUNT_ID;
 
@@ -37,7 +38,7 @@ SELECT
 FROM
   TRANSFER
 WHERE
-  USER_ID = ${userID}
+  USER_ID = '${userID}'
 GROUP BY
   TRANSFER.TO_ACCOUNT_ID;
 
@@ -50,7 +51,7 @@ SELECT
 FROM
   OPERATION
 WHERE
-  USER_ID = ${userID}
+  USER_ID = '${userID}'
 GROUP BY
   OPERATION.ACCOUNT_ID;
 
@@ -75,7 +76,17 @@ ORDER BY
 `;
 
 export const calculateBalances = async ({ userID }) => {
-  const balances = await db.$queryRawUnsafe(calculateBalancesQuery({ userID }));
+  const queries = convertMultiQueryStringToMultipleQueryStrings(
+    calculateBalancesQuery({ userID }),
+  );
+
+  let result;
+
+  for (const query of queries) {
+    result = await db.$queryRawUnsafe(query);
+  }
+
+  const balances = result;
 
   return balances;
 };
