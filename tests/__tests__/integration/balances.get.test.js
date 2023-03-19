@@ -11,8 +11,8 @@ const { account01, account02, account03, account04, account05 } = accounts.$;
 const { user01 } = users.$;
 const { user01Password } = userPasswords.$;
 
-describe("GET /healthz", () => {
-  test("health is ok", async () => {
+describe("GET /balances", () => {
+  test("returns the balances for each and all of the user's accounts", async () => {
     // given
     const server = await getServer();
 
