@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 cp -ar ./main/src/. ./build && \
+cp -ar ./main/prisma/. ./build/prisma && \
 cp ./main/package.json ./build && \
 cp ./main/tsconfig.json ./build && \
 cp ./package-lock.json ./build && \
