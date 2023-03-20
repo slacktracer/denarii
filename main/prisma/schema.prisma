@@ -24,14 +24,6 @@ model Account {
   @@map("account")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
-model balance {
-  account_id String @db.Uuid
-  total      Int
-
-  @@ignore
-}
-
 model Operation {
   account       Account   @relation(fields: [accountID], references: [accountID], onDelete: NoAction, onUpdate: NoAction, map: "account_id")
   accountID     String    @map("account_id") @db.Uuid
