@@ -24,27 +24,27 @@ describe("GET /balances", () => {
 
     const expectedBalances = [
       {
-        account_id: account01.accountID,
+        accountID: account01.accountID,
         name: "Account 1!",
         total: -39_600_00,
       },
       {
-        account_id: account02.accountID,
+        accountID: account02.accountID,
         name: "Account 2!",
         total: 40_000_00,
       },
       {
-        account_id: account03.accountID,
+        accountID: account03.accountID,
         name: "Account 3!",
         total: 0,
       },
       {
-        account_id: account04.accountID,
+        accountID: account04.accountID,
         name: "Account 4!",
         total: 0,
       },
       {
-        account_id: account05.accountID,
+        accountID: account05.accountID,
         name: "Account 5!",
         total: 0,
       },
