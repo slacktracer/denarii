@@ -11,12 +11,6 @@ CREATE TABLE "account" (
 );
 
 -- CreateTable
-CREATE TABLE "balance" (
-    "account_id" UUID NOT NULL,
-    "total" INTEGER NOT NULL
-);
-
--- CreateTable
 CREATE TABLE "operation" (
     "account_id" UUID NOT NULL,
     "amount" INTEGER NOT NULL,
