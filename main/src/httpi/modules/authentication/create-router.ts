@@ -17,7 +17,10 @@ export const createRouter = () => {
 
       request.session.user = { ...user, secret };
 
+      const domain = process.env.BASE_URL;
+
       response.cookie("secret", secret, {
+        domain,
         maxAge: Number(process.env.DEFAULT_SESSION_DURATION_IN_SECONDS) * 1000,
         sameSite: "None",
         secure: true,
