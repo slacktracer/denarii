@@ -17,7 +17,7 @@
     "squel": "^5.13.0",
     "supertest": "^6.3.1",
     "uuid": "^9.0.0",
-    "vitest": "^0.29.2"
+    "vitest": "^0.33.0"
   },
   "license": "MIT",
   "name": "denarii-test-suites",
@@ -25,9 +25,9 @@
     "format": "prettier --write .",
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
-    "save-test-output": "NODE_OPTIONS=--experimental-vm-modules jest --no-color --runInBand --setupFiles dotenv/config --silent --testSequencer ./classes/custom-sequencer.js --verbose 2> test-output.txt",
+    "save-test-output": "docker compose up -d && prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts --no-color --reporter verbose --run --silent > test-output.txt && docker stop tests-db-1",
     "start": "nodemon",
-    "test": "sudo docker compose up -d && prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts && docker stop tests-db-1",
+    "test": "docker compose up -d && prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts && docker stop tests-db-1",
     "test-once-on-ci": "prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts"
   },
   "type": "module",
