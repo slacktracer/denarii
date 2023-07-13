@@ -1,4 +1,4 @@
-export { legacyRedisClient } from "./connect.js";
+export { redisClient } from "./connect.js";
 
 import { accountHasOperation } from "./modules/accounts/account-has-operation.js";
 import { accountHasTransfer } from "./modules/accounts/account-has-transfer.js";
