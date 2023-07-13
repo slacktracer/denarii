@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   lint:
     docker:
-      - image: cimg/node:18.9.0
+      - image: cimg/node:20.4.0
     steps:
       - checkout
       - restore_cache:
@@ -18,7 +18,7 @@ jobs:
 
   test:
     docker:
-      - image: cimg/node:18.9.0
+      - image: cimg/node:20.4.0
       - image: cimg/postgres:14.0
         environment:
           - POSTGRES_USER=postgres
