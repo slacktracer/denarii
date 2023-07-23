@@ -1,10 +1,10 @@
+import { describe, expect, test, vi } from "vitest";
+
 import {
   ACCOUNT_HAS_OPERATION,
   ACCOUNT_HAS_TRANSFER,
   NO_SUCH_ACCOUNT,
-} from "denarii/src/domain/data/errors.js";
-import { describe, expect, test, vi } from "vitest";
-
+} from "../../../main/src/domain/data/errors.js";
 import { accounts, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionCookies } from "../../functions/get-session-cookies.js";

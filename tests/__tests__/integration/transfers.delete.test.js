@@ -1,6 +1,6 @@
-import { NO_SUCH_TRANSFER } from "denarii/src/domain/data/errors.js";
 import { describe, expect, test, vi } from "vitest";
 
+import { NO_SUCH_TRANSFER } from "../../../main/src/domain/data/errors.js";
 import { transfers, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionCookies } from "../../functions/get-session-cookies.js";

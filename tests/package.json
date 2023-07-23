@@ -1,6 +1,7 @@
 {
   "author": "slacktracer",
   "dependencies": {
+    "@prisma/client": "^5.0.0",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.3.1",
     "eslint": "^8.44.0",
@@ -10,6 +11,7 @@
     "lint-staged": "^13.2.3",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.0",
+    "prisma": "^5.0.0",
     "redis": "^4.6.7",
     "redis-memory-server": "^0.7.0",
     "squel": "^5.13.0",
@@ -26,7 +28,7 @@
     "save-test-output": "docker compose up -d && prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts --no-color --reporter verbose --run --silent > test-output.txt && docker stop tests-db-1",
     "start": "nodemon",
     "test": "docker compose up -d && prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts && docker stop tests-db-1",
-    "test-once-on-ci": "prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts"
+    "test-once-on-ci": "prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && cp ../main/node_modules/.prisma ./node_modules && vitest --config ./vitest.config.integration.ts"
   },
   "type": "module",
   "version": "1.0.0"

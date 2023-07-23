@@ -1,6 +1,6 @@
-import { NO_SUCH_TAG_VALUE } from "denarii/src/domain/data/errors.js";
 import { describe, expect, test, vi } from "vitest";
 
+import { NO_SUCH_TAG_VALUE } from "../../../main/src/domain/data/errors.js";
 import { tagValues, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionCookies } from "../../functions/get-session-cookies.js";

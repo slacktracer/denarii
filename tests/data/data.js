@@ -1,6 +1,6 @@
-import { convertObjectKeysFromCamelCaseToSnakeCase } from "denarii/src/persistence/functions/convert-object-keys-from-camel-case-to-snake-case.js";
 import squel from "squel";
 
+import { convertObjectKeysFromCamelCaseToSnakeCase } from "../../main/src/persistence/functions/convert-object-keys-from-camel-case-to-snake-case.js";
 import { handleJSONColumns } from "../functions/handle-json-columns.js";
 import { makeAccountData } from "./make-account-data.js";
 import { makeOperationData } from "./make-operation-data.js";
