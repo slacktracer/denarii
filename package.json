@@ -6,16 +6,12 @@
   "name": "denarii",
   "scripts": {
     "build": "chmod +x ./build.sh && ./build.sh",
-    "d": "npm run decompile --workspace main",
+    "d": "npm run decompile --prefix main",
     "execute": "node ./build/main.js",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
-    "start": "npm start --workspace main",
-    "test": "npm test --workspace tests",
+    "start": "npm start --prefix main",
+    "test": "npm test --prefix tests",
     "x": "npm run execute"
-  },
-  "workspaces": [
-    "main",
-    "tests"
-  ]
+  }
 }
