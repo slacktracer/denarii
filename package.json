@@ -8,6 +8,7 @@
     "build": "chmod +x ./build.sh && ./build.sh",
     "d": "npm run decompile --prefix main",
     "execute": "node ./build/main.js",
+    "lint": "npm run lint --prefix main && npm run lint --prefix tests",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
     "start": "npm start --prefix main",
