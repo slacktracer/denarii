@@ -28,7 +28,7 @@
     "save-test-output": "docker compose up -d && prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts --no-color --reporter verbose --run --silent > test-output.txt && docker stop tests-db-1",
     "start": "nodemon",
     "test": "docker compose up -d && prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts && docker stop tests-db-1",
-    "test-once-on-ci": "prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && cp ../main/node_modules/.prisma ./node_modules && vitest --config ./vitest.config.integration.ts"
+    "test-once-on-ci": "prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && cp --recursive ../main/node_modules/.prisma ./node_modules && vitest --config ./vitest.config.integration.ts"
   },
   "type": "module",
   "version": "1.0.0"
