@@ -25,10 +25,10 @@
     "format": "prettier --write .",
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
-    "save-test-output": "cp --recursive ../main/prisma ./prisma && docker compose up -d && prisma migrate dev --name init --schema ../tests/prisma/schema.prisma && prisma generate --schema ../tests/prisma/schema.prisma && vitest run --config ./vitest.config.integration.ts --no-color --reporter verbose --silent > test-output.txt && docker stop tests-db-1 && rm -fr ./prisma",
+    "save-test-output": "chmod +x ./tools/save-test-output.sh && ./tools/save-test-output.sh",
     "start": "nodemon",
-    "test": "cp --recursive ../main/prisma ./prisma && docker compose up -d && prisma migrate dev --name init --schema ../tests/prisma/schema.prisma && prisma generate --schema ../tests/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts && docker stop tests-db-1 && rm -fr ./prisma",
-    "test-once-on-ci": "cp --recursive ../main/prisma ./prisma && prisma migrate dev --name init --schema ../tests/prisma/schema.prisma && prisma generate --schema ../tests/prisma/schema.prisma && vitest run --config ./vitest.config.integration.ts && rm -fr ./prisma"
+    "test": "chmod +x ./tools/test.sh && ./tools/test.sh",
+    "test-once-on-ci": "chmod +x ./tools/test-once-on-ci.sh && ./tools/test-once-on-ci.sh"
   },
   "type": "module",
   "version": "1.0.0"
