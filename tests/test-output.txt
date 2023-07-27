@@ -1,49 +1,49 @@
 
  RUN  v0.33.0 /home/slacktracer/source/denarii/tests
 
+ ✓ __tests__/integration/accounts.get.test.js > GET /accounts > it returns all the given user accounts
+ ✓ __tests__/integration/accounts.get.test.js > GET /accounts > an account ID was given > it returns just the account with the given ID
+ ✓ __tests__/integration/accounts.get.test.js > GET /accounts > an account ID was given > the given account does not belong to the session user > it returns null
  ✓ __tests__/integration/accounts.delete.test.js > DELETE /accounts > the account has no operations nor transfers > the account with the given ID is deleted
  ✓ __tests__/integration/accounts.delete.test.js > DELETE /accounts > the account has operations > an error is returned, the account is not deleted
  ✓ __tests__/integration/accounts.delete.test.js > DELETE /accounts > the account has transfers > an error is returned, the account is not deleted
  ✓ __tests__/integration/accounts.delete.test.js > DELETE /accounts > the account does not belong to the given user or does not exist > an error is returned, no account is deleted
- ✓ __tests__/integration/accounts.get.test.js > GET /accounts > it returns all the given user accounts
- ✓ __tests__/integration/accounts.get.test.js > GET /accounts > an account ID was given > it returns just the account with the given ID
- ✓ __tests__/integration/accounts.get.test.js > GET /accounts > an account ID was given > the given account does not belong to the session user > it returns null
- ✓ __tests__/integration/tag-values.get.test.js > GET /tags/values > it returns all the given user tagValues
- ✓ __tests__/integration/tag-values.get.test.js > GET /tags/values > a tagValue ID was given > it returns just the tagValue with the given ID
- ✓ __tests__/integration/tag-values.get.test.js > GET /tags/values > a tagValue ID was given > the given tagValue does not belong to the session user > it returns null
- ✓ __tests__/integration/operations.get.test.js > GET /operations > it returns all the given user operations
- ✓ __tests__/integration/operations.get.test.js > GET /operations > an operation ID was given > it returns just the operation with the given ID
- ✓ __tests__/integration/operations.get.test.js > GET /operations > an operation ID was given > the given operation does not belong to the session user > it returns null
  ✓ __tests__/integration/transfers.get.test.js > GET /transfers > it returns all the given user transfers
  ✓ __tests__/integration/transfers.get.test.js > GET /transfers > an transfer ID was given > it returns just the transfer with the given ID
  ✓ __tests__/integration/transfers.get.test.js > GET /transfers > an transfer ID was given > the given transfer does not belong to the session user > it returns null
+ ✓ __tests__/integration/operations.get.test.js > GET /operations > it returns all the given user operations
+ ✓ __tests__/integration/operations.get.test.js > GET /operations > an operation ID was given > it returns just the operation with the given ID
+ ✓ __tests__/integration/operations.get.test.js > GET /operations > an operation ID was given > the given operation does not belong to the session user > it returns null
+ ✓ __tests__/integration/tag-values.get.test.js > GET /tags/values > it returns all the given user tagValues
+ ✓ __tests__/integration/tag-values.get.test.js > GET /tags/values > a tagValue ID was given > it returns just the tagValue with the given ID
+ ✓ __tests__/integration/tag-values.get.test.js > GET /tags/values > a tagValue ID was given > the given tagValue does not belong to the session user > it returns null
  ✓ __tests__/integration/tag-keys.get.test.js > GET /tags/keys > it returns all the given user tagKeys
  ✓ __tests__/integration/tag-keys.get.test.js > GET /tags/keys > a tagKey ID was given > it returns just the tagKey with the given ID
  ✓ __tests__/integration/tag-keys.get.test.js > GET /tags/keys > a tagKey ID was given > the given tagKey does not belong to the session user > it returns null
  ✓ __tests__/integration/users.post.test.js > POST /users > it returns new user
  ✓ __tests__/integration/tag-keys.delete.test.js > DELETE /tags/keys > the tagKey with the given ID is deleted
  ✓ __tests__/integration/tag-keys.delete.test.js > DELETE /tags/keys > the tagKey does not belong to the given user or does not exist > an error is returned, no tagKey is deleted
- ✓ __tests__/integration/operations.delete.test.js > DELETE /operations > the operation with the given ID is deleted
- ✓ __tests__/integration/operations.delete.test.js > DELETE /operations > the operation does not belong to the given user or does not exist > an error is returned, no operation is deleted
  ✓ __tests__/integration/transfers.delete.test.js > DELETE /transfers > the transfer with the given ID is deleted
  ✓ __tests__/integration/transfers.delete.test.js > DELETE /transfers > the transfer does not belong to the given user or does not exist > an error is returned, no transfer is deleted
+ ✓ __tests__/integration/operations.delete.test.js > DELETE /operations > the operation with the given ID is deleted
+ ✓ __tests__/integration/operations.delete.test.js > DELETE /operations > the operation does not belong to the given user or does not exist > an error is returned, no operation is deleted
  ✓ __tests__/integration/tag-values.delete.test.js > DELETE /tags/values > the tagValue with the given ID is deleted
  ✓ __tests__/integration/tag-values.delete.test.js > DELETE /tags/values > the tagValue does not belong to the given user or does not exist > an error is returned, no tagValue is deleted
- ✓ __tests__/integration/accounts.post.test.js > POST /accounts > a new account is created and returned
- ✓ __tests__/integration/tag-values.patch.test.js > PATCH /tags/values > a tagValue ID was given > an existing tagValue is updated
+ ✓ __tests__/integration/tag-values.post.test.js > POST /tags/values > a new tagValue is created and returned
+ ✓ __tests__/integration/healthz.get.test.js > GET /healthz > health is ok
+ ✓ __tests__/integration/accounts.patch.test.js > PATCH /accounts > an account ID was given > an existing account is updated
+ ✓ __tests__/integration/operations.post.test.js > POST /operations > a new operation is created and returned
+ ✓ __tests__/integration/tag-keys.post.test.js > POST /tags/keys > a new tagKey is created and returned
  ✓ __tests__/integration/transfers.patch.test.js > PATCH /transfers > an transfer ID was given > an existing transfer is updated
  ✓ __tests__/integration/operations.patch.test.js > PATCH /operations > an operation ID was given > an existing operation is updated
- ✓ __tests__/integration/tag-keys.post.test.js > POST /tags/keys > a new tagKey is created and returned
- ✓ __tests__/integration/accounts.patch.test.js > PATCH /accounts > an account ID was given > an existing account is updated
  ✓ __tests__/integration/tag-keys.patch.test.js > PATCH /tags/keys > a tagKey ID was given > an existing tagKey is updated
- ✓ __tests__/integration/transfers.post.test.js > POST /transfers > a new transfer is created and returned
- ✓ __tests__/integration/operations.post.test.js > POST /operations > a new operation is created and returned
- ✓ __tests__/integration/tag-values.post.test.js > POST /tags/values > a new tagValue is created and returned
  ✓ __tests__/integration/balances.get.test.js > GET /balances > returns the balances for each and all of the user's accounts
- ✓ __tests__/integration/healthz.get.test.js > GET /healthz > health is ok
+ ✓ __tests__/integration/accounts.post.test.js > POST /accounts > a new account is created and returned
+ ✓ __tests__/integration/tag-values.patch.test.js > PATCH /tags/values > a tagValue ID was given > an existing tagValue is updated
+ ✓ __tests__/integration/transfers.post.test.js > POST /transfers > a new transfer is created and returned
 
  Test Files  23 passed (23)
       Tests  40 passed (40)
-   Start at  20:08:37
-   Duration  6.32s (transform 112ms, setup 1.82s, collect 235ms, tests 4.05s, environment 0ms, prepare 71ms)
+   Start at  14:30:03
+   Duration  5.39s (transform 84ms, setup 1.28s, collect 219ms, tests 3.73s, environment 0ms, prepare 55ms)
 

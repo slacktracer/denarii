@@ -25,10 +25,10 @@
     "format": "prettier --write .",
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
-    "save-test-output": "docker compose up -d && prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts --no-color --reporter verbose --run --silent > test-output.txt && docker stop tests-db-1",
+    "save-test-output": "cp --recursive ../main/prisma ./prisma && docker compose up -d && prisma migrate dev --name init --schema ../tests/prisma/schema.prisma && prisma generate --schema ../tests/prisma/schema.prisma && vitest run --config ./vitest.config.integration.ts --no-color --reporter verbose --silent > test-output.txt && docker stop tests-db-1 && rm -fr ./prisma",
     "start": "nodemon",
-    "test": "docker compose up -d && prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts && docker stop tests-db-1",
-    "test-once-on-ci": "prisma migrate dev --name init --schema ../main/prisma/schema.prisma && prisma generate --schema ../main/prisma/schema.prisma && cp --recursive ../main/node_modules/.prisma ./node_modules && vitest --config ./vitest.config.integration.ts"
+    "test": "cp --recursive ../main/prisma ./prisma && docker compose up -d && prisma migrate dev --name init --schema ../tests/prisma/schema.prisma && prisma generate --schema ../tests/prisma/schema.prisma && vitest --config ./vitest.config.integration.ts && docker stop tests-db-1 && rm -fr ./prisma",
+    "test-once-on-ci": "cp --recursive ../main/prisma ./prisma && prisma migrate dev --name init --schema ../tests/prisma/schema.prisma && prisma generate --schema ../tests/prisma/schema.prisma && vitest run --config ./vitest.config.integration.ts && rm -fr ./prisma"
   },
   "type": "module",
   "version": "1.0.0"
