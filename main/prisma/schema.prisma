@@ -38,15 +38,16 @@ model Group {
 }
 
 model Category {
-  categoryID String    @id @map("category_id") @db.Uuid
-  createdAt  DateTime  @map("created_at") @db.Timestamptz(6)
-  deleted    Boolean   @default(false)
-  group      Group     @relation(fields: [groupID], references: [groupID], onDelete: NoAction, onUpdate: NoAction, map: "group_id")
-  groupID    String    @map("group_id") @db.Uuid
+  categoryID String      @id @map("category_id") @db.Uuid
+  createdAt  DateTime    @map("created_at") @db.Timestamptz(6)
+  deleted    Boolean     @default(false)
+  group      Group       @relation(fields: [groupID], references: [groupID], onDelete: NoAction, onUpdate: NoAction, map: "group_id")
+  groupID    String      @map("group_id") @db.Uuid
   name       String
-  updatedAt  DateTime? @map("updated_at") @db.Timestamptz(6)
-  user       User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
-  userID     String    @map("user_id") @db.Uuid
+  Operation  Operation[]
+  updatedAt  DateTime?   @map("updated_at") @db.Timestamptz(6)
+  user       User        @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID     String      @map("user_id") @db.Uuid
 
   @@map("category")
 }
@@ -57,6 +58,8 @@ model Operation {
   amount        Int
   amountPerUnit Int       @map("amount_per_unit")
   at            DateTime  @db.Timestamptz(6)
+  category      Category  @relation(fields: [categoryID], references: [categoryID], onDelete: NoAction, onUpdate: NoAction, map: "category_id")
+  categoryID    String    @map("category_id") @db.Uuid
   comments      String?
   createdAt     DateTime  @map("created_at") @db.Timestamptz(6)
   deleted       Boolean   @default(false)
