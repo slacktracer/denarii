@@ -6,14 +6,15 @@ jobs:
       - image: cimg/node:20.4.0
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
-      - run: "[ ! -d node_modules ] && npm ci --loglevel warn --yes || echo package.json and package-lock.json unchanged. Using cache."
-      - save_cache:
-          key: node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
-          paths:
-            - node_modules
+#      - restore_cache:
+#          keys:
+#            - node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
+      - run: npm ci
+#      - run: "[ ! -d node_modules ] && npm ci --loglevel warn --yes || echo package.json and package-lock.json unchanged. Using cache."
+#      - save_cache:
+#          key: node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
+#          paths:
+#            - node_modules
       - run: npm run lint
 
   test:
@@ -33,14 +34,15 @@ jobs:
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - restore_cache:
-          keys:
-            - node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
-      - run: "[ ! -d node_modules ] && npm ci --loglevel warn --yes || echo package.json and package-lock.json unchanged. Using cache."
-      - save_cache:
-          key: node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
-          paths:
-            - node_modules
+#      - restore_cache:
+#          keys:
+#            - node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
+      - run: npm ci
+#      - run: "[ ! -d node_modules ] && npm ci --loglevel warn --yes || echo package.json and package-lock.json unchanged. Using cache."
+#      - save_cache:
+#          key: node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
+#          paths:
+#            - node_modules
       - run: npm run compile-on-ci --prefix main
       - run: npm run test-once-on-ci --prefix tests
 
