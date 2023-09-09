@@ -24,6 +24,33 @@ model Account {
   @@map("account")
 }
 
+model Group {
+  Category  Category[]
+  createdAt DateTime   @map("created_at") @db.Timestamptz(6)
+  deleted   Boolean    @default(false)
+  groupID   String     @id @map("group_id") @db.Uuid
+  name      String
+  updatedAt DateTime?  @map("updated_at") @db.Timestamptz(6)
+  user      User       @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID    String     @map("user_id") @db.Uuid
+
+  @@map("group")
+}
+
+model Category {
+  categoryID String    @id @map("category_id") @db.Uuid
+  createdAt  DateTime  @map("created_at") @db.Timestamptz(6)
+  deleted    Boolean   @default(false)
+  group      Group     @relation(fields: [groupID], references: [groupID], onDelete: NoAction, onUpdate: NoAction, map: "group_id")
+  groupID    String    @map("group_id") @db.Uuid
+  name       String
+  updatedAt  DateTime? @map("updated_at") @db.Timestamptz(6)
+  user       User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID     String    @map("user_id") @db.Uuid
+
+  @@map("category")
+}
+
 model Operation {
   account       Account   @relation(fields: [accountID], references: [accountID], onDelete: NoAction, onUpdate: NoAction, map: "account_id")
   accountID     String    @map("account_id") @db.Uuid
@@ -87,9 +114,11 @@ model Transfer {
 
 model User {
   account   Account[]
+  Category  Category[]
   createdAt DateTime    @map("created_at") @db.Timestamptz(6)
   deleted   Boolean     @default(false)
   email     String      @unique
+  Group     Group[]
   operation Operation[]
   password  String
   tag_key   TagKey[]
