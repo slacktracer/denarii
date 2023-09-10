@@ -3,6 +3,7 @@ import squel from "squel";
 import { convertObjectKeysFromCamelCaseToSnakeCase } from "../../main/src/persistence/functions/convert-object-keys-from-camel-case-to-snake-case.js";
 import { handleJSONColumns } from "../functions/handle-json-columns.js";
 import { makeAccountData } from "./make-account-data.js";
+import { makeGroupAndCategoryData } from "./make-group-and-category-data.js";
 import { makeOperationData } from "./make-operation-data.js";
 import { makeTagData } from "./make-tag-data.js";
 import { makeTransferData } from "./make-transfer-data.js";
@@ -44,8 +45,35 @@ const {
   tagValue04: { tagValueID: tagValueID04 },
 } = tagValues.$;
 
+export const { categories, groups } = makeGroupAndCategoryData({
+  userID01,
+  userID02,
+});
+
+// Will I ever need this? Probably for some new tests.
+// export const {
+//   group01: { groupID: groupID01 },
+//   group02: { groupID: groupID02 },
+//   group03: { groupID: groupID03 },
+// } = groups.$;
+
+const {
+  category01: { categoryID: categoryID01 },
+  category02: { categoryID: categoryID02 },
+  category03: { categoryID: categoryID03 },
+  category04: { categoryID: categoryID04 },
+  category05: { categoryID: categoryID05 },
+  category06: { categoryID: categoryID06 },
+} = categories.$;
+
 export const { operations } = makeOperationData({
   accountID01,
+  categoryID01,
+  categoryID02,
+  categoryID03,
+  categoryID04,
+  categoryID05,
+  categoryID06,
   tagKeyID01,
   tagKeyID02,
   tagKeyID03,
@@ -75,6 +103,18 @@ const insertAccountsQuery = squel
   .insert()
   .into("public.account")
   .setFieldsRows(accounts.map(convertObjectKeysFromCamelCaseToSnakeCase))
+  .toString();
+
+const insertGroupsQuery = squel
+  .insert()
+  .into("public.group")
+  .setFieldsRows(groups.map(convertObjectKeysFromCamelCaseToSnakeCase))
+  .toString();
+
+const insertCategoriesQuery = squel
+  .insert()
+  .into("public.category")
+  .setFieldsRows(categories.map(convertObjectKeysFromCamelCaseToSnakeCase))
   .toString();
 
 const insertOperationsQuery = squel
@@ -109,6 +149,8 @@ export const mockDataAsInsertStatements = [
   insertUsersQuery,
   insertAccountsQuery,
   insertTransfersQuery,
+  insertGroupsQuery,
+  insertCategoriesQuery,
   insertOperationsQuery,
   insertTagKeysQuery,
   insertTagValuesQuery,

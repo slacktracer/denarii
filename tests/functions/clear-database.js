@@ -7,5 +7,7 @@ export const clearDatabase = () =>
     db.operation.deleteMany(),
     db.transfer.deleteMany(),
     db.account.deleteMany(),
+    db.category.deleteMany(),
+    db.group.deleteMany(),
     db.user.deleteMany(),
   ]);
