@@ -5,14 +5,23 @@ const { createOperation } = operations;
 export const postOperation = async (request, response) => {
   const { userID } = request.session.user;
 
-  const { accountID, amount, amountPerUnit, at, comments, type, unitCount } =
-    request.body;
+  const {
+    accountID,
+    amount,
+    amountPerUnit,
+    at,
+    categoryID,
+    comments,
+    type,
+    unitCount,
+  } = request.body;
 
   const data = {
     accountID,
     amount,
     amountPerUnit,
     at,
+    categoryID,
     comments,
     type,
     unitCount,

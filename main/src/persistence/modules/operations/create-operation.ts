@@ -7,8 +7,16 @@ export const createOperation = async ({
   data,
   userID,
 }: createOperationParameter) => {
-  const { accountID, amount, amountPerUnit, at, comments, type, unitCount } =
-    data;
+  const {
+    accountID,
+    amount,
+    amountPerUnit,
+    at,
+    categoryID,
+    comments,
+    type,
+    unitCount,
+  } = data;
 
   const createdOperation = db.operation.create({
     data: {
@@ -16,6 +24,7 @@ export const createOperation = async ({
       amount,
       amountPerUnit,
       at,
+      categoryID,
       comments,
       createdAt: new Date(),
       operationID: randomUUID(),

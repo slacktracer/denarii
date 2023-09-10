@@ -9,6 +9,7 @@ export type createOperationParameter = {
     amount: number;
     amountPerUnit: number;
     at: Date;
+    categoryID: string;
     comments: string;
     operationID: string;
     type: string;

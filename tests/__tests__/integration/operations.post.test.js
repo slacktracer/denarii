@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from "vitest";
 
-import { accounts, userPasswords, users } from "../../data/data.js";
+import { accounts, categories, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionCookies } from "../../functions/get-session-cookies.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
@@ -8,6 +8,7 @@ import * as mockConnect from "../../mocks/persistence/connect.js";
 vi.mock(`../../../main/src/persistence/connect.js`, () => mockConnect);
 
 const { account01 } = accounts.$;
+const { category03 } = categories.$;
 const { user01 } = users.$;
 const { user01Password } = userPasswords.$;
 
@@ -21,6 +22,7 @@ describe("POST /operations", () => {
       amount: 123_00,
       amountPerUnit: 123_00,
       at: new Date().toISOString(),
+      categoryID: category03.categoryID,
       comments: "This is a new operation!",
       type: "Income",
       unitCount: 1,
