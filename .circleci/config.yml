@@ -47,7 +47,7 @@ jobs:
       - run: npm run test-once-on-ci --prefix tests
 
 workflows:
-  lint_and_apply_migrations_and_test:
+  lint_and_test:
     jobs:
       - lint
       - test:
