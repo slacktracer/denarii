@@ -50,7 +50,7 @@ export const makeAccountData = ({ userID01, userID02 }) => {
     initialAmount: 0,
     name: "Account 5!",
     updatedAt: null,
-    userID: userID01,
+    userID: userID02,
   };
 
   const account06 = {

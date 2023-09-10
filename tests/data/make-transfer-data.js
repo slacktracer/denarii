@@ -5,6 +5,8 @@ import { makeEnhancedArray } from "./make-enhanced-array.js";
 export const makeTransferData = ({
   accountID01,
   accountID02,
+  accountID05,
+  accountID06,
   userID01,
   userID02,
 }) => {
@@ -57,12 +59,12 @@ export const makeTransferData = ({
   };
 
   const transfer05 = {
-    amount: 10_000_00,
+    amount: 5_000_00,
     at: new Date().toISOString(),
     createdAt: new Date().toISOString(),
     deleted: false,
-    fromAccountID: accountID01,
-    toAccountID: accountID02,
+    fromAccountID: accountID05,
+    toAccountID: accountID06,
     transferID: uuid(),
     updatedAt: null,
     userID: userID02,

@@ -4,6 +4,8 @@ import { makeEnhancedArray } from "./make-enhanced-array.js";
 
 export const makeOperationData = ({
   accountID01,
+  accountID05,
+  accountID06,
   categoryID01,
   categoryID02,
   categoryID03,
@@ -23,8 +25,8 @@ export const makeOperationData = ({
 }) => {
   const operation01 = {
     accountID: accountID01,
-    amount: 100_00,
-    amountPerUnit: 100_00,
+    amount: 100_000_00,
+    amountPerUnit: 100_000_00,
     at: new Date().toISOString(),
     categoryID: categoryID01,
     comments: "This is operation 1.",
@@ -43,8 +45,8 @@ export const makeOperationData = ({
 
   const operation02 = {
     accountID: accountID01,
-    amount: 100_00,
-    amountPerUnit: 100_00,
+    amount: -15_000_00,
+    amountPerUnit: -15_000_00,
     at: new Date().toISOString(),
     categoryID: categoryID02,
     comments: "This is operation 2.",
@@ -55,7 +57,7 @@ export const makeOperationData = ({
       [tagKeyID01]: tagValueID01,
       [tagKeyID02]: tagValueID02,
     },
-    type: "Income",
+    type: "Expense",
     unitCount: 1,
     updatedAt: null,
     userID: userID01,
@@ -63,8 +65,8 @@ export const makeOperationData = ({
 
   const operation03 = {
     accountID: accountID01,
-    amount: 100_00,
-    amountPerUnit: 100_00,
+    amount: 1_000_00,
+    amountPerUnit: 1_000_00,
     at: new Date().toISOString(),
     categoryID: categoryID03,
     comments: "This is operation 3.",
@@ -83,8 +85,8 @@ export const makeOperationData = ({
 
   const operation04 = {
     accountID: accountID01,
-    amount: 100_00,
-    amountPerUnit: 100_00,
+    amount: -3_400_00,
+    amountPerUnit: -3_400_00,
     at: new Date().toISOString(),
     categoryID: categoryID04,
     comments: "This is operation 4.",
@@ -95,16 +97,16 @@ export const makeOperationData = ({
       [tagKeyID03]: tagValueID03,
       [tagKeyID04]: tagValueID04,
     },
-    type: "Income",
+    type: "Expense",
     unitCount: 1,
     updatedAt: null,
     userID: userID01,
   };
 
   const operation05 = {
-    accountID: accountID01,
-    amount: 100_00,
-    amountPerUnit: 100_00,
+    accountID: accountID05,
+    amount: 10_000_00,
+    amountPerUnit: 10_000_00,
     at: new Date().toISOString(),
     categoryID: categoryID05,
     comments: "This is operation 5.",
@@ -202,9 +204,9 @@ export const makeOperationData = ({
   };
 
   const operation10 = {
-    accountID: accountID01,
-    amount: 100_00,
-    amountPerUnit: 100_00,
+    accountID: accountID06,
+    amount: -650_00,
+    amountPerUnit: -650_00,
     at: new Date().toISOString(),
     categoryID: categoryID06,
     comments: "This is operation 10.",
@@ -215,7 +217,7 @@ export const makeOperationData = ({
       [tagKeyID01]: tagValueID01,
       [tagKeyID02]: tagValueID02,
     },
-    type: "Income",
+    type: "Expense",
     unitCount: 1,
     updatedAt: null,
     userID: userID02,

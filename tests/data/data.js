@@ -29,6 +29,8 @@ export const { tagKeys, tagValues } = makeTagData({
 const {
   account01: { accountID: accountID01 },
   account02: { accountID: accountID02 },
+  account05: { accountID: accountID05 },
+  account06: { accountID: accountID06 },
 } = accounts.$;
 
 const {
@@ -68,6 +70,8 @@ const {
 
 export const { operations } = makeOperationData({
   accountID01,
+  accountID05,
+  accountID06,
   categoryID01,
   categoryID02,
   categoryID03,
@@ -89,6 +93,8 @@ export const { operations } = makeOperationData({
 export const { transfers } = makeTransferData({
   accountID01,
   accountID02,
+  accountID05,
+  accountID06,
   userID01,
   userID02,
 });

@@ -7,12 +7,13 @@ import * as mockConnect from "../../mocks/persistence/connect.js";
 
 vi.mock(`../../../main/src/persistence/connect.js`, () => mockConnect);
 
-const { account01, account02, account03, account04, account05 } = accounts.$;
-const { user01 } = users.$;
-const { user01Password } = userPasswords.$;
+const { account01, account02, account03, account04, account05, account06 } =
+  accounts.$;
+const { user01, user02 } = users.$;
+const { user01Password, user02Password } = userPasswords.$;
 
 describe("GET /balances", () => {
-  test("returns the balances for each and all of the user's accounts", async () => {
+  test("returns the balances for each and all of the user's accounts (test user 1)", async () => {
     // given
     const server = await getServer();
 
@@ -26,7 +27,7 @@ describe("GET /balances", () => {
       {
         accountID: account01.accountID,
         name: "Account 1!",
-        total: -39_600_00,
+        total: 43_000_00,
       },
       {
         accountID: account02.accountID,
@@ -43,10 +44,39 @@ describe("GET /balances", () => {
         name: "Account 4!",
         total: 0,
       },
+    ];
+
+    // when
+    const response = await server
+      .get("/balances")
+      .set("cookie", [secretCookie, sessionIDCookie]);
+
+    console.log(response.body);
+
+    // then
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual(expectedBalances);
+  });
+  test("returns the balances for each and all of the user's accounts (test user 2)", async () => {
+    // given
+    const server = await getServer();
+
+    const { secretCookie, sessionIDCookie } = await getSessionCookies({
+      password: user02Password,
+      server,
+      username: user02.username,
+    });
+
+    const expectedBalances = [
       {
         accountID: account05.accountID,
         name: "Account 5!",
-        total: 0,
+        total: 5_000_00,
+      },
+      {
+        accountID: account06.accountID,
+        name: "Account 6!",
+        total: 4_350_00,
       },
     ];
 
@@ -54,6 +84,8 @@ describe("GET /balances", () => {
     const response = await server
       .get("/balances")
       .set("cookie", [secretCookie, sessionIDCookie]);
+
+    console.log(response.body);
 
     // then
     expect(response.status).toEqual(200);

@@ -15,13 +15,13 @@ vi.mock(`../../../main/src/persistence/connect.js`, () => mockConnect);
 const { user01 } = users.$;
 const { user01Password } = userPasswords.$;
 
-const { account01, account02, account05, account06 } = accounts.$;
+const { account01, account02, account04, account06 } = accounts.$;
 
 describe("DELETE /accounts", () => {
   describe("the account has no operations nor transfers", () => {
     test("the account with the given ID is deleted", async () => {
       // given
-      const expectedAccount = { ...account05, deleted: true };
+      const expectedAccount = { ...account04, deleted: true };
 
       const server = await getServer();
 
@@ -33,7 +33,7 @@ describe("DELETE /accounts", () => {
 
       // when
       const response = await server
-        .delete(`/accounts/${account05.accountID}`)
+        .delete(`/accounts/${account04.accountID}`)
         .set("cookie", [secretCookie, sessionIDCookie]);
 
       // then
