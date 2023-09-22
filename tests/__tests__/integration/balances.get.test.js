@@ -51,8 +51,6 @@ describe("GET /balances", () => {
       .get("/balances")
       .set("cookie", [secretCookie, sessionIDCookie]);
 
-    console.log(response.body);
-
     // then
     expect(response.status).toEqual(200);
     expect(response.body).toEqual(expectedBalances);
@@ -84,8 +82,6 @@ describe("GET /balances", () => {
     const response = await server
       .get("/balances")
       .set("cookie", [secretCookie, sessionIDCookie]);
-
-    console.log(response.body);
 
     // then
     expect(response.status).toEqual(200);
