@@ -22,6 +22,20 @@ export const balances = {
   calculateBalances,
 };
 
+import { createGroup } from "./modules/groups/create-group.js";
+import { deleteGroup } from "./modules/groups/delete-group.js";
+import { readGroup } from "./modules/groups/read-group.js";
+import { readGroups } from "./modules/groups/read-groups.js";
+import { updateGroup } from "./modules/groups/update-group.js";
+
+export const groups = {
+  createGroup,
+  deleteGroup,
+  readGroup,
+  readGroups,
+  updateGroup,
+};
+
 export { redisClient } from "../persistence/persistence.js";
 
 import { createOperation } from "./modules/operations/create-operation.js";

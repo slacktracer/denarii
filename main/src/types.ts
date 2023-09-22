@@ -3,6 +3,11 @@ export type createAccountParameter = {
   userID: string;
 };
 
+export type createGroupParameter = {
+  data: { name: string };
+  userID: string;
+};
+
 export type createOperationParameter = {
   data: {
     accountID: string;
@@ -15,11 +20,6 @@ export type createOperationParameter = {
     type: string;
     unitCount: number;
   };
-  userID: string;
-};
-
-export type createTagParameter = {
-  data: { operationID: string; tagKeyID: string; tagValueID: string };
   userID: string;
 };
 
