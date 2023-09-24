@@ -1,6 +1,7 @@
 export const ACCOUNT_HAS_OPERATION = Symbol("ACCOUNT_HAS_OPERATION");
 export const ACCOUNT_HAS_TRANSFER = Symbol("ACCOUNT_HAS_TRANSFER");
 export const NO_SUCH_ACCOUNT = Symbol("NO_SUCH_ACCOUNT");
+export const NO_SUCH_CATEGORY = Symbol("NO_SUCH_CATEGORY");
 export const NO_SUCH_GROUP = Symbol("NO_SUCH_GROUP");
 export const NO_SUCH_OPERATION = Symbol("NO_SUCH_OPERATION");
 export const NO_SUCH_TAG_KEY = Symbol("NO_SUCH_TAG_KEY");

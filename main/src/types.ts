@@ -3,6 +3,11 @@ export type createAccountParameter = {
   userID: string;
 };
 
+export type createCategoryParameter = {
+  data: { groupID: string; name: string };
+  userID: string;
+};
+
 export type createGroupParameter = {
   data: { name: string };
   userID: string;

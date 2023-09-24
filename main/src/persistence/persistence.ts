@@ -22,6 +22,20 @@ import { calculateBalances } from "./modules/balances/calculate-balances.js";
 
 export const balances = { calculateBalances };
 
+import { createCategory } from "./modules/categories/create-category.js";
+import { deleteCategory } from "./modules/categories/delete-category.js";
+import { readCategories } from "./modules/categories/read-categories.js";
+import { readCategory } from "./modules/categories/read-category.js";
+import { updateCategory } from "./modules/categories/update-category.js";
+
+export const categories = {
+  createCategory,
+  deleteCategory,
+  readCategory,
+  readCategories,
+  updateCategory,
+};
+
 import { createGroup } from "./modules/groups/create-group.js";
 import { deleteGroup } from "./modules/groups/delete-group.js";
 import { readGroup } from "./modules/groups/read-group.js";
