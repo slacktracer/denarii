@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
-import { v4 as uuid } from "uuid";
 
+import { getFixedUUID } from "./get-fixed-uuid.js";
 import { makeEnhancedArray } from "./make-enhanced-array.js";
 
 export const makeUserData = async () => {
@@ -11,7 +11,7 @@ export const makeUserData = async () => {
     deleted: false,
     email: "mr.user@example.com",
     password: await bcrypt.hash(user01Password, 1),
-    userID: uuid(),
+    userID: getFixedUUID(),
     username: "mr.user",
   };
 
@@ -22,7 +22,7 @@ export const makeUserData = async () => {
     deleted: false,
     email: "mr.user2@example.com",
     password: await bcrypt.hash(user02Password, 1),
-    userID: uuid(),
+    userID: getFixedUUID(),
     username: "mr.user2",
   };
 
@@ -33,7 +33,7 @@ export const makeUserData = async () => {
     deleted: false,
     email: "mr.user3@example.com",
     password: await bcrypt.hash(user03Password, 1),
-    userID: uuid(),
+    userID: getFixedUUID(),
     username: "mr.user3",
   };
 

@@ -1,5 +1,4 @@
-import { v4 as uuid } from "uuid";
-
+import { getFixedUUID } from "./get-fixed-uuid.js";
 import { makeEnhancedArray } from "./make-enhanced-array.js";
 
 export const makeTagData = ({ userID01, userID02 }) => {
@@ -7,7 +6,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Group",
-    tagKeyID: uuid(),
+    tagKeyID: getFixedUUID(),
     updatedAt: null,
     userID: userID01,
   };
@@ -16,7 +15,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Category",
-    tagKeyID: uuid(),
+    tagKeyID: getFixedUUID(),
     updatedAt: null,
     userID: userID01,
   };
@@ -25,7 +24,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Location",
-    tagKeyID: uuid(),
+    tagKeyID: getFixedUUID(),
     updatedAt: null,
     userID: userID01,
   };
@@ -34,7 +33,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Location",
-    tagKeyID: uuid(),
+    tagKeyID: getFixedUUID(),
     updatedAt: null,
     userID: userID02,
   };
@@ -43,7 +42,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Location",
-    tagKeyID: uuid(),
+    tagKeyID: getFixedUUID(),
     updatedAt: null,
     userID: userID02,
   };
@@ -52,7 +51,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Some value 1",
-    tagValueID: uuid(),
+    tagValueID: getFixedUUID(),
     updatedAt: null,
     userID: userID01,
   };
@@ -61,7 +60,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Some value 2",
-    tagValueID: uuid(),
+    tagValueID: getFixedUUID(),
     updatedAt: null,
     userID: userID01,
   };
@@ -70,7 +69,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Some value 3",
-    tagValueID: uuid(),
+    tagValueID: getFixedUUID(),
     updatedAt: null,
     userID: userID01,
   };
@@ -79,7 +78,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Some value 4",
-    tagValueID: uuid(),
+    tagValueID: getFixedUUID(),
     updatedAt: null,
     userID: userID01,
   };
@@ -88,7 +87,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Some value 5",
-    tagValueID: uuid(),
+    tagValueID: getFixedUUID(),
     updatedAt: null,
     userID: userID01,
   };
@@ -97,7 +96,7 @@ export const makeTagData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Some value 5",
-    tagValueID: uuid(),
+    tagValueID: getFixedUUID(),
     updatedAt: null,
     userID: userID02,
   };

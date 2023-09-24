@@ -1,10 +1,9 @@
-import { v4 as uuid } from "uuid";
-
+import { getFixedUUID } from "./get-fixed-uuid.js";
 import { makeEnhancedArray } from "./make-enhanced-array.js";
 
 export const makeAccountData = ({ userID01, userID02 }) => {
   const account01 = {
-    accountID: uuid(),
+    accountID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     initialAmount: 0,
@@ -14,7 +13,7 @@ export const makeAccountData = ({ userID01, userID02 }) => {
   };
 
   const account02 = {
-    accountID: uuid(),
+    accountID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     initialAmount: 0,
@@ -24,7 +23,7 @@ export const makeAccountData = ({ userID01, userID02 }) => {
   };
 
   const account03 = {
-    accountID: uuid(),
+    accountID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     initialAmount: 0,
@@ -34,7 +33,7 @@ export const makeAccountData = ({ userID01, userID02 }) => {
   };
 
   const account04 = {
-    accountID: uuid(),
+    accountID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     initialAmount: 0,
@@ -44,7 +43,7 @@ export const makeAccountData = ({ userID01, userID02 }) => {
   };
 
   const account05 = {
-    accountID: uuid(),
+    accountID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     initialAmount: 0,
@@ -54,7 +53,7 @@ export const makeAccountData = ({ userID01, userID02 }) => {
   };
 
   const account06 = {
-    accountID: uuid(),
+    accountID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     initialAmount: 0,

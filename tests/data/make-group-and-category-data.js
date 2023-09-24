@@ -1,5 +1,4 @@
-import { v4 as uuid } from "uuid";
-
+import { getFixedUUID } from "./get-fixed-uuid.js";
 import { makeEnhancedArray } from "./make-enhanced-array.js";
 
 export const makeGroupAndCategoryData = ({ userID01, userID02 }) => {
@@ -7,7 +6,7 @@ export const makeGroupAndCategoryData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Group 1",
-    groupID: uuid(),
+    groupID: getFixedUUID(),
     updatedAt: null,
     userID: userID01,
   };
@@ -16,7 +15,7 @@ export const makeGroupAndCategoryData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Group 2",
-    groupID: uuid(),
+    groupID: getFixedUUID(),
     updatedAt: null,
     userID: userID01,
   };
@@ -25,13 +24,13 @@ export const makeGroupAndCategoryData = ({ userID01, userID02 }) => {
     createdAt: new Date().toISOString(),
     deleted: false,
     name: "Group 3",
-    groupID: uuid(),
+    groupID: getFixedUUID(),
     updatedAt: null,
     userID: userID02,
   };
 
   const category01 = {
-    categoryID: uuid(),
+    categoryID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     groupID: group01.groupID,
@@ -41,7 +40,7 @@ export const makeGroupAndCategoryData = ({ userID01, userID02 }) => {
   };
 
   const category02 = {
-    categoryID: uuid(),
+    categoryID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     groupID: group01.groupID,
@@ -51,7 +50,7 @@ export const makeGroupAndCategoryData = ({ userID01, userID02 }) => {
   };
 
   const category03 = {
-    categoryID: uuid(),
+    categoryID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     groupID: group02.groupID,
@@ -61,7 +60,7 @@ export const makeGroupAndCategoryData = ({ userID01, userID02 }) => {
   };
 
   const category04 = {
-    categoryID: uuid(),
+    categoryID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     groupID: group02.groupID,
@@ -71,7 +70,7 @@ export const makeGroupAndCategoryData = ({ userID01, userID02 }) => {
   };
 
   const category05 = {
-    categoryID: uuid(),
+    categoryID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     groupID: group03.groupID,
@@ -81,7 +80,7 @@ export const makeGroupAndCategoryData = ({ userID01, userID02 }) => {
   };
 
   const category06 = {
-    categoryID: uuid(),
+    categoryID: getFixedUUID(),
     createdAt: new Date().toISOString(),
     deleted: false,
     groupID: group03.groupID,

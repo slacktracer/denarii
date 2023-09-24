@@ -1,5 +1,4 @@
-import { v4 as uuid } from "uuid";
-
+import { getFixedUUID } from "./get-fixed-uuid.js";
 import { makeEnhancedArray } from "./make-enhanced-array.js";
 
 export const makeOperationData = ({
@@ -32,7 +31,7 @@ export const makeOperationData = ({
     comments: "This is operation 1.",
     createdAt: new Date().toISOString(),
     deleted: false,
-    operationID: uuid(),
+    operationID: getFixedUUID(),
     tags: {
       [tagKeyID01]: tagValueID01,
       [tagKeyID02]: tagValueID02,
@@ -52,7 +51,7 @@ export const makeOperationData = ({
     comments: "This is operation 2.",
     createdAt: new Date().toISOString(),
     deleted: false,
-    operationID: uuid(),
+    operationID: getFixedUUID(),
     tags: {
       [tagKeyID01]: tagValueID01,
       [tagKeyID02]: tagValueID02,
@@ -72,7 +71,7 @@ export const makeOperationData = ({
     comments: "This is operation 3.",
     createdAt: new Date().toISOString(),
     deleted: false,
-    operationID: uuid(),
+    operationID: getFixedUUID(),
     tags: {
       [tagKeyID03]: tagValueID03,
       [tagKeyID04]: tagValueID04,
@@ -92,7 +91,7 @@ export const makeOperationData = ({
     comments: "This is operation 4.",
     createdAt: new Date().toISOString(),
     deleted: false,
-    operationID: uuid(),
+    operationID: getFixedUUID(),
     tags: {
       [tagKeyID03]: tagValueID03,
       [tagKeyID04]: tagValueID04,
@@ -112,7 +111,7 @@ export const makeOperationData = ({
     comments: "This is operation 5.",
     createdAt: new Date().toISOString(),
     deleted: false,
-    operationID: uuid(),
+    operationID: getFixedUUID(),
     tags: {
       [tagKeyID01]: tagValueID01,
       [tagKeyID02]: tagValueID02,
@@ -132,7 +131,7 @@ export const makeOperationData = ({
     comments: "This is operation 6.",
     createdAt: new Date().toISOString(),
     deleted: false,
-    operationID: uuid(),
+    operationID: getFixedUUID(),
     tags: {
       [tagKeyID01]: tagValueID01,
       [tagKeyID02]: tagValueID02,
@@ -152,7 +151,7 @@ export const makeOperationData = ({
     comments: "This is operation 7.",
     createdAt: new Date().toISOString(),
     deleted: false,
-    operationID: uuid(),
+    operationID: getFixedUUID(),
     tags: {
       [tagKeyID01]: tagValueID01,
       [tagKeyID02]: tagValueID02,
@@ -172,7 +171,7 @@ export const makeOperationData = ({
     comments: "This is operation 8.",
     createdAt: new Date().toISOString(),
     deleted: false,
-    operationID: uuid(),
+    operationID: getFixedUUID(),
     tags: {
       [tagKeyID03]: tagValueID03,
       [tagKeyID04]: tagValueID04,
@@ -192,7 +191,7 @@ export const makeOperationData = ({
     comments: "This is operation 9.",
     createdAt: new Date().toISOString(),
     deleted: false,
-    operationID: uuid(),
+    operationID: getFixedUUID(),
     tags: {
       [tagKeyID03]: tagValueID03,
       [tagKeyID04]: tagValueID04,
@@ -212,7 +211,7 @@ export const makeOperationData = ({
     comments: "This is operation 10.",
     createdAt: new Date().toISOString(),
     deleted: false,
-    operationID: uuid(),
+    operationID: getFixedUUID(),
     tags: {
       [tagKeyID01]: tagValueID01,
       [tagKeyID02]: tagValueID02,

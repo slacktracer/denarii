@@ -2,3 +2,5 @@
 .eslintcache
 node_modules
 prisma
+/make-test-user-data.js
+/**/all-data.txt

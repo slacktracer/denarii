@@ -1,6 +1,7 @@
 {
   "author": "slacktracer",
   "dependencies": {
+    "@faker-js/faker": "^8.1.0",
     "@prisma/client": "^5.0.0",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.3.1",
@@ -26,6 +27,7 @@
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
     "save-test-output": "chmod +x ./tools/save-test-output.sh && ./tools/save-test-output.sh",
+    "show-data": "node ./data/show-data.js",
     "start": "nodemon",
     "test": "chmod +x ./tools/test.sh && ./tools/test.sh",
     "test-once-on-ci": "chmod +x ./tools/test-once-on-ci.sh && ./tools/test-once-on-ci.sh"
