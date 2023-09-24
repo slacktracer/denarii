@@ -12,10 +12,6 @@ const { user01Password } = userPasswords.$;
 
 const { group01, group03 } = groups.$;
 
-console.log(group01);
-
-console.log(groups.$);
-
 describe("GET /groups", () => {
   test("it returns all the given user groups", async () => {
     // given
@@ -41,11 +37,6 @@ describe("GET /groups", () => {
     const response = await server
       .get("/groups")
       .set("cookie", [secretCookie, sessionIDCookie]);
-
-    // when
-    const response2 = await server.get("/x");
-    console.log(response2.body);
-    console.log(response.body);
 
     // then
     expect(response.status).toEqual(200);
