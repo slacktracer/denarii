@@ -18,8 +18,6 @@ export const postCategory = async (request, response) => {
 
   const result = await tryCatch(createCategory, { data, userID });
 
-  console.log(result);
-
   if (result instanceof Error === false) {
     response.json(result);
 
