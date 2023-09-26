@@ -64,7 +64,7 @@ describe("POST /categories", () => {
         .set("cookie", [secretCookie, sessionIDCookie]);
 
       // then
-      expect(response.status).toEqual(404);
+      expect(response.status).toEqual(400);
       expect(response.body).toEqual(expectedResponseBody);
     });
   });

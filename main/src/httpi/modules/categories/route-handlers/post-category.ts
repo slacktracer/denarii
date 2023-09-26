@@ -26,7 +26,7 @@ export const postCategory = async (request, response) => {
 
   if (result instanceof CustomError) {
     if (result.data.id === NO_SUCH_GROUP) {
-      response.status(404).json({ message: NO_SUCH_GROUP.description });
+      response.status(400).json({ message: NO_SUCH_GROUP.description });
 
       return;
     }
