@@ -51,7 +51,7 @@ describe("POST /operations", () => {
     expect(response.body).toEqual(expectedOperation);
   });
 
-  describe("the account does not belong to the given user or does not exist", () => {
+  describe("the given account does not belong to the given user or does not exist", () => {
     test("an error is returned, no operation is created", async () => {
       // given
       const server = await getServer();

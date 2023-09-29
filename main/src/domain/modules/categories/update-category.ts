@@ -7,8 +7,6 @@ export const updateCategory = async ({ categoryID, data, userID }) => {
 
   const noSuchGroup = group ?? true;
 
-  console.log(group);
-
   if (noSuchGroup === true) {
     throw new CustomError({ id: NO_SUCH_GROUP });
   }
