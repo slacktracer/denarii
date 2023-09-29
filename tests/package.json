@@ -27,7 +27,7 @@
     "lint": "eslint --cache --fix .",
     "lint-staged": "lint-staged",
     "save-test-output": "chmod +x ./tools/save-test-output.sh && ./tools/save-test-output.sh",
-    "show-data": "node ./data/show-data.js",
+    "show-data": "node ./data/show-data.js > test-data.txt",
     "start": "nodemon",
     "test": "chmod +x ./tools/test.sh && ./tools/test.sh",
     "test-once-on-ci": "chmod +x ./tools/test-once-on-ci.sh && ./tools/test-once-on-ci.sh"
