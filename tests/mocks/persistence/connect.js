@@ -1,8 +1,9 @@
-import { PrismaClient } from "@prisma/client";
 import { createClient as createRedisClient } from "redis";
 import { RedisMemoryServer } from "redis-memory-server";
 
-export const db = new PrismaClient({ errorFormat: "pretty" });
+import { createDatabaseClient } from "../../../main/src/persistence/create-database-client.js";
+
+export const db = createDatabaseClient();
 
 export const redisServer = new RedisMemoryServer();
 

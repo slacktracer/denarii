@@ -1,6 +1,9 @@
 import { describe, expect, test, vi } from "vitest";
 
-import { NO_SUCH_FROM_ACCOUNT } from "../../../main/src/domain/data/errors.js";
+import {
+  NO_SUCH_FROM_ACCOUNT,
+  NO_SUCH_TO_ACCOUNT,
+} from "../../../main/src/domain/data/errors.js";
 import { accounts, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionCookies } from "../../functions/get-session-cookies.js";
@@ -65,8 +68,6 @@ describe("POST /transfers", () => {
         username: user01.username,
       });
 
-      console.log(account05);
-
       // when
       const response = await server
         .post("/transfers")
@@ -87,12 +88,12 @@ describe("POST /transfers", () => {
       const transferData = {
         amount: 10_000_00,
         at: new Date().toISOString(),
-        fromAccountID: account05.accountID,
+        fromAccountID: account01.accountID,
         toAccountID: account06.accountID,
       };
 
       const expectedResponseBody = {
-        message: NO_SUCH_FROM_ACCOUNT.description,
+        message: NO_SUCH_TO_ACCOUNT.description,
       };
 
       const { secretCookie, sessionIDCookie } = await getSessionCookies({

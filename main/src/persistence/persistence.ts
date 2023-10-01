@@ -4,6 +4,7 @@ import { accountHasOperation } from "./modules/accounts/account-has-operation.js
 import { accountHasTransfer } from "./modules/accounts/account-has-transfer.js";
 import { createAccount } from "./modules/accounts/create-account.js";
 import { deleteAccount } from "./modules/accounts/delete-account.js";
+import { doesAccountExists } from "./modules/accounts/does-account-exists.js";
 import { readAccount } from "./modules/accounts/read-account.js";
 import { readAccounts } from "./modules/accounts/read-accounts.js";
 import { updateAccount } from "./modules/accounts/update-account.js";
@@ -13,6 +14,7 @@ export const accounts = {
   accountHasTransfer,
   createAccount,
   deleteAccount,
+  doesAccountExists,
   readAccount,
   readAccounts,
   updateAccount,
