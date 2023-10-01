@@ -1,15 +1,10 @@
-import { categories, groups } from "../../../persistence/persistence.js";
-import { CustomError } from "../../custom-error.js";
-import { NO_SUCH_GROUP } from "../../data/errors.js";
+import { categories } from "../../../persistence/persistence.js";
+import { validateCategoryRelatedEntities } from "./validate-category-related-entities.js";
 
 export const createCategory = async ({ data, userID }) => {
-  const group = await groups.readGroup({ groupID: data.groupID, userID });
+  const { groupID } = data;
 
-  const noSuchGroup = group ?? true;
-
-  if (noSuchGroup === true) {
-    throw new CustomError({ id: NO_SUCH_GROUP });
-  }
+  await validateCategoryRelatedEntities({ groupID, userID });
 
   return categories.createCategory({
     data,

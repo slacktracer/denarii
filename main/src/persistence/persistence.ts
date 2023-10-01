@@ -40,6 +40,7 @@ export const categories = {
 
 import { createGroup } from "./modules/groups/create-group.js";
 import { deleteGroup } from "./modules/groups/delete-group.js";
+import { doesGroupExists } from "./modules/groups/does-group-exists.js";
 import { readGroup } from "./modules/groups/read-group.js";
 import { readGroups } from "./modules/groups/read-groups.js";
 import { updateGroup } from "./modules/groups/update-group.js";
@@ -47,6 +48,7 @@ import { updateGroup } from "./modules/groups/update-group.js";
 export const groups = {
   createGroup,
   deleteGroup,
+  doesGroupExists,
   readGroup,
   readGroups,
   updateGroup,

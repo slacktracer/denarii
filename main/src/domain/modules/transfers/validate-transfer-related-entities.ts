@@ -2,7 +2,7 @@ import { accounts } from "../../../persistence/persistence.js";
 import { CustomError } from "../../custom-error.js";
 import { NO_SUCH_FROM_ACCOUNT, NO_SUCH_TO_ACCOUNT } from "../../data/errors.js";
 
-export const validateRelatedEntities = async ({
+export const validateTransferRelatedEntities = async ({
   fromAccountID,
   toAccountID,
   userID,
