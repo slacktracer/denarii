@@ -1,33 +1,10 @@
-import {
-  accounts,
-  categories,
-  operations,
-} from "../../../persistence/persistence.js";
-import { CustomError } from "../../custom-error.js";
-import { NO_SUCH_ACCOUNT, NO_SUCH_CATEGORY } from "../../data/errors.js";
+import { operations } from "../../../persistence/persistence.js";
+import { validateOperationRelatedEntities } from "./validate-operation-related-entities.js";
 
 export const updateOperation = async ({ operationID, data, userID }) => {
-  const account = await accounts.readAccount({
-    accountID: data.accountID,
-    userID,
-  });
+  const { accountID, categoryID } = data;
 
-  const noSuchAccount = account ?? true;
-
-  if (noSuchAccount === true) {
-    throw new CustomError({ id: NO_SUCH_ACCOUNT });
-  }
-
-  const category = await categories.readCategory({
-    categoryID: data.categoryID,
-    userID,
-  });
-
-  const noSuchCategory = category ?? true;
-
-  if (noSuchCategory === true) {
-    throw new CustomError({ id: NO_SUCH_CATEGORY });
-  }
+  await validateOperationRelatedEntities({ accountID, categoryID, userID });
 
   return operations.updateOperation({
     operationID,
