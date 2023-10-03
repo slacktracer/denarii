@@ -37,12 +37,23 @@ export const makeUserData = async () => {
     username: "mr.user3",
   };
 
-  const users = makeEnhancedArray({ user01, user02, user03 });
+  const users = makeEnhancedArray({
+    id: "userID",
+    object: {
+      user01,
+      user02,
+      user03,
+    },
+  });
 
+  //  this one may need to be treated differently, I will look into it later
   const userPasswords = makeEnhancedArray({
-    user01Password,
-    user02Password,
-    user03Password,
+    id: "userID",
+    object: {
+      user01Password,
+      user02Password,
+      user03Password,
+    },
   });
 
   return { users, userPasswords };

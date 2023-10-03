@@ -223,16 +223,19 @@ export const makeOperationData = ({
   };
 
   const operations = makeEnhancedArray({
-    operation01,
-    operation02,
-    operation03,
-    operation04,
-    operation05,
-    operation06,
-    operation07,
-    operation08,
-    operation09,
-    operation10,
+    id: "operationID",
+    object: {
+      operation01,
+      operation02,
+      operation03,
+      operation04,
+      operation05,
+      operation06,
+      operation07,
+      operation08,
+      operation09,
+      operation10,
+    },
   });
 
   return { operations };

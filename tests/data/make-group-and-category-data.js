@@ -90,18 +90,24 @@ export const makeGroupAndCategoryData = ({ userID01, userID02 }) => {
   };
 
   const groups = makeEnhancedArray({
-    group01,
-    group02,
-    group03,
+    id: "groupID",
+    object: {
+      group01,
+      group02,
+      group03,
+    },
   });
 
   const categories = makeEnhancedArray({
-    category01,
-    category02,
-    category03,
-    category04,
-    category05,
-    category06,
+    id: "categoryID",
+    object: {
+      category01,
+      category02,
+      category03,
+      category04,
+      category05,
+      category06,
+    },
   });
 
   return {

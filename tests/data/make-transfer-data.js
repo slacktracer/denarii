@@ -70,11 +70,14 @@ export const makeTransferData = ({
   };
 
   const transfers = makeEnhancedArray({
-    transfer01,
-    transfer02,
-    transfer03,
-    transfer04,
-    transfer05,
+    id: "transferID",
+    object: {
+      transfer01,
+      transfer02,
+      transfer03,
+      transfer04,
+      transfer05,
+    },
   });
 
   return { transfers };

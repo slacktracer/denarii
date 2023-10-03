@@ -63,12 +63,15 @@ export const makeAccountData = ({ userID01, userID02 }) => {
   };
 
   const accounts = makeEnhancedArray({
-    account01,
-    account02,
-    account03,
-    account04,
-    account05,
-    account06,
+    id: "accountID",
+    object: {
+      account01,
+      account02,
+      account03,
+      account04,
+      account05,
+      account06,
+    },
   });
 
   return { accounts };

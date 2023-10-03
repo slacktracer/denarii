@@ -1,6 +1,12 @@
 import { describe, expect, test, vi } from "vitest";
 
-import { operations, userPasswords, users } from "../../data/data.js";
+import {
+  accounts,
+  categories,
+  operations,
+  userPasswords,
+  users,
+} from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionCookies } from "../../functions/get-session-cookies.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
@@ -22,6 +28,16 @@ describe("GET /operations", () => {
         .filter((operation) => operation.userID === user01.userID)
         .map((operation) => {
           operation.updatedAt = null;
+
+          operation.account = {
+            accountID: accounts.byID[operation.accountID].accountID,
+            name: accounts.byID[operation.accountID].name,
+          };
+
+          operation.category = {
+            categoryID: categories.byID[operation.categoryID].categoryID,
+            name: categories.byID[operation.categoryID].name,
+          };
 
           return operation;
         }),
@@ -48,7 +64,17 @@ describe("GET /operations", () => {
       // given
       const server = await getServer();
 
-      const expectedOperation = expect.objectContaining(operation01);
+      const expectedOperation = expect.objectContaining({
+        ...operation01,
+        account: {
+          accountID: accounts.byID[operation01.accountID].accountID,
+          name: accounts.byID[operation01.accountID].name,
+        },
+        category: {
+          categoryID: categories.byID[operation01.categoryID].categoryID,
+          name: categories.byID[operation01.categoryID].name,
+        },
+      });
 
       const { secretCookie, sessionIDCookie } = await getSessionCookies({
         password: user01Password,

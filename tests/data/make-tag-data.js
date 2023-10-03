@@ -102,20 +102,26 @@ export const makeTagData = ({ userID01, userID02 }) => {
   };
 
   const tagKeys = makeEnhancedArray({
-    tagKey01,
-    tagKey02,
-    tagKey03,
-    tagKey04,
-    tagKey05,
+    id: "tagKeyID",
+    object: {
+      tagKey01,
+      tagKey02,
+      tagKey03,
+      tagKey04,
+      tagKey05,
+    },
   });
 
   const tagValues = makeEnhancedArray({
-    tagValue01,
-    tagValue02,
-    tagValue03,
-    tagValue04,
-    tagValue05,
-    tagValue06,
+    id: "tagValueID",
+    object: {
+      tagValue01,
+      tagValue02,
+      tagValue03,
+      tagValue04,
+      tagValue05,
+      tagValue06,
+    },
   });
 
   return {
