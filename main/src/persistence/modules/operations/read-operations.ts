@@ -1,6 +1,8 @@
 import { db } from "../../connect.js";
 
-export const readOperations = async ({ userID }) => {
+export const readOperations = async ({ datetimeRange, userID }) => {
+  const [from, to] = datetimeRange;
+
   const operations = await db.operation.findMany({
     include: {
       account: {
@@ -17,6 +19,10 @@ export const readOperations = async ({ userID }) => {
       },
     },
     where: {
+      at: {
+        gte: from,
+        lte: to,
+      },
       userID,
     },
   });

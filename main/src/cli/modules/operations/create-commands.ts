@@ -56,7 +56,7 @@ export const createCommands = ({ program }) => {
         return;
       }
 
-      const operations = await readOperations({ userID });
+      const operations = await readOperations({ datetimeRange: [], userID });
 
       print.table(operations);
     });

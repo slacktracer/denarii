@@ -13,10 +13,10 @@ import * as mockConnect from "../../mocks/persistence/connect.js";
 
 vi.mock(`../../../main/src/persistence/connect.js`, () => mockConnect);
 
-const { user01 } = users.$;
-const { user01Password } = userPasswords.$;
+const { user01 } = users.byBindingName;
+const { user01Password } = userPasswords.byBindingName;
 
-const { operation01, operation05 } = operations.$;
+const { operation01, operation05, operation11 } = operations.byBindingName;
 
 describe("GET /operations", () => {
   test("it returns all the given user operations", async () => {
@@ -57,6 +57,35 @@ describe("GET /operations", () => {
     // then
     expect(response.status).toEqual(200);
     expect(response.body).toEqual(expectedOperations);
+  });
+
+  describe("a datetime range is given", () => {
+    test("it returns all the given user operations for the given datetime range", async () => {
+      // given
+      const server = await getServer();
+
+      const expectedOperations = [operation11];
+
+      const from = "2023-10-03";
+      const to = "2023-10-04";
+
+      const { secretCookie, sessionIDCookie } = await getSessionCookies({
+        password: user01Password,
+        server,
+        username: user01.username,
+      });
+
+      // when
+      const response = await server
+        .get(`/operations?from=${from}&to=${to}`)
+        .set("cookie", [secretCookie, sessionIDCookie]);
+
+      console.log(response.body);
+
+      // then
+      expect(response.status).toEqual(200);
+      expect(response.body).toEqual(expectedOperations);
+    });
   });
 
   describe("an operation ID was given", () => {

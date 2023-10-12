@@ -27,7 +27,7 @@ describe("GET /balances", () => {
       {
         accountID: account01.accountID,
         name: "Account 1!",
-        total: 43_000_00,
+        total: 42_000_00,
       },
       {
         accountID: account02.accountID,

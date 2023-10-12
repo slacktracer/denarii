@@ -222,6 +222,23 @@ export const makeOperationData = ({
     userID: userID02,
   };
 
+  const operation11 = {
+    accountID: accountID01,
+    amount: -1_000_00,
+    amountPerUnit: -1_000_00,
+    at: new Date("2023-10-03").toISOString(),
+    categoryID: categoryID04,
+    comments: "This is operation 11. It is in the past!",
+    createdAt: new Date().toISOString(),
+    deleted: false,
+    operationID: getFixedUUID(),
+    tags: {},
+    type: "Expense",
+    unitCount: 1,
+    updatedAt: null,
+    userID: userID01,
+  };
+
   const operations = makeEnhancedArray({
     id: "operationID",
     object: {
@@ -235,6 +252,7 @@ export const makeOperationData = ({
       operation08,
       operation09,
       operation10,
+      operation11,
     },
   });
 
