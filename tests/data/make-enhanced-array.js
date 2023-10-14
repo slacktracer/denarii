@@ -1,5 +1,5 @@
 export const makeEnhancedArray = ({ id, object }) => {
-  const enhancedArray = Object.values(object);
+  const enhancedArray = Object.values(object).map(Object.freeze);
 
   enhancedArray.byBindingName = object;
 

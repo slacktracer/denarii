@@ -25,6 +25,7 @@ describe("GET /operations", () => {
 
     const expectedOperations = expect.arrayContaining(
       operations
+        .map((operation) => Object.assign({}, operation))
         .filter((operation) => operation.userID === user01.userID)
         .map((operation) => {
           operation.updatedAt = null;
@@ -64,7 +65,23 @@ describe("GET /operations", () => {
       // given
       const server = await getServer();
 
-      const expectedOperations = [operation11];
+      const expectedOperations = [operation11]
+        .map((operation) => Object.assign({}, operation))
+        .map((operation) => {
+          operation.updatedAt = null;
+
+          operation.account = {
+            accountID: accounts.byID[operation.accountID].accountID,
+            name: accounts.byID[operation.accountID].name,
+          };
+
+          operation.category = {
+            categoryID: categories.byID[operation.categoryID].categoryID,
+            name: categories.byID[operation.categoryID].name,
+          };
+
+          return operation;
+        });
 
       const from = "2023-10-03";
       const to = "2023-10-04";
@@ -79,8 +96,6 @@ describe("GET /operations", () => {
       const response = await server
         .get(`/operations?from=${from}&to=${to}`)
         .set("cookie", [secretCookie, sessionIDCookie]);
-
-      console.log(response.body);
 
       // then
       expect(response.status).toEqual(200);
