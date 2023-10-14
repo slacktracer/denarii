@@ -19,6 +19,7 @@ describe("GET /groups", () => {
 
     const expectedGroups = expect.arrayContaining(
       groups
+        .map((group) => Object.assign({}, group))
         .filter((group) => group.userID === user01.userID)
         .map((group) => {
           group.updatedAt = null;

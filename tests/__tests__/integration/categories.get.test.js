@@ -19,6 +19,7 @@ describe("GET /categories", () => {
 
     const expectedCategories = expect.arrayContaining(
       categories
+        .map((category) => Object.assign({}, category))
         .filter((category) => category.userID === user01.userID)
         .map((category) => {
           category.updatedAt = null;

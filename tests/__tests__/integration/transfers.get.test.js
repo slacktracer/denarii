@@ -19,6 +19,7 @@ describe("GET /transfers", () => {
 
     const expectedTransfers = expect.arrayContaining(
       transfers
+        .map((transfer) => Object.assign({}, transfer))
         .filter((transfer) => transfer.userID === user01.userID)
         .map((transfer) => {
           transfer.updatedAt = null;

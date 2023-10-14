@@ -19,6 +19,7 @@ describe("GET /tags/keys", () => {
 
     const expectedTagKeys = expect.arrayContaining(
       tagKeys
+        .map((tagKey) => Object.assign({}, tagKey))
         .filter((tagKey) => tagKey.userID === user01.userID)
         .map((tagKey) => {
           tagKey.updatedAt = null;

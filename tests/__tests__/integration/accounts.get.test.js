@@ -18,6 +18,7 @@ describe("GET /accounts", () => {
 
     const expectedAccounts = expect.arrayContaining(
       accounts
+        .map((account) => Object.assign({}, account))
         .filter((account) => account.userID === user01.userID)
         .map((account) => {
           account.updatedAt = null;
