@@ -9,12 +9,47 @@ import {
 
 const shorten = (string) => string.substring(0, 7);
 
-users.forEach((user) => {
+const [
+  unfrozenAccounts,
+  unfrozenCategories,
+  unfrozenGroups,
+  unfrozenOperations,
+  unfrozenTransfers,
+  unfrozenUsers,
+] = [
+  accounts.map((user) => Object.assign({}, user)),
+  categories.map((user) => Object.assign({}, user)),
+  groups.map((user) => Object.assign({}, user)),
+  operations.map((user) => Object.assign({}, user)),
+  transfers.map((user) => Object.assign({}, user)),
+  users.map((user) => Object.assign({}, user)),
+];
+
+unfrozenAccounts.byBindingName = accounts.byBindingName;
+unfrozenAccounts.byID = accounts.byID;
+unfrozenCategories.byBindingName = categories.byBindingName;
+unfrozenCategories.byID = categories.byID;
+unfrozenGroups.byBindingName = groups.byBindingName;
+unfrozenGroups.byID = groups.byID;
+unfrozenOperations.byBindingName = operations.byBindingName;
+unfrozenOperations.byID = operations.byID;
+unfrozenTransfers.byBindingName = transfers.byBindingName;
+unfrozenTransfers.byID = transfers.byID;
+unfrozenUsers.byBindingName = users.byBindingName;
+unfrozenUsers.byID = users.byID;
+
+unfrozenUsers.forEach((user) => {
   user.password = "<hidden>";
   user.userID = `${shorten(user.userID)}...`;
 });
 
-[accounts, categories, groups, operations, transfers].forEach((collection) => {
+[
+  unfrozenAccounts,
+  unfrozenCategories,
+  unfrozenGroups,
+  unfrozenOperations,
+  unfrozenTransfers,
+].forEach((collection) => {
   collection.forEach((object) => {
     let accountID;
 
@@ -50,56 +85,61 @@ users.forEach((user) => {
       }
     });
 
-    object.userID += ` [${users.byID[userID].username}]`;
+    object.userID += ` [${unfrozenUsers.byID[userID].username}]`;
 
     if (object.accountID && object.operationID) {
-      object.accountID += ` [${accounts.byID[accountID].name}]`;
+      object.accountID += ` [${unfrozenAccounts.byID[accountID].name}]`;
       object.tags = "<hidden>";
     }
 
     if (object.categoryID && object.groupID) {
-      object.groupID += ` [${groups.byID[groupID].name}]`;
+      object.groupID += ` [${unfrozenGroups.byID[groupID].name}]`;
     }
 
     if (object.categoryID && object.operationID) {
-      object.categoryID += ` [${categories.byID[categoryID].name}]`;
+      object.categoryID += ` [${unfrozenCategories.byID[categoryID].name}]`;
     }
 
     if (object.fromAccountID && object.toAccountID) {
-      object.fromAccountID += ` [${accounts.byID[fromAccountID].name}]`;
-      object.toAccountID += ` [${accounts.byID[toAccountID].name}]`;
+      object.fromAccountID += ` [${unfrozenAccounts.byID[fromAccountID].name}]`;
+      object.toAccountID += ` [${unfrozenAccounts.byID[toAccountID].name}]`;
     }
   });
 });
 
-[accounts, categories, groups, operations, transfers, users].forEach(
-  (object) => {
-    delete object.$;
-    delete object.byBindingName;
-    delete object.byID;
-  },
-);
+[
+  unfrozenAccounts,
+  unfrozenCategories,
+  unfrozenGroups,
+  unfrozenOperations,
+  unfrozenTransfers,
+  unfrozenUsers,
+].forEach((object) => {
+  delete object.$;
+  delete object.byBindingName;
+  delete object.byID;
+});
 
 console.info("Users");
-console.table(users);
+console.table(unfrozenUsers);
 console.info("");
 
 console.info("Accounts");
-console.table(accounts);
+console.table(unfrozenAccounts);
 console.info("");
 
 console.info("Categories");
-console.table(categories);
+console.table(unfrozenCategories);
 console.info("");
 
 console.info("Groups");
-console.table(groups);
+console.table(unfrozenGroups);
 console.info("");
 
 console.info("Operations");
-console.table(operations);
+console.table(unfrozenOperations);
 console.info("");
 
 console.info("Transfers");
-console.table(transfers);
+console.table(unfrozenTransfers);
 console.info("");
