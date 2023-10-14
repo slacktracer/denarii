@@ -239,6 +239,74 @@ export const makeOperationData = ({
     userID: userID01,
   };
 
+  const operation12 = {
+    accountID: accountID05,
+    amount: -1_000_00,
+    amountPerUnit: -1_000_00,
+    at: new Date("2023-08-07").toISOString(),
+    categoryID: categoryID04,
+    comments: "This is operation 12. It is in the past!",
+    createdAt: new Date().toISOString(),
+    deleted: false,
+    operationID: getFixedUUID(),
+    tags: {},
+    type: "Expense",
+    unitCount: 1,
+    updatedAt: null,
+    userID: userID02,
+  };
+
+  const operation13 = {
+    accountID: accountID05,
+    amount: 1_500_00,
+    amountPerUnit: 1_500_00,
+    at: new Date("2023-08-07").toISOString(),
+    categoryID: categoryID04,
+    comments: "This is operation 13. It is in the past!",
+    createdAt: new Date().toISOString(),
+    deleted: false,
+    operationID: getFixedUUID(),
+    tags: {},
+    type: "Income",
+    unitCount: 1,
+    updatedAt: null,
+    userID: userID02,
+  };
+
+  const operation14 = {
+    accountID: accountID06,
+    amount: -1_000_00,
+    amountPerUnit: -1_000_00,
+    at: new Date("2012-11-01").toISOString(),
+    categoryID: categoryID04,
+    comments: "This is operation 14. It is in the past!",
+    createdAt: new Date().toISOString(),
+    deleted: false,
+    operationID: getFixedUUID(),
+    tags: {},
+    type: "Expense",
+    unitCount: 1,
+    updatedAt: null,
+    userID: userID02,
+  };
+
+  const operation15 = {
+    accountID: accountID06,
+    amount: 1_250_00,
+    amountPerUnit: 1_250_00,
+    at: new Date("2012-11-01").toISOString(),
+    categoryID: categoryID04,
+    comments: "This is operation 15. It is in the past!",
+    createdAt: new Date().toISOString(),
+    deleted: false,
+    operationID: getFixedUUID(),
+    tags: {},
+    type: "Income",
+    unitCount: 1,
+    updatedAt: null,
+    userID: userID02,
+  };
+
   const operations = makeEnhancedArray({
     id: "operationID",
     object: {
@@ -253,6 +321,10 @@ export const makeOperationData = ({
       operation09,
       operation10,
       operation11,
+      operation12,
+      operation13,
+      operation14,
+      operation15,
     },
   });
 
