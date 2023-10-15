@@ -9,127 +9,148 @@ datasource db {
 }
 
 model Account {
-  accountID     String      @id @map("account_id") @db.Uuid
-  createdAt     DateTime    @map("created_at") @db.Timestamptz(6)
-  deleted       Boolean     @default(false)
-  fromAccount   Transfer[]  @relation("transfer_from_account_idToaccount")
-  initialAmount Int         @map("initial_amount")
-  name          String
-  operation     Operation[]
-  toAccount     Transfer[]  @relation("transfer_to_account_idToaccount")
-  updatedAt     DateTime?   @map("updated_at") @db.Timestamptz(6)
-  user          User        @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
-  userID        String      @map("user_id") @db.Uuid
+  accountID         String      @id @map("account_id") @db.Uuid
+  createdAt         DateTime    @map("created_at") @db.Timestamp(6)
+  createdAtTimezone String      @default("UTC") @map("created_at_timezone")
+  deleted           Boolean     @default(false)
+  fromAccount       Transfer[]  @relation("transfer_from_account_idToaccount")
+  initialAmount     Int         @map("initial_amount")
+  name              String
+  operation         Operation[]
+  toAccount         Transfer[]  @relation("transfer_to_account_idToaccount")
+  updatedAt         DateTime?   @map("updated_at") @db.Timestamp(6)
+  updatedAtTimezone String      @default("UTC") @map("updated_at_timezone")
+  user              User        @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID            String      @map("user_id") @db.Uuid
 
   @@map("account")
 }
 
 model Group {
-  Category  Category[]
-  createdAt DateTime   @map("created_at") @db.Timestamptz(6)
-  deleted   Boolean    @default(false)
-  groupID   String     @id @map("group_id") @db.Uuid
-  name      String
-  updatedAt DateTime?  @map("updated_at") @db.Timestamptz(6)
-  user      User       @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
-  userID    String     @map("user_id") @db.Uuid
+  Category          Category[]
+  createdAt         DateTime   @map("created_at") @db.Timestamp(6)
+  createdAtTimezone String     @default("UTC") @map("created_at_timezone")
+  deleted           Boolean    @default(false)
+  groupID           String     @id @map("group_id") @db.Uuid
+  name              String
+  updatedAt         DateTime?  @map("updated_at") @db.Timestamp(6)
+  updatedAtTimezone String     @default("UTC") @map("updated_at_timezone")
+  user              User       @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID            String     @map("user_id") @db.Uuid
 
   @@map("group")
 }
 
 model Category {
-  categoryID String      @id @map("category_id") @db.Uuid
-  createdAt  DateTime    @map("created_at") @db.Timestamptz(6)
-  deleted    Boolean     @default(false)
-  group      Group       @relation(fields: [groupID], references: [groupID], onDelete: NoAction, onUpdate: NoAction, map: "group_id")
-  groupID    String      @map("group_id") @db.Uuid
-  name       String
-  Operation  Operation[]
-  updatedAt  DateTime?   @map("updated_at") @db.Timestamptz(6)
-  user       User        @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
-  userID     String      @map("user_id") @db.Uuid
+  categoryID        String      @id @map("category_id") @db.Uuid
+  createdAt         DateTime    @map("created_at") @db.Timestamp(6)
+  createdAtTimezone String      @default("UTC") @map("created_at_timezone")
+  deleted           Boolean     @default(false)
+  group             Group       @relation(fields: [groupID], references: [groupID], onDelete: NoAction, onUpdate: NoAction, map: "group_id")
+  groupID           String      @map("group_id") @db.Uuid
+  name              String
+  Operation         Operation[]
+  updatedAt         DateTime?   @map("updated_at") @db.Timestamp(6)
+  updatedAtTimezone String      @default("UTC") @map("updated_at_timezone")
+  user              User        @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID            String      @map("user_id") @db.Uuid
 
   @@map("category")
 }
 
 model Operation {
-  account       Account   @relation(fields: [accountID], references: [accountID], onDelete: NoAction, onUpdate: NoAction, map: "account_id")
-  accountID     String    @map("account_id") @db.Uuid
-  amount        Int
-  amountPerUnit Int       @map("amount_per_unit")
-  at            DateTime  @db.Timestamptz(6)
-  category      Category  @relation(fields: [categoryID], references: [categoryID], onDelete: NoAction, onUpdate: NoAction, map: "category_id")
-  categoryID    String    @map("category_id") @db.Uuid
-  comments      String?
-  createdAt     DateTime  @map("created_at") @db.Timestamptz(6)
-  deleted       Boolean   @default(false)
-  operationID   String    @id @map("operation_id") @db.Uuid
-  tags          Json      @default("{}") @map("tags")
-  type          String
-  unitCount     Int?      @map("unit_count")
-  updatedAt     DateTime? @map("updated_at") @db.Timestamptz(6)
-  user          User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
-  userID        String    @map("user_id") @db.Uuid
+  account           Account   @relation(fields: [accountID], references: [accountID], onDelete: NoAction, onUpdate: NoAction, map: "account_id")
+  accountID         String    @map("account_id") @db.Uuid
+  amount            Int
+  amountPerUnit     Int       @map("amount_per_unit")
+  at                DateTime  @db.Timestamp(6)
+  atTimezone        String    @default("UTC") @map("at_timezone")
+  category          Category  @relation(fields: [categoryID], references: [categoryID], onDelete: NoAction, onUpdate: NoAction, map: "category_id")
+  categoryID        String    @map("category_id") @db.Uuid
+  comments          String?
+  confirmed         Boolean   @default(true)
+  createdAt         DateTime  @map("created_at") @db.Timestamp(6)
+  createdAtTimezone String    @default("UTC") @map("created_at_timezone")
+  deleted           Boolean   @default(false)
+  operationID       String    @id @map("operation_id") @db.Uuid
+  tags              Json      @default("{}") @map("tags")
+  type              String
+  unitCount         Int?      @map("unit_count")
+  updatedAt         DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedAtTimezone String    @default("UTC") @map("updated_at_timezone")
+  user              User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID            String    @map("user_id") @db.Uuid
 
   @@map("operation")
 }
 
 model TagKey {
-  createdAt DateTime  @map("created_at") @db.Timestamptz(6)
-  deleted   Boolean   @default(false)
-  name      String
-  tagKeyID  String    @id @map("tag_key_id") @db.Uuid
-  updatedAt DateTime? @map("updated_at") @db.Timestamptz(6)
-  user      User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
-  userID    String    @map("user_id") @db.Uuid
+  createdAt         DateTime  @map("created_at") @db.Timestamp(6)
+  createdAtTimezone String    @default("UTC") @map("created_at_timezone")
+  deleted           Boolean   @default(false)
+  name              String
+  tagKeyID          String    @id @map("tag_key_id") @db.Uuid
+  updatedAt         DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedAtTimezone String    @default("UTC") @map("updated_at_timezone")
+  user              User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID            String    @map("user_id") @db.Uuid
 
   @@map("tag_key")
 }
 
 model TagValue {
-  createdAt  DateTime  @map("created_at") @db.Timestamptz(6)
-  deleted    Boolean   @default(false)
-  name       String
-  tagValueID String    @id @map("tag_value_id") @db.Uuid
-  updatedAt  DateTime? @map("updated_at") @db.Timestamptz(6)
-  user       User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
-  userID     String    @map("user_id") @db.Uuid
+  createdAt         DateTime  @map("created_at") @db.Timestamp(6)
+  createdAtTimezone String    @default("UTC") @map("created_at_timezone")
+  deleted           Boolean   @default(false)
+  name              String
+  tagValueID        String    @id @map("tag_value_id") @db.Uuid
+  updatedAt         DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedAtTimezone String    @default("UTC") @map("updated_at_timezone")
+  user              User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID            String    @map("user_id") @db.Uuid
 
   @@map("tag_value")
 }
 
 model Transfer {
-  amount        Int
-  at            DateTime  @db.Timestamptz(6)
-  createdAt     DateTime  @map("created_at") @db.Timestamptz(6)
-  deleted       Boolean   @default(false)
-  fromAccount   Account   @relation("transfer_from_account_idToaccount", fields: [fromAccountID], references: [accountID], onDelete: NoAction, onUpdate: NoAction, map: "from_account_id")
-  fromAccountID String    @map("from_account_id") @db.Uuid
-  toAccount     Account   @relation("transfer_to_account_idToaccount", fields: [toAccountID], references: [accountID], onDelete: NoAction, onUpdate: NoAction, map: "to_account_id")
-  toAccountID   String    @map("to_account_id") @db.Uuid
-  transferID    String    @id @map("transfer_id") @db.Uuid
-  updatedAt     DateTime? @map("updated_at") @db.Timestamptz(6)
-  user          User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
-  userID        String    @map("user_id") @db.Uuid
+  amount            Int
+  at                DateTime  @db.Timestamp(6)
+  atTimezone        String    @default("UTC") @map("at_timezone")
+  comments          String?
+  confirmed         Boolean   @default(true)
+  createdAt         DateTime  @map("created_at") @db.Timestamp(6)
+  createdAtTimezone String    @default("UTC") @map("created_at_timezone")
+  deleted           Boolean   @default(false)
+  fromAccount       Account   @relation("transfer_from_account_idToaccount", fields: [fromAccountID], references: [accountID], onDelete: NoAction, onUpdate: NoAction, map: "from_account_id")
+  fromAccountID     String    @map("from_account_id") @db.Uuid
+  toAccount         Account   @relation("transfer_to_account_idToaccount", fields: [toAccountID], references: [accountID], onDelete: NoAction, onUpdate: NoAction, map: "to_account_id")
+  toAccountID       String    @map("to_account_id") @db.Uuid
+  transferID        String    @id @map("transfer_id") @db.Uuid
+  updatedAt         DateTime? @map("updated_at") @db.Timestamp(6)
+  updatedAtTimezone String    @default("UTC") @map("updated_at_timezone")
+  user              User      @relation(fields: [userID], references: [userID], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+  userID            String    @map("user_id") @db.Uuid
 
   @@map("transfer")
 }
 
 model User {
-  account   Account[]
-  Category  Category[]
-  createdAt DateTime    @map("created_at") @db.Timestamptz(6)
-  deleted   Boolean     @default(false)
-  email     String      @unique
-  Group     Group[]
-  operation Operation[]
-  password  String
-  tag_key   TagKey[]
-  tag_value TagValue[]
-  transfer  Transfer[]
-  updatedAt DateTime?   @map("updated_at") @db.Timestamptz(6)
-  userID    String      @id @map("user_id") @db.Uuid
-  username  String      @unique
+  account           Account[]
+  Category          Category[]
+  createdAt         DateTime    @map("created_at") @db.Timestamp(6)
+  createdAtTimezone String      @default("UTC") @map("created_at_timezone")
+  deleted           Boolean     @default(false)
+  email             String      @unique
+  Group             Group[]
+  operation         Operation[]
+  password          String
+  tag_key           TagKey[]
+  tag_value         TagValue[]
+  transfer          Transfer[]
+  updatedAt         DateTime?   @map("updated_at") @db.Timestamp(6)
+  updatedAtTimezone String      @default("UTC") @map("updated_at_timezone")
+  userID            String      @id @map("user_id") @db.Uuid
+  username          String      @unique
 
   @@map("user")
 }
