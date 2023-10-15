@@ -27,9 +27,12 @@ export const makeOperationData = ({
     amount: 100_000_00,
     amountPerUnit: 100_000_00,
     at: new Date().toISOString(),
+    atTimezone: "America/Belem",
     categoryID: categoryID01,
     comments: "This is operation 1.",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {
@@ -39,6 +42,7 @@ export const makeOperationData = ({
     type: "Income",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID01,
   };
 
@@ -47,9 +51,12 @@ export const makeOperationData = ({
     amount: -15_000_00,
     amountPerUnit: -15_000_00,
     at: new Date().toISOString(),
+    atTimezone: "America/Belem",
     categoryID: categoryID02,
     comments: "This is operation 2.",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {
@@ -59,6 +66,7 @@ export const makeOperationData = ({
     type: "Expense",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID01,
   };
 
@@ -67,9 +75,12 @@ export const makeOperationData = ({
     amount: 1_000_00,
     amountPerUnit: 1_000_00,
     at: new Date().toISOString(),
+    atTimezone: "America/Belem",
     categoryID: categoryID03,
     comments: "This is operation 3.",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {
@@ -79,6 +90,7 @@ export const makeOperationData = ({
     type: "Income",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID01,
   };
 
@@ -87,9 +99,12 @@ export const makeOperationData = ({
     amount: -3_400_00,
     amountPerUnit: -3_400_00,
     at: new Date().toISOString(),
+    atTimezone: "America/Belem",
     categoryID: categoryID04,
     comments: "This is operation 4.",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {
@@ -99,6 +114,7 @@ export const makeOperationData = ({
     type: "Expense",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID01,
   };
 
@@ -107,9 +123,12 @@ export const makeOperationData = ({
     amount: 10_000_00,
     amountPerUnit: 10_000_00,
     at: new Date().toISOString(),
+    atTimezone: "America/Belem",
     categoryID: categoryID05,
     comments: "This is operation 5.",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {
@@ -119,6 +138,7 @@ export const makeOperationData = ({
     type: "Income",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID02,
   };
 
@@ -127,9 +147,12 @@ export const makeOperationData = ({
     amount: 100_00,
     amountPerUnit: 100_00,
     at: new Date().toISOString(),
+    atTimezone: "America/Belem",
     categoryID: categoryID01,
     comments: "This is operation 6.",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {
@@ -139,6 +162,7 @@ export const makeOperationData = ({
     type: "Income",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID01,
   };
 
@@ -147,9 +171,12 @@ export const makeOperationData = ({
     amount: 100_00,
     amountPerUnit: 100_00,
     at: new Date().toISOString(),
+    atTimezone: "America/Belem",
     categoryID: categoryID02,
     comments: "This is operation 7.",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {
@@ -159,6 +186,7 @@ export const makeOperationData = ({
     type: "Income",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID01,
   };
 
@@ -167,9 +195,12 @@ export const makeOperationData = ({
     amount: 100_00,
     amountPerUnit: 100_00,
     at: new Date().toISOString(),
+    atTimezone: "America/Belem",
     categoryID: categoryID03,
     comments: "This is operation 8.",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {
@@ -179,6 +210,7 @@ export const makeOperationData = ({
     type: "Income",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID01,
   };
 
@@ -187,9 +219,12 @@ export const makeOperationData = ({
     amount: 100_00,
     amountPerUnit: 100_00,
     at: new Date().toISOString(),
+    atTimezone: "America/Belem",
     categoryID: categoryID04,
     comments: "This is operation 9.",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {
@@ -199,6 +234,7 @@ export const makeOperationData = ({
     type: "Income",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID01,
   };
 
@@ -207,9 +243,12 @@ export const makeOperationData = ({
     amount: -650_00,
     amountPerUnit: -650_00,
     at: new Date().toISOString(),
+    atTimezone: "America/Belem",
     categoryID: categoryID06,
     comments: "This is operation 10.",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {
@@ -219,6 +258,7 @@ export const makeOperationData = ({
     type: "Expense",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID02,
   };
 
@@ -227,15 +267,19 @@ export const makeOperationData = ({
     amount: -1_000_00,
     amountPerUnit: -1_000_00,
     at: "2023-10-03T23:00:00.000Z",
+    atTimezone: "America/Belem",
     categoryID: categoryID04,
     comments: "This is operation 11. It is in the past!",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {},
     type: "Expense",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID01,
   };
 
@@ -244,15 +288,19 @@ export const makeOperationData = ({
     amount: -1_000_00,
     amountPerUnit: -1_000_00,
     at: "2023-08-07T21:00:00.000Z",
+    atTimezone: "America/Belem",
     categoryID: categoryID04,
     comments: "This is operation 12. It is in the past!",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {},
     type: "Expense",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID02,
   };
 
@@ -261,15 +309,19 @@ export const makeOperationData = ({
     amount: 1_500_00,
     amountPerUnit: 1_500_00,
     at: "2023-08-07T21:01:00.000Z",
+    atTimezone: "America/Belem",
     categoryID: categoryID04,
     comments: "This is operation 13. It is in the past!",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {},
     type: "Income",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID02,
   };
 
@@ -278,15 +330,19 @@ export const makeOperationData = ({
     amount: -1_000_00,
     amountPerUnit: -1_000_00,
     at: "2012-11-01T12:00:00.000Z",
+    atTimezone: "America/Belem",
     categoryID: categoryID04,
     comments: "This is operation 14. It is in the past!",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {},
     type: "Expense",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID02,
   };
 
@@ -295,15 +351,19 @@ export const makeOperationData = ({
     amount: 1_250_00,
     amountPerUnit: 1_250_00,
     at: "2012-11-01T12:01:00.000Z",
+    atTimezone: "America/Belem",
     categoryID: categoryID04,
     comments: "This is operation 15. It is in the past!",
+    confirmed: true,
     createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
     deleted: false,
     operationID: getFixedUUID(),
     tags: {},
     type: "Income",
     unitCount: 1,
     updatedAt: null,
+    updatedAtTimezone: "UTC",
     userID: userID02,
   };
 
