@@ -15,6 +15,12 @@ export const readOperations = async ({ datetimeRange, userID }) => {
         select: {
           categoryID: true,
           name: true,
+          group: {
+            select: {
+              groupID: true,
+              name: true,
+            },
+          },
         },
       },
     },

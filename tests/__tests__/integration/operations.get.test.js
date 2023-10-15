@@ -3,6 +3,7 @@ import { describe, expect, test, vi } from "vitest";
 import {
   accounts,
   categories,
+  groups,
   operations,
   userPasswords,
   users,
@@ -47,6 +48,14 @@ describe("GET /operations", () => {
             name: categories.byID[operation.categoryID].name,
           };
 
+          operation.category.group = {
+            groupID:
+              groups.byID[categories.byID[operation.categoryID].groupID]
+                .groupID,
+            name: groups.byID[categories.byID[operation.categoryID].groupID]
+              .name,
+          };
+
           return operation;
         }),
     );
@@ -85,6 +94,14 @@ describe("GET /operations", () => {
           operation.category = {
             categoryID: categories.byID[operation.categoryID].categoryID,
             name: categories.byID[operation.categoryID].name,
+          };
+
+          operation.category.group = {
+            groupID:
+              groups.byID[categories.byID[operation.categoryID].groupID]
+                .groupID,
+            name: groups.byID[categories.byID[operation.categoryID].groupID]
+              .name,
           };
 
           return operation;
@@ -130,6 +147,14 @@ describe("GET /operations", () => {
             name: categories.byID[operation.categoryID].name,
           };
 
+          operation.category.group = {
+            groupID:
+              groups.byID[categories.byID[operation.categoryID].groupID]
+                .groupID,
+            name: groups.byID[categories.byID[operation.categoryID].groupID]
+              .name,
+          };
+
           return operation;
         });
 
@@ -170,6 +195,14 @@ describe("GET /operations", () => {
           operation.category = {
             categoryID: categories.byID[operation.categoryID].categoryID,
             name: categories.byID[operation.categoryID].name,
+          };
+
+          operation.category.group = {
+            groupID:
+              groups.byID[categories.byID[operation.categoryID].groupID]
+                .groupID,
+            name: groups.byID[categories.byID[operation.categoryID].groupID]
+              .name,
           };
 
           return operation;
