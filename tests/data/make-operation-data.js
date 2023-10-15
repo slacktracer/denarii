@@ -226,7 +226,7 @@ export const makeOperationData = ({
     accountID: accountID01,
     amount: -1_000_00,
     amountPerUnit: -1_000_00,
-    at: new Date("2023-10-03").toISOString(),
+    at: "2023-10-03T23:00:00.000Z",
     categoryID: categoryID04,
     comments: "This is operation 11. It is in the past!",
     createdAt: new Date().toISOString(),
