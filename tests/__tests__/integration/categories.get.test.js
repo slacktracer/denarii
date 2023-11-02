@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from "vitest";
 
-import { categories, userPasswords, users } from "../../data/data.js";
+import { categories, groups, userPasswords, users } from "../../data/data.js";
 import { getServer } from "../../functions/get-server.js";
 import { getSessionCookies } from "../../functions/get-session-cookies.js";
 import * as mockConnect from "../../mocks/persistence/connect.js";
@@ -23,6 +23,11 @@ describe("GET /categories", () => {
         .filter((category) => category.userID === user01.userID)
         .map((category) => {
           category.updatedAt = null;
+
+          category.group = {
+            groupID: groups.byID[category.groupID].groupID,
+            name: groups.byID[category.groupID].name,
+          };
 
           return category;
         }),
