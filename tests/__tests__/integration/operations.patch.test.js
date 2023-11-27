@@ -33,6 +33,7 @@ describe("PATCH /operations", () => {
       const updatedOperationData = {
         accountID: account04.accountID,
         amount: 3_000_00,
+        at: "2023-11-27T21:31:00.000Z",
         categoryID: category02.categoryID,
       };
 
@@ -63,6 +64,7 @@ describe("PATCH /operations", () => {
         const updatedOperationData = {
           accountID: account05.accountID,
           amount: 3_000_00,
+          at: "2023-11-27T21:31:00.000Z",
           categoryID: category02.categoryID,
         };
 
@@ -94,6 +96,7 @@ describe("PATCH /operations", () => {
         const updatedOperationData = {
           accountID: account04.accountID,
           amount: 3_000_00,
+          at: "2023-11-27T21:31:00.000Z",
           categoryID: category05.categoryID,
         };
 
