@@ -15,6 +15,8 @@ export const createRouter = () => {
 
   operationsRouter.get("/:operationID", getOperationByID);
 
+  operationsRouter.post("/:operationID", postOperation);
+
   operationsRouter.post("/", postOperation);
 
   operationsRouter.patch("/:operationID", patchOperation);

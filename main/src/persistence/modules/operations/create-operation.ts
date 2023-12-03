@@ -14,6 +14,7 @@ export const createOperation = async ({
     at,
     categoryID,
     comments,
+    operationID,
     type,
     unitCount,
   } = data;
@@ -27,7 +28,7 @@ export const createOperation = async ({
       categoryID,
       comments,
       createdAt: new Date(),
-      operationID: randomUUID(),
+      operationID: operationID ?? randomUUID(),
       type,
       unitCount,
       userID,

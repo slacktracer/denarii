@@ -20,6 +20,7 @@ export const postOperation = async (request, response) => {
     at,
     categoryID,
     comments,
+    operationID,
     type,
     unitCount,
   } = request.body;
@@ -31,6 +32,7 @@ export const postOperation = async (request, response) => {
     at,
     categoryID,
     comments,
+    operationID,
     type,
     unitCount,
   };
