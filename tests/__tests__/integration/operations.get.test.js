@@ -105,7 +105,11 @@ describe("GET /operations", () => {
           };
 
           return operation;
-        });
+        })
+        .sort(
+          (operationA, operationB) =>
+            new Date(operationB.at) - new Date(operationA.at),
+        );
 
       const from = "2023-08-01T00:00:00.000Z";
       const to = "2023-08-07T21:00:00.000Z";
@@ -156,7 +160,11 @@ describe("GET /operations", () => {
           };
 
           return operation;
-        });
+        })
+        .sort(
+          (operationA, operationB) =>
+            new Date(operationB.at) - new Date(operationA.at),
+        );
 
       const from = "2023-08-07T21:01:00.000Z";
 
@@ -206,7 +214,11 @@ describe("GET /operations", () => {
           };
 
           return operation;
-        });
+        })
+        .sort(
+          (operationA, operationB) =>
+            new Date(operationB.at) - new Date(operationA.at),
+        );
 
       const to = "2012-11-01T12:00:59.000Z";
 

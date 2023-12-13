@@ -31,6 +31,9 @@ export const readOperations = async ({ datetimeRange, userID }) => {
       },
       userID,
     },
+    orderBy: {
+      at: "desc",
+    },
   });
 
   return operations;
