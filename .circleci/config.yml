@@ -46,10 +46,31 @@ jobs:
       - run: npm run compile-on-ci --prefix main
       - run: npm run test-once-on-ci --prefix tests
 
+  deploy:
+    docker:
+      - image: cimg/node:20.4.0
+    steps:
+      - checkout
+      - run: curl $DEPLOY_ADDRESS
+
 workflows:
   lint_and_test:
     jobs:
-      - lint
+      - lint:
+          filters:
+            tags:
+              only: /.*/
       - test:
+          filters:
+            tags:
+              only: /.*/
           requires:
             - lint
+      - deploy:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v\d+\.\d+.\d+-build\.\d+$/
+          requires:
+            - test
