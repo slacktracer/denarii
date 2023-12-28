@@ -8,7 +8,7 @@
     "apply-migrations": "npx prisma migrate deploy --schema ./build/prisma/schema.prisma",
     "build": "chmod +x ./build.sh && ./build.sh",
     "d": "npm run decompile --prefix main",
-    "deploy": "npm version --preid build prerelease",
+    "deploy": "npm version --preid build prerelease --message 'New build: %s [skip ci]'",
     "execute": "node ./build/main.js",
     "install": "npm install --prefix main && npm install --prefix tests",
     "lint": "npm run lint --prefix main && npm run lint --prefix tests",
