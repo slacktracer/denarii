@@ -53,7 +53,7 @@ jobs:
       - run: curl $DEPLOY_ADDRESS
 
 workflows:
-  lint_&_test_&_deploy?:
+  lint_and_test_and_maybe-deploy:
     jobs:
       - lint:
           filters:
