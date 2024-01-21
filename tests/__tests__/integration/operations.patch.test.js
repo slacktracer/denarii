@@ -31,9 +31,17 @@ describe("PATCH /operations", () => {
       const server = await getServer();
 
       const updatedOperationData = {
+        account: {
+          accountID: account04.accountID,
+          name: account04.name,
+        },
         accountID: account04.accountID,
         amount: 3_000_00,
         at: "2023-11-27T21:31:00.000Z",
+        category: {
+          categoryID: category02.categoryID,
+          name: category02.name,
+        },
         categoryID: category02.categoryID,
       };
 

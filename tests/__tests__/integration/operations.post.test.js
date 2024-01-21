@@ -22,10 +22,18 @@ describe("POST /operations", () => {
     const server = await getServer();
 
     const operationData = {
+      account: {
+        accountID: account01.accountID,
+        name: account01.name,
+      },
       accountID: account01.accountID,
       amount: 123_00,
       amountPerUnit: 123_00,
       at: new Date().toISOString(),
+      category: {
+        categoryID: category03.categoryID,
+        name: category03.name,
+      },
       categoryID: category03.categoryID,
       comments: "This is a new operation!",
       type: "Income",

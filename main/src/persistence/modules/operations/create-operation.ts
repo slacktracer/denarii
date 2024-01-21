@@ -35,6 +35,20 @@ export const createOperation = async ({
       unitCount,
       userID,
     },
+    include: {
+      account: {
+        select: {
+          accountID: true,
+          name: true,
+        },
+      },
+      category: {
+        select: {
+          categoryID: true,
+          name: true,
+        },
+      },
+    },
   });
 
   return createdOperation;

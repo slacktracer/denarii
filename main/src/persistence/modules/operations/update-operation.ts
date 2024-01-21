@@ -7,6 +7,20 @@ export const updateOperation = async ({ operationID, data, userID }) => {
     data: {
       ...update,
     },
+    include: {
+      account: {
+        select: {
+          accountID: true,
+          name: true,
+        },
+      },
+      category: {
+        select: {
+          categoryID: true,
+          name: true,
+        },
+      },
+    },
     where: { operationID, userID },
   });
 
