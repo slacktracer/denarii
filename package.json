@@ -19,5 +19,5 @@
     "test": "npm test --prefix tests",
     "x": "npm run execute"
   },
-  "version": "1.0.0-build.3"
+  "version": "1.0.0-build.4"
 }
