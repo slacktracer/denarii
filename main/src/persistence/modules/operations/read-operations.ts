@@ -29,6 +29,7 @@ export const readOperations = async ({ datetimeRange, userID }) => {
         gte: from,
         lte: to,
       },
+      deleted: false,
       userID,
     },
     orderBy: {
