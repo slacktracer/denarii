@@ -367,6 +367,27 @@ export const makeOperationData = ({
     userID: userID02,
   };
 
+  const operation16 = {
+    accountID: accountID06,
+    amount: 1_050_00,
+    amountPerUnit: 1_050_00,
+    at: "2012-11-01T12:01:00.000Z",
+    atTimezone: "America/Belem",
+    categoryID: categoryID04,
+    comments: "This is operation 15. It is in the past!",
+    confirmed: true,
+    createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
+    deleted: true,
+    operationID: getFixedUUID(),
+    tags: {},
+    type: "Income",
+    unitCount: 1,
+    updatedAt: null,
+    updatedAtTimezone: "UTC",
+    userID: userID02,
+  };
+
   const operations = makeEnhancedArray({
     id: "operationID",
     object: {
@@ -385,6 +406,7 @@ export const makeOperationData = ({
       operation13,
       operation14,
       operation15,
+      operation16,
     },
   });
 

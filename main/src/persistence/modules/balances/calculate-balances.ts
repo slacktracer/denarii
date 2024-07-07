@@ -9,7 +9,7 @@ export const calculateBalances = async ({ userID }) => {
 
   const operations = await db.operation.findMany({
     select: { accountID: true, amount: true },
-    where: { userID },
+    where: { deleted: false, userID },
   });
 
   const operationsSumByAccountID = itemsSumBySomeProperty({
@@ -19,7 +19,7 @@ export const calculateBalances = async ({ userID }) => {
 
   const transfers = await db.transfer.findMany({
     select: { amount: true, fromAccountID: true, toAccountID: true },
-    where: { userID },
+    where: { deleted: false, userID },
   });
 
   const transfersSumByFromAccountID = itemsSumBySomeProperty({
