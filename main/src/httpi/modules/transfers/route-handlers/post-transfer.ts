@@ -13,9 +13,29 @@ const { createTransfer } = transfers;
 export const postTransfer = async (request, response) => {
   const { userID } = request.session.user;
 
-  const { amount, at, fromAccountID, toAccountID } = request.body;
+  const {
+    amount,
+    at,
+    atTimezone,
+    comments,
+    confirmed,
+    createdAtTimezone,
+    fromAccountID,
+    toAccountID,
+    transferID,
+  } = request.body;
 
-  const data = { amount, at, fromAccountID, toAccountID };
+  const data = {
+    amount,
+    at,
+    atTimezone,
+    comments,
+    confirmed,
+    createdAtTimezone,
+    fromAccountID,
+    toAccountID,
+    transferID,
+  };
 
   const result = await tryCatch(createTransfer, { data, userID });
 

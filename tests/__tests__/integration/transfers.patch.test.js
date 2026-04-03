@@ -25,11 +25,22 @@ describe("PATCH /transfers", () => {
 
       const updatedTransferData = {
         amount: 3_000_00,
+        confirmed: false,
         fromAccountID: account03.accountID,
         toAccountID: account04.accountID,
       };
 
-      const expectedTransfer = expect.objectContaining(updatedTransferData);
+      const expectedTransfer = expect.objectContaining({
+        ...updatedTransferData,
+        fromAccount: {
+          accountID: account03.accountID,
+          name: account03.name,
+        },
+        toAccount: {
+          accountID: account04.accountID,
+          name: account04.name,
+        },
+      });
 
       const { secretCookie, sessionIDCookie } = await getSessionCookies({
         password: user01Password,

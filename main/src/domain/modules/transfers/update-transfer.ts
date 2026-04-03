@@ -6,6 +6,9 @@ export const updateTransfer = async ({ transferID, data, userID }) => {
 
   await validateTransferRelatedEntities({ fromAccountID, toAccountID, userID });
 
+  data.updatedAt = new Date();
+  data.updatedAtTimezone = data.atTimezone;
+
   return transfers.updateTransfer({
     transferID,
     data,

@@ -23,11 +23,23 @@ describe("POST /transfers", () => {
     const transferData = {
       amount: 10_000_00,
       at: new Date().toISOString(),
+      confirmed: true,
+      createdAtTimezone: "America/Belem",
       fromAccountID: account01.accountID,
       toAccountID: account02.accountID,
     };
 
-    const expectedTransfer = expect.objectContaining(transferData);
+    const expectedTransfer = expect.objectContaining({
+      ...transferData,
+      fromAccount: {
+        accountID: account01.accountID,
+        name: account01.name,
+      },
+      toAccount: {
+        accountID: account02.accountID,
+        name: account02.name,
+      },
+    });
 
     const { secretCookie, sessionIDCookie } = await getSessionCookies({
       password: user01Password,

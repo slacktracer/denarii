@@ -11,7 +11,7 @@ export const makeTransferData = ({
 }) => {
   const transfer01 = {
     amount: 10_000_00,
-    at: new Date().toISOString(),
+    at: "2023-12-12T00:00:00.000Z",
     atTimezone: "America/Belem",
     comments: "",
     confirmed: true,
@@ -28,7 +28,7 @@ export const makeTransferData = ({
 
   const transfer02 = {
     amount: 10_000_00,
-    at: new Date().toISOString(),
+    at: "2023-12-11T00:00:00.000Z",
     atTimezone: "America/Belem",
     comments: "",
     confirmed: true,
@@ -45,7 +45,7 @@ export const makeTransferData = ({
 
   const transfer03 = {
     amount: 10_000_00,
-    at: new Date().toISOString(),
+    at: "2023-12-10T00:00:00.000Z",
     atTimezone: "America/Belem",
     comments: "",
     confirmed: true,
@@ -62,7 +62,7 @@ export const makeTransferData = ({
 
   const transfer04 = {
     amount: 10_000_00,
-    at: new Date().toISOString(),
+    at: "2023-12-09T00:00:00.000Z",
     atTimezone: "America/Belem",
     comments: "",
     confirmed: true,
@@ -79,7 +79,24 @@ export const makeTransferData = ({
 
   const transfer05 = {
     amount: 5_000_00,
-    at: new Date().toISOString(),
+    at: "2023-12-08T00:00:00.000Z",
+    atTimezone: "America/Belem",
+    comments: "",
+    confirmed: true,
+    createdAt: new Date().toISOString(),
+    createdAtTimezone: "America/Belem",
+    deleted: false,
+    fromAccountID: accountID05,
+    toAccountID: accountID06,
+    transferID: getFixedUUID(),
+    updatedAt: null,
+    updatedAtTimezone: "UTC",
+    userID: userID02,
+  };
+
+  const transfer06 = {
+    amount: 5_000_00,
+    at: "2012-11-01T12:00:00.000Z",
     atTimezone: "America/Belem",
     comments: "",
     confirmed: true,
@@ -102,6 +119,7 @@ export const makeTransferData = ({
       transfer03,
       transfer04,
       transfer05,
+      transfer06,
     },
   });
 

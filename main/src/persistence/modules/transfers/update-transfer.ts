@@ -7,6 +7,20 @@ export const updateTransfer = async ({ data, transferID, userID }) => {
     data: {
       ...update,
     },
+    include: {
+      fromAccount: {
+        select: {
+          accountID: true,
+          name: true,
+        },
+      },
+      toAccount: {
+        select: {
+          accountID: true,
+          name: true,
+        },
+      },
+    },
     where: {
       transferID,
       userID,
