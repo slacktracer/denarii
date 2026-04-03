@@ -43,6 +43,7 @@ describe("PATCH /operations", () => {
           name: category02.name,
         },
         categoryID: category02.categoryID,
+        confirmed: false,
       };
 
       const expectedOperation = expect.objectContaining(updatedOperationData);

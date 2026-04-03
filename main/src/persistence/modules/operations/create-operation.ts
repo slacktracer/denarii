@@ -3,10 +3,7 @@ import { randomUUID } from "crypto";
 import { createOperationParameter } from "../../../types.js";
 import { db } from "../../connect.js";
 
-export const createOperation = async ({
-  data,
-  userID,
-}: createOperationParameter) => {
+export const createOperation = ({ data, userID }: createOperationParameter) => {
   const {
     accountID,
     amount,
@@ -15,6 +12,8 @@ export const createOperation = async ({
     atTimezone,
     categoryID,
     comments,
+    confirmed,
+    createdAtTimezone,
     operationID,
     type,
     unitCount,
@@ -29,7 +28,9 @@ export const createOperation = async ({
       atTimezone,
       categoryID,
       comments,
+      confirmed,
       createdAt: new Date(),
+      createdAtTimezone,
       operationID: operationID ?? randomUUID(),
       type,
       unitCount,

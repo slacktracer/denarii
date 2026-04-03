@@ -21,8 +21,10 @@ export const patchOperation = async (request, response) => {
     amount,
     amountPerUnit,
     at,
+    atTimezone,
     categoryID,
     comments,
+    confirmed,
     type,
     unitCount,
   } = request.body;
@@ -32,8 +34,10 @@ export const patchOperation = async (request, response) => {
     amount,
     amountPerUnit,
     at,
+    atTimezone,
     categoryID,
     comments,
+    confirmed,
     type,
     unitCount,
   };

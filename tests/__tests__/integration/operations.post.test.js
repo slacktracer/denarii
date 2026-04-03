@@ -36,6 +36,8 @@ describe("POST /operations", () => {
       },
       categoryID: category03.categoryID,
       comments: "This is a new operation!",
+      confirmed: true,
+      createdAtTimezone: "America/Belem",
       type: "Income",
       unitCount: 1,
     };

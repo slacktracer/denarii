@@ -22,6 +22,8 @@ export type createOperationParameter = {
     atTimezone: string;
     categoryID: string;
     comments: string;
+    confirmed: boolean;
+    createdAtTimezone: string;
     operationID: string;
     type: string;
     unitCount: number;
