@@ -57,7 +57,10 @@ export const createCommands = ({ program }) => {
         return;
       }
 
-      const transfers = await readTransfers({ userID });
+      const transfers = await readTransfers({
+        datetimeRange: [undefined, undefined],
+        userID,
+      });
 
       print.table(transfers);
     });
@@ -65,6 +68,7 @@ export const createCommands = ({ program }) => {
   transfersCommand
     .command("update")
     .requiredOption("-d, --data <data>")
+    .requiredOption("--transferID <id>")
     .requiredOption("--userID <id>")
     .action(async (options) => {
       const { transferID, userID } = options;
