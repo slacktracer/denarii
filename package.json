@@ -5,7 +5,7 @@
   },
   "name": "denarii",
   "scripts": {
-    "apply-migrations": "npx prisma migrate deploy --schema ./build/prisma/schema.prisma",
+    "apply-migrations": "npx prisma@5 migrate deploy --schema ./build/prisma/schema.prisma",
     "build": "chmod +x ./build.sh && ./build.sh",
     "clear": "rm -rf node_modules main/node_modules tests/node_modules && npm cache verify",
     "c": "npm run compile --prefix main",
