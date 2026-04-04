@@ -33,5 +33,5 @@
     "test-once-on-ci": "chmod +x ./tools/test-once-on-ci.sh && ./tools/test-once-on-ci.sh"
   },
   "type": "module",
-  "version": "1.0.0-build.7"
+  "version": "1.0.0-build.8"
 }

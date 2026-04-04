@@ -23,5 +23,5 @@
     "test": "npm run compile --prefix main && npm test --prefix tests",
     "x": "npm run execute"
   },
-  "version": "1.0.0-build.7"
+  "version": "1.0.0-build.8"
 }
