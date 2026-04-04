@@ -50,6 +50,50 @@ You will need to set the PostgreSQL connection details (`PGHOST`, `PGUSER`, `PGD
 npm run apply-migrations
 ```
 
+## Local development
+
+There are two ways to develop locally, depending on whether you need to run the denarii server itself.
+
+### Frontend only (against the remote server)
+
+The most common workflow. The frontend (capim) runs locally on HTTPS and a local proxy forwards API requests to the remote denarii instance on Render. No local denarii server needed.
+
+1. **Add `capim.local` to your hosts file.** The local domain is needed so authentication cookies (which use `secure: true` and `sameSite: "None"`) work correctly across the frontend and API.
+
+```
+# /etc/hosts
+127.0.0.1 capim.local
+```
+
+2. **Generate local HTTPS certificates with mkcert.** Secure cookies require HTTPS, even in development.
+
+```sh
+mkcert -install           # install the local CA (once)
+mkcert capim.local        # generates capim.local.pem and capim.local-key.pem
+```
+
+Place the generated files in the capim project root.
+
+3. **Start the frontend and proxy** from the capim project:
+
+```sh
+npm run x
+```
+
+This starts both the Nuxt HTTPS dev server on `https://capim.local:3000` and the reverse proxy on `https://capim.local:2099` (which forwards to `denarii.onrender.com`). The proxy rewrites CORS headers so credentials work properly.
+
+### Backend development (local denarii server)
+
+When working on denarii itself, run the server locally. It connects to the remote PostgreSQL and Redis on Render (configured in `main/.env`).
+
+```sh
+npm start
+```
+
+This runs nodemon, which watches for `.ts` and `.json` changes, recompiles, and restarts the server on port 2099 with the Node.js debugger enabled (`--inspect`).
+
+Set the frontend's `NUXT_PUBLIC_BASE_URL` to `http://localhost:2099` to point it at the local server. Note that the `secret` cookie will not be set in this mode (it requires HTTPS), but session authentication via the `connect.sid` cookie still works over plain HTTP.
+
 ## Running
 
 Start the development server (with nodemon):
