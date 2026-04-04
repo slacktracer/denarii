@@ -24,8 +24,7 @@ All endpoints (except authentication and user creation) require an active sessio
 - Node.js (managed via nvm)
 - PostgreSQL
 - Redis
-- Docker (for running tests)
-- Redis (or Valkey) — the test suite uses `redis-memory-server`, which uses the binary path defined in the `REDISMS_SYSTEM_BINARY` environment variable (`tests/.env`) instead of compiling its own
+- Docker (for running tests — PostgreSQL and Redis run in containers)
 
 ## Setup
 
@@ -125,8 +124,8 @@ npm test
 This compiles the main project and then runs the tests. Under the hood, the test runner:
 
 1. Copies the Prisma schema into the test directory
-2. Starts a PostgreSQL container via Docker Compose (exposed on port 6543)
-3. Runs Prisma migrations against it
+2. Starts PostgreSQL and Redis containers via Docker Compose (ports 6543 and 6380)
+3. Runs Prisma migrations against the database
 4. Runs the integration tests with Vitest
 5. Stops the container and cleans up
 
@@ -165,9 +164,8 @@ Each collection is wrapped by `makeEnhancedArray()` into a frozen array with loo
 
 ### Test lifecycle
 
-1. `test.sh` starts a PostgreSQL 14 container on port 6543 and runs Prisma migrations
+1. `test.sh` starts PostgreSQL and Redis containers (ports 6543 and 6380) and runs Prisma migrations
 2. Before each test, `setup.js` clears all rows in foreign-key order via a Prisma transaction, then re-inserts everything using the raw SQL statements
-3. Redis uses an in-memory server (redis-memory-server), no Docker needed
 4. Vitest runs single-threaded (`threads: false`) to avoid race conditions on the shared database
 
 ### Usage in tests
@@ -229,8 +227,8 @@ Common patterns:
 
 | Script | Purpose |
 |--------|---------|
-| `test` | Starts a PostgreSQL Docker container, runs migrations, runs the integration tests with Vitest, then stops the container |
-| `test-once-on-ci` | Same as `test` but skips Docker setup (CI already provides PostgreSQL as a service) |
+| `test` | Starts PostgreSQL and Redis Docker containers, runs migrations, runs the integration tests with Vitest, then stops the containers |
+| `test-once-on-ci` | Same as `test` but skips Docker setup (CI already provides PostgreSQL and Redis as services) |
 | `start` | Watches for changes and re-runs tests automatically via nodemon |
 | `show-data` | Prints all test fixture data as readable tables and saves to `test-data.txt` |
 | `save-test-output` | Same as `test` but captures verbose test output to `test-output.txt` |
