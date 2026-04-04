@@ -11,6 +11,11 @@ services:
     restart: always
     volumes:
       - db:/var/lib/postgresql/data
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6380:6379"
+    restart: always
 volumes:
   db:
     driver: local

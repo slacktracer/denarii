@@ -13,7 +13,7 @@
     "d": "npm run decompile --prefix main",
     "deploy": "npm version --preid build prerelease --message 'New build: %s [skip ci]'",
     "execute": "node ./build/main.js",
-    "install": "npm install --prefix main && REDISMS_DISABLE_POSTINSTALL=1 npm install --prefix tests",
+    "install": "npm install --prefix main && npm install --prefix tests",
     "lint": "npm run lint --prefix main && npm run lint --prefix tests",
     "lint-staged": "lint-staged",
     "postversion": "git push --follow-tags",

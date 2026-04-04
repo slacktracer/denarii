@@ -9,7 +9,7 @@ jobs:
 #      - restore_cache:
 #          keys:
 #            - node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
-      - run: REDISMS_DISABLE_POSTINSTALL=1 npm ci
+      - run: npm ci
 #      - run: "[ ! -d node_modules ] && npm ci --loglevel warn --yes || echo package.json and package-lock.json unchanged. Using cache."
 #      - save_cache:
 #          key: node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
@@ -20,10 +20,13 @@ jobs:
   test:
     docker:
       - image: cimg/node:20.4.0
+        environment:
+          - REDIS_CONNECTION_STRING=redis://localhost:6379
       - image: cimg/postgres:14.0
         environment:
           - POSTGRES_USER=postgres
           - POSTGRES_PASSWORD=postgres
+      - image: cimg/redis:7.0
     steps:
       - checkout
       - run:
@@ -34,10 +37,13 @@ jobs:
       - run:
           name: Wait for db
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Wait for redis
+          command: dockerize -wait tcp://localhost:6379 -timeout 1m
 #      - restore_cache:
 #          keys:
 #            - node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
-      - run: REDISMS_DISABLE_POSTINSTALL=1 npm ci
+      - run: npm ci
 #      - run: "[ ! -d node_modules ] && npm ci --loglevel warn --yes || echo package.json and package-lock.json unchanged. Using cache."
 #      - save_cache:
 #          key: node-deps-v1-{{ .Branch }}-{{ checksum "package.json" }}-{{checksum "package-lock.json" }}
