@@ -17,7 +17,7 @@
     "lint": "npm run lint --prefix main && npm run lint --prefix tests",
     "lint-staged": "lint-staged",
     "postversion": "git push --follow-tags",
-    "version": "npm version $npm_package_version --no-git-tag-version --prefix main && npm version $npm_package_version --no-git-tag-version --prefix tests && git add main/package.json tests/package.json",
+    "version": "npm version $(node -p \"require('./package.json').version\") --no-git-tag-version --prefix main && npm version $(node -p \"require('./package.json').version\") --no-git-tag-version --prefix tests && git add main/package.json tests/package.json",
     "prepare": "husky install",
     "start": "npm start --prefix main",
     "test": "npm run compile --prefix main && npm test --prefix tests",
