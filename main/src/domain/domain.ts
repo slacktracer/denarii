@@ -50,8 +50,6 @@ export const groups = {
   updateGroup,
 };
 
-export { redisClient } from "../persistence/persistence.js";
-
 import { createOperation } from "./modules/operations/create-operation.js";
 import { deleteOperation } from "./modules/operations/delete-operation.js";
 import { readOperation } from "./modules/operations/read-operation.js";

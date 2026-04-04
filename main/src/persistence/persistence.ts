@@ -1,5 +1,3 @@
-export { redisClient } from "./connect.js";
-
 import { accountHasOperation } from "./modules/accounts/account-has-operation.js";
 import { accountHasTransfer } from "./modules/accounts/account-has-transfer.js";
 import { createAccount } from "./modules/accounts/create-account.js";

@@ -3,7 +3,11 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 
+import packageJson from "../../package.json" with { type: "json" };
+import { db, redisClient } from "../persistence/connect.js";
 import { print } from "./objects/print.js";
+
+const build = packageJson.version.split("-build.")[1];
 
 export const createExpressApplication = async () => {
   if (!process.env.PORT) {
@@ -34,9 +38,22 @@ export const createExpressApplication = async () => {
       });
     }
 
-    expressApplication.get(healthCheckEndpoint, (request, response) =>
-      response.json({ healthy: true }),
-    );
+    expressApplication.get(healthCheckEndpoint, async (request, response) => {
+      let database = false;
+      let redis = false;
+
+      try {
+        await db.$queryRaw`SELECT 1`;
+        database = true;
+      } catch {}
+
+      try {
+        await redisClient.ping();
+        redis = true;
+      } catch {}
+
+      response.json({ build, database, redis });
+    });
 
     print.info(`Server listening on port ${port}`);
     print.info(`Health checks available at ${healthCheckEndpoint}`);

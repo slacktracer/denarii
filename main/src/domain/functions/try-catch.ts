@@ -8,6 +8,6 @@ export const tryCatch = async (asyncFunction, ...parameters) => {
       return error;
     }
 
-    return new Error(error);
+    return new Error(error as string);
   }
 };

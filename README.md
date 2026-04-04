@@ -25,6 +25,7 @@ All endpoints (except authentication and user creation) require an active sessio
 - PostgreSQL
 - Redis
 - Docker (for running tests)
+- Redis (or Valkey) — the test suite uses `redis-memory-server`, which uses the binary path defined in the `REDISMS_SYSTEM_BINARY` environment variable (`tests/.env`) instead of compiling its own
 
 ## Setup
 
@@ -34,7 +35,7 @@ All endpoints (except authentication and user creation) require an active sessio
 npm install
 ```
 
-This installs dependencies for both `main/` and `tests/`.
+This installs dependencies for `./`, `./main/` and `./tests/`.
 
 2. Copy the example env file and fill in your values:
 
@@ -203,6 +204,7 @@ Common patterns:
 | `lint` | Runs ESLint with auto-fix on both main and tests |
 | `lint-staged` | Runs linters on staged files only. Called by the husky pre-commit hook |
 | `prepare` | Sets up husky git hooks. Runs automatically after `npm install` |
+| `clear` | Removes all `node_modules` and verifies npm cache |
 | `deploy` | Bumps the prerelease version and pushes the tag to trigger CI |
 | `version` | Lifecycle hook: propagates the bumped version to `main/` and `tests/` package.json files |
 | `apply-migrations` | Applies Prisma migrations against the built schema |
