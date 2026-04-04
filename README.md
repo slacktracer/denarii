@@ -188,3 +188,49 @@ Common patterns:
 ### Current data shape (2026-04-03)
 
 3 users, 6 accounts, 3 groups, 6 categories, 16 operations, 6 transfers, 5 tag keys, 6 tag values. Data is split across users for access control testing.
+
+## Scripts reference
+
+### Root
+
+| Script | Purpose |
+|--------|---------|
+| `install` | Installs dependencies for both `main/` and `tests/` |
+| `start` | Starts the dev server via nodemon |
+| `build` | Builds the production bundle into `build/` |
+| `execute` / `x` | Runs the built production bundle |
+| `test` | Compiles main and runs the integration test suite |
+| `lint` | Runs ESLint with auto-fix on both main and tests |
+| `lint-staged` | Runs linters on staged files only. Called by the husky pre-commit hook |
+| `prepare` | Sets up husky git hooks. Runs automatically after `npm install` |
+| `deploy` | Bumps the prerelease version and pushes the tag to trigger CI |
+| `apply-migrations` | Applies Prisma migrations against the built schema |
+| `d` | Shortcut to clean compiled JS from main |
+
+### Main (`main/`)
+
+| Script | Purpose |
+|--------|---------|
+| `compile` / `c` | Compiles TypeScript to JavaScript |
+| `compile-on-ci` | Same as `compile`, used in CI for clarity |
+| `check-types` | Type-checks without emitting JS files. Useful for quick validation |
+| `decompile` / `d` | Removes all compiled `.js` and `.js.map` files |
+| `execute` / `x` | Runs the server with the Node.js debugger enabled (`--inspect`) |
+| `start` | Starts nodemon for development |
+| `format` | Formats all files with Prettier |
+| `lint` | Lints and auto-fixes with ESLint |
+| `lint-staged` | Linters on staged files only (pre-commit) |
+| `postcompile` | Runs automatically after `compile`. Formats `.sql` query files (uppercases SQL keywords, applies consistent formatting while preserving template variables) |
+
+### Tests (`tests/`)
+
+| Script | Purpose |
+|--------|---------|
+| `test` | Starts a PostgreSQL Docker container, runs migrations, runs the integration tests with Vitest, then stops the container |
+| `test-once-on-ci` | Same as `test` but skips Docker setup (CI already provides PostgreSQL as a service) |
+| `start` | Watches for changes and re-runs tests automatically via nodemon |
+| `show-data` | Prints all test fixture data as readable tables and saves to `test-data.txt` |
+| `save-test-output` | Same as `test` but captures verbose test output to `test-output.txt` |
+| `format` | Formats all test files with Prettier |
+| `lint` | Lints and auto-fixes test files |
+| `lint-staged` | Linters on staged files only (pre-commit) |
