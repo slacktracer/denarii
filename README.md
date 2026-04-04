@@ -145,7 +145,7 @@ This copies source and Prisma files into `build/`, installs production dependenc
 npm run deploy
 ```
 
-This bumps the prerelease version (e.g. `v1.0.0-build.6`), commits it, and pushes the tag. The tag triggers a CircleCI pipeline that lints, runs integration tests, and if everything passes, deploys to Render via a webhook. No local build step is needed.
+This bumps the prerelease version (e.g. `v1.0.0-build.6`) across all three `package.json` files (root, `main/`, and `tests/`), commits it, and pushes the tag. The tag triggers a CircleCI pipeline that lints, runs integration tests, and if everything passes, deploys to Render via a webhook. No local build step is needed.
 
 ## Test data
 
@@ -204,6 +204,7 @@ Common patterns:
 | `lint-staged` | Runs linters on staged files only. Called by the husky pre-commit hook |
 | `prepare` | Sets up husky git hooks. Runs automatically after `npm install` |
 | `deploy` | Bumps the prerelease version and pushes the tag to trigger CI |
+| `version` | Lifecycle hook: propagates the bumped version to `main/` and `tests/` package.json files |
 | `apply-migrations` | Applies Prisma migrations against the built schema |
 | `d` | Shortcut to clean compiled JS from main |
 
