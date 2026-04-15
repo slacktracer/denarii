@@ -40,7 +40,7 @@ export const createExpressApplication = async () => {
 
     expressApplication.get(healthCheckEndpoint, async (request, response) => {
       let database = false;
-      let redis = false;
+      let kv = false;
 
       try {
         await db.$queryRaw`SELECT 1`;
@@ -49,10 +49,10 @@ export const createExpressApplication = async () => {
 
       try {
         await redisClient.ping();
-        redis = true;
+        kv = true;
       } catch {}
 
-      response.json({ build, database, redis });
+      response.status(database && kv ? 200 : 503).json({ build, database, kv });
     });
 
     print.info(`Server listening on port ${port}`);

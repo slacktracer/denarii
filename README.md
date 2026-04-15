@@ -1,6 +1,6 @@
 # denarii
 
-A personal finance API for tracking accounts, operations (income/expenses), and transfers between accounts. It calculates balances based on account initial amounts, operations, and transfers.
+A personal finance API for tracking accounts, operations (income/expenses), and transfers between accounts.
 
 ## Overview
 
@@ -14,10 +14,10 @@ All endpoints (except authentication and user creation) require an active sessio
 
 ## Tech stack
 
-- Node.js + TypeScript (ES modules)
-- Express with express-session
-- PostgreSQL (via Prisma)
-- Redis (session store)
+- [Node.js](https://nodejs.org/) + [TypeScript](https://www.typescriptlang.org/) (ES modules)
+- [Express](https://expressjs.com/) with [express-session](https://github.com/expressjs/session)
+- [PostgreSQL](https://www.postgresql.org/) (via [Prisma](https://www.prisma.io/))
+- [Redis](https://redis.io/) (session store)
 
 ## Prerequisites
 
@@ -52,39 +52,9 @@ npm run apply-migrations
 
 ## Local development
 
-There are two ways to develop locally, depending on whether you need to run the denarii server itself.
+Run the server locally. It connects to the remote PostgreSQL and Redis on Render (configured in `main/.env`).
 
-### Frontend only (against the remote server)
-
-The most common workflow. The frontend (capim) runs locally on HTTPS and a local proxy forwards API requests to the remote denarii instance on Render. No local denarii server needed.
-
-1. **Add `capim.local` to your hosts file.** The local domain is needed so authentication cookies (which use `secure: true` and `sameSite: "None"`) work correctly across the frontend and API.
-
-```
-# /etc/hosts
-127.0.0.1 capim.local
-```
-
-2. **Generate local HTTPS certificates with mkcert.** Secure cookies require HTTPS, even in development.
-
-```sh
-mkcert -install           # install the local CA (once)
-mkcert capim.local        # generates capim.local.pem and capim.local-key.pem
-```
-
-Place the generated files in the capim project root.
-
-3. **Start the frontend and proxy** from the capim project:
-
-```sh
-npm run x
-```
-
-This starts both the Nuxt HTTPS dev server on `https://capim.local:3000` and the reverse proxy on `https://capim.local:2099` (which forwards to `denarii.onrender.com`). The proxy rewrites CORS headers so credentials work properly.
-
-### Backend development (local denarii server)
-
-When working on denarii itself, run the server locally. It connects to the remote PostgreSQL and Redis on Render (configured in `main/.env`).
+Your current public IP must be in the inbound allowlist of both the Render Postgres and Redis instances. Add or refresh it in each provider's dashboard when you see `Client IP address is not in the allowlist.` (Redis) or a connection refusal (Postgres).
 
 ```sh
 npm start
@@ -92,7 +62,7 @@ npm start
 
 This runs nodemon, which watches for `.ts` and `.json` changes, recompiles, and restarts the server on port 2099 with the Node.js debugger enabled (`--inspect`).
 
-Set the frontend's `NUXT_PUBLIC_BASE_URL` to `http://localhost:2099` to point it at the local server. Note that the `secret` cookie will not be set in this mode (it requires HTTPS), but session authentication via the `connect.sid` cookie still works over plain HTTP.
+Point the frontend at `http://localhost:2099` (see [capim's README](https://github.com/slacktracer/capim/blob/main/README.md)). Note: the `secret` cookie isn't set over HTTP, but `connect.sid` session auth still works.
 
 ## Running
 
@@ -113,7 +83,7 @@ The server listens on the port defined in `PORT` (default 2099). A health check 
 
 ## Running tests
 
-The test suite runs integration tests against a real PostgreSQL database in a Docker container.
+The test suite runs integration tests against real PostgreSQL and Redis instances in Docker containers.
 
 From the root:
 
@@ -213,7 +183,7 @@ Common patterns:
 | Script | Purpose |
 |--------|---------|
 | `compile` / `c` | Compiles TypeScript to JavaScript |
-| `compile-on-ci` | Same as `compile`, used in CI for clarity |
+| `compile-on-ci` | Same `tsc` command as `compile`, but skips the `postcompile` SQL-formatting hook. Used in CI where formatting isn't needed |
 | `check-types` | Type-checks without emitting JS files. Useful for quick validation |
 | `decompile` / `d` | Removes all compiled `.js` and `.js.map` files |
 | `execute` / `x` | Runs the server with the Node.js debugger enabled (`--inspect`) |
