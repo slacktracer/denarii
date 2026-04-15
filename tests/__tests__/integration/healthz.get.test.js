@@ -15,6 +15,6 @@ describe("GET /healthz", () => {
     const response = await server.get("/healthz");
 
     expect(response.status).toEqual(200);
-    expect(response.body).toEqual({ build: "0", database: true, redis: true });
+    expect(response.body).toEqual({ build: "0", database: true, kv: true });
   });
 });
